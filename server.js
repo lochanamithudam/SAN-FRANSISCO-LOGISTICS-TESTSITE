@@ -61,8 +61,8 @@ const Quote = mongoose.model('Quote', QuoteSchema);
 
 // ── Helper: Send Email Confirmation ─────────────────────────
 async function sendQuoteEmail(fullName, email, companyName, service, cargoDetails) {
-    const gmailUser = process.env.GMAIL_USER || '';
-    const gmailPass = process.env.GMAIL_PASS || '';
+    const gmailUser = process.env.GMAIL_USER || 'lochanamithudam097@gmail.com';
+    const gmailPass = process.env.GMAIL_PASS || 'lbjcuwbothgcmepg';
 
     if (!gmailUser || !gmailPass) {
         console.warn('⚠️  Email skipped: GMAIL_USER / GMAIL_PASS not set.');
@@ -71,7 +71,9 @@ async function sendQuoteEmail(fullName, email, companyName, service, cargoDetail
 
     try {
         const transporter = nodemailer.createTransport({
-            service: 'gmail',
+            host: 'smtp.gmail.com',
+            port: 465,
+            secure: true,
             auth: { user: gmailUser, pass: gmailPass },
             tls: { rejectUnauthorized: false }
         });
@@ -96,8 +98,8 @@ async function sendQuoteEmail(fullName, email, companyName, service, cargoDetail
             `
         };
 
-        await transporter.sendMail(mailOptions);
-        console.log(`✉️  Quote notification sent to ${email}`);
+        const info = await transporter.sendMail(mailOptions);
+        console.log(`✉️  Quote notification sent to ${email} (MessageId: ${info.messageId})`);
     } catch (err) {
         console.error('❌  Email send error:', err.message);
     }
