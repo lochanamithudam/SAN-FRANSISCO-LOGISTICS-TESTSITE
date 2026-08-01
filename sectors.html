@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Global Logistics Sectors & Operating Segments | San Francisco Logistics</title>
+  <meta name="description" content="Explore San Francisco Logistics core operating segments: Freight Transportation, Warehousing, Express Last-Mile, 3PL/4PL Services, and Key Economic Sectors.">
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="../STYLE CSS LOG/style.css">
+  <link rel="stylesheet" href="../STYLE CSS LOG/sectors.css">
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="container top-bar-inner">
+      <div class="ticker-wrap">
+        <span class="ticker-badge">
+          <span class="pulse-dot"></span> LIVE OPERATIONS
+        </span>
+        <span>Global Network Status: 100% Operational | Ocean, Air, Highway & Intermodal Freight Active</span>
+      </div>
+      <div class="top-contacts">
+        <a href="tel:+14155550199"><i class="fas fa-phone-alt"></i> +1 (415) 555-0199</a>
+        <a href="mailto:contact@sflogistics.com"><i class="fas fa-envelope"></i> contact@sflogistics.com</a>
+        <a href="#quote-modal" onclick="openQuoteModal()"><i class="fas fa-lock"></i> Client Portal</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header / Navigation Bar -->
+  <header class="header">
+    <div class="container">
+      <nav class="navbar">
+        <a href="index.html" class="brand-logo">
+          <div class="logo-icon-box">
+            <i class="fas fa-anchor"></i>
+          </div>
+          <div class="logo-text">
+            <span class="logo-title">SAN FRANCISCO</span>
+            <span class="logo-subtitle">LOGISTICS</span>
+          </div>
+        </a>
+
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="sectors.html" class="nav-link active">Our Sectors</a></li>
+          <li><a href="index.html#network" class="nav-link">Global Network</a></li>
+          <li><a href="index.html#technology" class="nav-link">Technology & AI</a></li>
+          <li><a href="index.html#sustainability" class="nav-link">ESG & Green Fleet</a></li>
+          <li><a href="index.html#news" class="nav-link">News & Media</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <button class="btn btn-outline" onclick="openQuoteModal()"><i class="fas fa-search-location"></i> Track</button>
+          <button class="btn btn-primary" onclick="openQuoteModal()"><i class="fas fa-paper-plane"></i> Request Quote</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="sectors-hero">
+    <div class="sectors-hero-overlay"></div>
+    <div class="container sectors-hero-content">
+      <span class="section-tag" style="background: rgba(0, 245, 212, 0.15); border-color: var(--accent-cyan);">
+        <i class="fas fa-network-wired"></i> Supply Chain Architecture
+      </span>
+      <h1 class="sectors-hero-title">Core Operating Segments & Economic Sectors</h1>
+      <p class="sectors-hero-lead">
+        Discover how our integrated logistics supply chain combines deepwater ocean transport, priority air cargo, EV highway fleets, smart automated fulfillment, and specialized 3PL/4PL lead management across critical global industries.
+      </p>
+    </div>
+  </section>
+
+  <!-- Interactive Sticky Toolbar (Filters & Real-Time Search) -->
+  <div class="sectors-toolbar">
+    <div class="container toolbar-inner">
+      <div class="filter-pills">
+        <button class="filter-btn active" data-filter="all"><i class="fas fa-th-large"></i> All Segments</button>
+        <button class="filter-btn" data-filter="freight"><i class="fas fa-shipping-fast"></i> Freight & Carriers</button>
+        <button class="filter-btn" data-filter="warehousing"><i class="fas fa-warehouse"></i> Warehousing & Cold</button>
+        <button class="filter-btn" data-filter="express"><i class="fas fa-shipping-fast"></i> Last-Mile Express</button>
+        <button class="filter-btn" data-filter="3pl"><i class="fas fa-sitemap"></i> 3PL & 4PL Services</button>
+        <button class="filter-btn" data-filter="economic"><i class="fas fa-chart-pie"></i> Economic Sectors</button>
+      </div>
+
+      <div class="search-box">
+        <i class="fas fa-search search-icon"></i>
+        <input type="text" id="sector-search-input" class="search-input" placeholder="Search segment or industry requirement...">
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content Container -->
+  <main class="container section-padding">
+
+    <!-- ============================================================ -->
+    <!-- PART 1: CORE OPERATING SEGMENTS IN LOGISTICS -->
+    <!-- ============================================================ -->
+
+    <!-- Segment Category 1: Freight Transportation & Carrier Services -->
+    <div class="segment-block" data-category="freight" id="freight">
+      <div class="segment-header">
+        <div class="segment-icon-badge segment-icon-ocean">
+          <i class="fas fa-ship"></i>
+        </div>
+        <div>
+          <h2 class="segment-title">1. Freight Transportation & Carrier Services</h2>
+          <p class="segment-desc">High-capacity global multi-modal carrier infrastructure connecting ocean ports, air freight hubs, highway corridors, and rail networks.</p>
+        </div>
+      </div>
+
+      <div class="segment-grid">
+
+        <!-- Card: Road Freight -->
+        <div class="luxury-card" id="road">
+          <div class="luxury-card-img-wrap">
+            <img src="../images/fleet_truck.jpg" alt="Road Freight Trucking Fleet" class="luxury-card-img">
+            <span class="luxury-card-tag" style="border-color: rgba(59, 130, 246, 0.5); color: #60a5fa;">Road Freight</span>
+          </div>
+          <div class="luxury-card-body">
+            <h3 class="luxury-card-title"><i class="fas fa-truck-moving" style="color: #3b82f6;"></i> Road Freight</h3>
+            <p class="luxury-card-text">Comprehensive highway freight trucking powered by next-generation heavy EV rigs and telemetry-tracked trailers.</p>
+            <ul class="bullet-sublist">
+              <li><i class="fas fa-check"></i> <strong>Trucking:</strong> Long-haul, regional, less-than-truckload (LTL), and full truckload (FTL).</li>
+              <li><i class="fas fa-check"></i> Zero-emission electric interstate drayage fleet.</li>
+              <li><i class="fas fa-check"></i> Live temperature & shock sensor tracking.</li>
+            </ul>
+            <div class="luxury-card-footer">
+              <span class="meta-chip"><i class="fas fa-bolt"></i> 1,200+ EV Rigs</span>
+              <button class="btn-card-action" data-sector="road-freight">Explore Details <i class="fas fa-arrow-right"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card: Ocean/Maritime Freight -->
+        <div class="luxury-card" id="ocean">
+          <div class="luxury-card-img-wrap">
+            <img src="../images/ocean_freight_ship.jpg" alt="Ocean Container Cargo Vessel" class="luxury-card-img">
+            <span class="luxury-card-tag" style="border-color: rgba(0, 245, 212, 0.5); color: var(--accent-cyan);">Maritime Transport</span>
+          </div>
+          <div class="luxury-card-body">
+            <h3 class="luxury-card-title"><i class="fas fa-ship" style="color: var(--accent-cyan);"></i> Ocean / Maritime Freight</h3>
+            <p class="luxury-card-text">Ultra-large ocean container fleet connecting Pacific Rim deepwater ports with automated gantry crane terminals.</p>
+            <ul class="bullet-sublist">
+              <li><i class="fas fa-check"></i> <strong>Ocean & Maritime:</strong> Containerized cargo, bulk shipping, and port operations.</li>
+              <li><i class="fas fa-check"></i> FCL & LCL international trade consolidation.</li>
+              <li><i class="fas fa-check"></i> Direct San Francisco ocean port terminal handling.</li>
+            </ul>
+            <div class="luxury-card-footer">
+              <span class="meta-chip"><i class="fas fa-water"></i> 48 Container Vessels</span>
+              <button class="btn-card-action" data-sector="ocean-freight">Explore Details <i class="fas fa-arrow-right"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card: Air Cargo -->
+        <div class="luxury-card" id="air">
+          <div class="luxury-card-img-wrap">
+            <img src="../images/air_cargo_plane.jpg" alt="Air Cargo Aircraft Charter" class="luxury-card-img">
+            <span class="luxury-card-tag" style="border-color: rgba(168, 85, 247, 0.5); color: #c084fc;">Air Expedite</span>
+          </div>
+          <div class="luxury-card-body">
+            <h3 class="luxury-card-title"><i class="fas fa-plane-departure" style="color: #a855f7;"></i> Air Cargo</h3>
+            <p class="luxury-card-text">Time-critical express air charter and commercial belly-cargo delivering high-priority cargo worldwide in under 18 hours.</p>
+            <ul class="bullet-sublist">
+              <li><i class="fas fa-check"></i> <strong>Air Cargo:</strong> Express freight and belly-cargo via commercial airlines.</li>
+              <li><i class="fas fa-check"></i> Temperature-controlled ULD aircraft containers.</li>
+              <li><i class="fas fa-check"></i> Dedicated Boeing 777-F & 747-8F cargo aircraft.</li>
+            </ul>
+            <div class="luxury-card-footer">
+              <span class="meta-chip" style="color: #c084fc;"><i class="fas fa-clock"></i> 24/7 Priority Express</span>
+              <button class="btn-card-action" data-sector="air-cargo">Explore Details <i class="fas fa-arrow-right"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card: Rail Logistics -->
+        <div class="luxury-card" id="rail">
+          <div class="luxury-card-img-wrap">
+            <img src="../images/rail_logistics_train.jpg" alt="Rail Logistics Freight Train" class="luxury-card-img">
+            <span class="luxury-card-tag" style="border-color: rgba(245, 158, 11, 0.5); color: #fbbf24;">Rail Intermodal</span>
+          </div>
+          <div class="luxury-card-body">
+            <h3 class="luxury-card-title"><i class="fas fa-train" style="color: #f59e0b;"></i> Rail Logistics</h3>
+            <p class="luxury-card-text">High-capacity intermodal rail transport linking ocean ports with inland distribution corridors to maximize fuel efficiency.</p>
+            <ul class="bullet-sublist">
+              <li><i class="fas fa-check"></i> <strong>Rail Logistics:</strong> Heavy freight and intermodal rail transport.</li>
+              <li><i class="fas fa-check"></i> Double-stack container rail car configurations.</li>
+              <li><i class="fas fa-check"></i> Direct ocean terminal port-to-rail ramps.</li>
+            </ul>
+            <div class="luxury-card-footer">
+              <span class="meta-chip" style="color: #fbbf24;"><i class="fas fa-subway"></i> Intermodal Rail Ramps</span>
+              <button class="btn-card-action" data-sector="rail-logistics">Explore Details <i class="fas fa-arrow-right"></i></button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- Segment Category 2: Warehousing & Distribution -->
+    <div class="segment-block" data-category="warehousing" id="warehousing">
+      <div class="segment-header">
+        <div class="segment-icon-badge segment-icon-warehouse">
+          <i class="fas fa-warehouse"></i>
+        </div>
+        <div>
+          <h2 class="segment-title">2. Warehousing & Distribution</h2>
+          <p class="segment-desc">Smart automated storage facilities, climate-controlled cold hubs, and high-speed cross-docking operations.</p>
+        </div>
+      </div>
+
+      <div class="segment-grid">
+
+        <!-- Card: Fulfilment Centers -->
+        <div class="luxury-card">
+          <div class="luxury-card-img-wrap">
+            <img src="../images/smart_warehouse.jpg" alt="Automated Smart Fulfillment Center" class="luxury-card-img">
+            <span class="luxury-card-tag" style="border-color: rgba(16, 185, 129, 0.5); color: #34d399;">Robotic 3PL</span>
+          </div>
+          <div class="luxury-card-body">
+            <h3 class="luxury-card-title"><i class="fas fa-boxes-packing" style="color: #10b981;"></i> Fulfilment Centers</h3>
+            <p class="luxury-card-text">Automated micro-fulfilment and enterprise distribution centers featuring autonomous AGV sorting and cloud WMS APIs.</p>
+            <ul class="bullet-sublist">
+              <li><i class="fas fa-check"></i> <strong>Fulfilment Centers:</strong> Order processing, picking, packing, and dispatch.</li>
+              <li><i class="fas fa-check"></i> High-speed automated sorting robotics.</li>
+              <li><i class="fas fa-check"></i> Real-time inventory cloud tracking API.</li>
+            </ul>
+            <div class="luxury-card-footer">
+              <span class="meta-chip" style="color: #34d399;"><i class="fas fa-cubes"></i> 4.5M Sq Ft Storage</span>
+              <button class="btn-card-action" data-sector="fulfilment-centers">Explore Details <i class="fas fa-arrow-right"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card: Cold Storage -->
+        <div class="luxury-card">
+          <div class="luxury-card-img-wrap">
+            <img src="../images/cold_storage_facility.jpg" alt="Pharmaceutical Cold Storage Facility" class="luxury-card-img">
+            <span class="luxury-card-tag" style="border-color: rgba(6, 182, 212, 0.5); color: #22d3ee;">Cold Storage</span>
+          </div>
+          <div class="luxury-card-body">
+            <h3 class="luxury-card-title"><i class="fas fa-snowflake" style="color: #06b6d4;"></i> Cold Storage</h3>
+            <p class="luxury-card-text">Precision temperature-controlled environments engineered to safeguard vaccines, biopharmaceuticals, and fresh foods.</p>
+            <ul class="bullet-sublist">
+              <li><i class="fas fa-check"></i> <strong>Cold Storage:</strong> Temperature-controlled facilities for food, pharmaceuticals, and chemicals.</li>
+              <li><i class="fas fa-check"></i> Multi-zone storage from -80°C cryo to +15°C ambient.</li>
+              <li><i class="fas fa-check"></i> GDP certified bio-logistics compliance.</li>
+            </ul>
+            <div class="luxury-card-footer">
+              <span class="meta-chip" style="color: #22d3ee;"><i class="fas fa-temperature-low"></i> -80°C Cryo Facilities</span>
+              <button class="btn-card-action" data-sector="cold-storage">Explore Details <i class="fas fa-arrow-right"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card: Cross-Docking & Transit Hubs -->
+        <div class="luxury-card">
+          <div class="luxury-card-img-wrap">
+            <img src="../images/news_terminal_cranes.jpg" alt="Cross-Docking Transit Terminal" class="luxury-card-img">
+            <span class="luxury-card-tag" style="border-color: rgba(245, 158, 11, 0.5); color: #fcd34d;">Fast Transit</span>
+          </div>
+          <div class="luxury-card-body">
+            <h3 class="luxury-card-title"><i class="fas fa-exchange-alt" style="color: #f59e0b;"></i> Cross-Docking & Transit Hubs</h3>
+            <p class="luxury-card-text">Bypass long-term storage with direct truck-to-truck transfer, cutting turnaround times to under 2 hours.</p>
+            <ul class="bullet-sublist">
+              <li><i class="fas fa-check"></i> <strong>Cross-Docking & Transit Hubs:</strong> Transferring goods directly between inbound and outbound transports with minimal storage time.</li>
+              <li><i class="fas fa-check"></i> Automated RFID scan verification.</li>
+              <li><i class="fas fa-check"></i> Rapid regional parcel consolidation.</li>
+            </ul>
+            <div class="luxury-card-footer">
+              <span class="meta-chip" style="color: #fcd34d;"><i class="fas fa-stopwatch"></i> &lt; 2hr Turnaround</span>
+              <button class="btn-card-action" data-sector="cross-docking">Explore Details <i class="fas fa-arrow-right"></i></button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- Segment Category 3: Express, Courier & Last-Mile Delivery -->
+    <div class="segment-block" data-category="express" id="express">
+      <div class="segment-header">
+        <div class="segment-icon-badge segment-icon-express">
+          <i class="fas fa-shipping-fast"></i>
+        </div>
+        <div>
+          <h2 class="segment-title">3. Express, Courier & Last-Mile Delivery</h2>
+          <p class="segment-desc">High-speed urban fulfillment networks, electric delivery vans, and guaranteed same-day doorstep parcel delivery.</p>
+        </div>
+      </div>
+
+      <div class="segment-grid" style="grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));">
+        <div class="luxury-card">
+          <div class="luxury-card-img-wrap">
+            <img src="../images/news_ev_truck.jpg" alt="Urban Express Delivery Fleet" class="luxury-card-img">
+            <span class="luxury-card-tag" style="border-color: rgba(255, 94, 98, 0.5); color: #ff7675;">Urban Express</span>
+          </div>
+          <div class="luxury-card-body">
+            <h3 class="luxury-card-title"><i class="fas fa-truck-ramp-box" style="color: #ff5e62;"></i> Express, Courier & Last-Mile Delivery</h3>
+            <p class="luxury-card-text">Connecting commercial clients directly to retail locations and residential doorsteps with zero-emission fleets and real-time SMS tracking.</p>
+            <ul class="bullet-sublist">
+              <li><i class="fas fa-check"></i> <strong>Express & Last-Mile:</strong> Parcel delivery, local courier networks, and urban e-commerce fulfillment services.</li>
+              <li><i class="fas fa-check"></i> Guaranteed same-day & 2-hour priority express windows.</li>
+              <li><i class="fas fa-check"></i> Electronic Proof of Delivery (ePOD) with instant digital signatures.</li>
+            </ul>
+            <div class="luxury-card-footer">
+              <span class="meta-chip" style="color: #ff7675;"><i class="fas fa-check-circle"></i> 99.94% On-Time Precision</span>
+              <button class="btn-card-action" data-sector="express-lastmile">Explore Details <i class="fas fa-arrow-right"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Segment Category 4: Third-Party & Specialised Logistics Services (3PL / 4PL) -->
+    <div class="segment-block" data-category="3pl" id="3pl">
+      <div class="segment-header">
+        <div class="segment-icon-badge segment-icon-3pl">
+          <i class="fas fa-sitemap"></i>
+        </div>
+        <div>
+          <h2 class="segment-title">4. Third-Party & Specialised Logistics Services (3PL / 4PL)</h2>
+          <p class="segment-desc">Customs brokerage compliance, digital 4PL supply chain orchestration, and sustainable circular reverse logistics.</p>
+        </div>
+      </div>
+
+      <div class="segment-grid">
+
+        <div class="luxury-card">
+          <div class="luxury-card-img-wrap">
+            <img src="../images/sf_air_freight_1785518053867.jpg" alt="Freight Forwarding and Customs Brokerage" class="luxury-card-img">
+            <span class="luxury-card-tag" style="border-color: rgba(233, 64, 87, 0.5); color: #f43f5e;">Customs & Compliance</span>
+          </div>
+          <div class="luxury-card-body">
+            <h3 class="luxury-card-title"><i class="fas fa-file-contract" style="color: #e94057;"></i> Freight Forwarding & Customs Brokerage</h3>
+            <p class="luxury-card-text">Expert international trade documentation, customs clearance filing, duty management, and multi-modal routing compliance.</p>
+            <ul class="bullet-sublist">
+              <li><i class="fas fa-check"></i> <strong>Freight Forwarding:</strong> International trade compliance, documentation, and routing.</li>
+              <li><i class="fas fa-check"></i> Automated digital customs clearance API.</li>
+              <li><i class="fas fa-check"></i> C-TPAT & ISO certified trade security.</li>
+            </ul>
+            <div class="luxury-card-footer">
+              <span class="meta-chip" style="color: #f43f5e;"><i class="fas fa-shield-alt"></i> ISO 9001 Certified</span>
+              <button class="btn-card-action" data-sector="3pl-4pl-services">Explore Details <i class="fas fa-arrow-right"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="luxury-card">
+          <div class="luxury-card-img-wrap">
+            <img src="../images/news_air_cargo.jpg" alt="4PL Lead Logistics Management" class="luxury-card-img">
+            <span class="luxury-card-tag" style="border-color: rgba(138, 35, 135, 0.5); color: #d8b4fe;">4PL Lead Logistics</span>
+          </div>
+          <div class="luxury-card-body">
+            <h3 class="luxury-card-title"><i class="fas fa-diagram-project" style="color: #8a2387;"></i> 4PL / Lead Logistics Providers (LLP)</h3>
+            <p class="luxury-card-text">End-to-end supply chain orchestration acting as a single point of control for carrier procurement, route optimization, and tech integration.</p>
+            <ul class="bullet-sublist">
+              <li><i class="fas fa-check"></i> <strong>4PL / LLP:</strong> End-to-end supply chain orchestration and digital management.</li>
+              <li><i class="fas fa-check"></i> Single Control Tower view across all logistics vendors.</li>
+              <li><i class="fas fa-check"></i> Predictive AI telemetry & risk modeling.</li>
+            </ul>
+            <div class="luxury-card-footer">
+              <span class="meta-chip" style="color: #d8b4fe;"><i class="fas fa-brain"></i> AI Supply Chain Tower</span>
+              <button class="btn-card-action" data-sector="3pl-4pl-services">Explore Details <i class="fas fa-arrow-right"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="luxury-card">
+          <div class="luxury-card-img-wrap">
+            <img src="../images/news_ev_truck.jpg" alt="Reverse Logistics and Circular Economy" class="luxury-card-img">
+            <span class="luxury-card-tag" style="border-color: rgba(242, 113, 33, 0.5); color: #fb923c;">Circular Economy</span>
+          </div>
+          <div class="luxury-card-body">
+            <h3 class="luxury-card-title"><i class="fas fa-recycle" style="color: #f27121;"></i> Reverse Logistics</h3>
+            <p class="luxury-card-text">Streamlined consumer returns handling, product refurbishing, sustainable recycling, and commercial waste collection.</p>
+            <ul class="bullet-sublist">
+              <li><i class="fas fa-check"></i> <strong>Reverse Logistics:</strong> Returns management, refurbishing, recycling, and waste collection.</li>
+              <li><i class="fas fa-check"></i> Automated return label generation & drop-off networks.</li>
+              <li><i class="fas fa-check"></i> Circular economy materials recovery.</li>
+            </ul>
+            <div class="luxury-card-footer">
+              <span class="meta-chip" style="color: #fb923c;"><i class="fas fa-leaf"></i> Net-Zero Circularity</span>
+              <button class="btn-card-action" data-sector="3pl-4pl-services">Explore Details <i class="fas fa-arrow-right"></i></button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- PART 2: KEY ECONOMIC SECTORS RELYING ON LOGISTICS -->
+    <!-- ============================================================ -->
+
+    <div class="segment-block" data-category="economic" id="economic-sectors" style="margin-top: 80px;">
+      <div class="segment-header">
+        <div class="segment-icon-badge segment-icon-economic">
+          <i class="fas fa-chart-pie"></i>
+        </div>
+        <div>
+          <h2 class="segment-title">2. Key Economic Sectors Relying on Logistics</h2>
+          <p class="segment-desc">Tailored supply chain solutions customized for the operational requirements of global commercial industries.</p>
+        </div>
+      </div>
+
+      <div class="economic-matrix-wrapper">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+          <div>
+            <h3 style="font-size: 1.5rem; color: #fff; font-family: var(--font-heading);">Industry Logistics Matrix</h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">Cross-reference key industry verticals with their core supply chain operational requirements.</p>
+          </div>
+          <button class="btn btn-primary" onclick="openQuoteModal()"><i class="fas fa-headset"></i> Consult Industry Specialist</button>
+        </div>
+
+        <div class="economic-table-responsive">
+          <table class="economic-table">
+            <thead>
+              <tr>
+                <th>Commercial Sector</th>
+                <th>Core Logistics Requirement</th>
+                <th>Primary Shipping Mode</th>
+                <th>SFL Specialized Service</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <!-- Row 1: E-Commerce & Retail -->
+              <tr>
+                <td>
+                  <i class="fas fa-shopping-cart" style="color: #c084fc; font-size: 1.2rem;"></i>
+                  <span>E-Commerce &amp; Retail</span>
+                </td>
+                <td>
+                  <span class="sector-pill-tag tag-ecommerce">Last-mile speed</span>
+                  Last-mile delivery speed, real-time tracking, return handling, peak-season scaling.
+                </td>
+                <td><span style="color: var(--accent-cyan); font-weight: 600;">Urban EV Express & Air</span></td>
+                <td><button class="btn-card-action" onclick="openQuoteModal()">Tailor Solution</button></td>
+              </tr>
+
+              <!-- Row 2: Manufacturing & Automotive -->
+              <tr>
+                <td>
+                  <i class="fas fa-industry" style="color: #fbbf24; font-size: 1.2rem;"></i>
+                  <span>Manufacturing &amp; Automotive</span>
+                </td>
+                <td>
+                  <span class="sector-pill-tag tag-auto">JIT Supply Chain</span>
+                  Just-In-Time (JIT) inbound supply chains, heavy freight, component assembly lines.
+                </td>
+                <td><span style="color: #fbbf24; font-weight: 600;">Heavy Rail & Highway EV</span></td>
+                <td><button class="btn-card-action" onclick="openQuoteModal()">Tailor Solution</button></td>
+              </tr>
+
+              <!-- Row 3: Healthcare & Pharma -->
+              <tr>
+                <td>
+                  <i class="fas fa-notes-medical" style="color: #34d399; font-size: 1.2rem;"></i>
+                  <span>Healthcare &amp; Pharma</span>
+                </td>
+                <td>
+                  <span class="sector-pill-tag tag-pharma">Cold-Chain GDP</span>
+                  Cold-chain management, strict regulatory compliance, traceable track-and-trace systems.
+                </td>
+                <td><span style="color: #34d399; font-weight: 600;">Cryo Air & Temperature Reefer</span></td>
+                <td><button class="btn-card-action" onclick="openQuoteModal()">Tailor Solution</button></td>
+              </tr>
+
+              <!-- Row 4: FMCG -->
+              <tr>
+                <td>
+                  <i class="fas fa-boxes-stacked" style="color: #60a5fa; font-size: 1.2rem;"></i>
+                  <span>Fast-Moving Consumer Goods (FMCG)</span>
+                </td>
+                <td>
+                  <span class="sector-pill-tag tag-fmcg">High Turnover</span>
+                  High-turnover distribution, shelf-life management, bulk warehousing.
+                </td>
+                <td><span style="color: #60a5fa; font-weight: 600;">Automated Hubs & Ocean FCL</span></td>
+                <td><button class="btn-card-action" onclick="openQuoteModal()">Tailor Solution</button></td>
+              </tr>
+
+              <!-- Row 5: Agriculture & Food Processing -->
+              <tr>
+                <td>
+                  <i class="fas fa-wheat-awn" style="color: #4ade80; font-size: 1.2rem;"></i>
+                  <span>Agriculture &amp; Food Processing</span>
+                </td>
+                <td>
+                  <span class="sector-pill-tag tag-agri">Climate Control</span>
+                  Perishable freight handling, climate control, seasonal demand management.
+                </td>
+                <td><span style="color: #4ade80; font-weight: 600;">Reefer Container & Cross-Dock</span></td>
+                <td><button class="btn-card-action" onclick="openQuoteModal()">Tailor Solution</button></td>
+              </tr>
+
+              <!-- Row 6: Energy & Heavy Industry -->
+              <tr>
+                <td>
+                  <i class="fas fa-bolt" style="color: #f472b6; font-size: 1.2rem;"></i>
+                  <span>Energy &amp; Heavy Industry</span>
+                </td>
+                <td>
+                  <span class="sector-pill-tag tag-energy">OOG Project Cargo</span>
+                  Project cargo, out-of-gauge (OOG) heavy transport, specialized rig/site logistics.
+                </td>
+                <td><span style="color: #f472b6; font-weight: 600;">Heavy Lift Vessel & Multi-Axle</span></td>
+                <td><button class="btn-card-action" onclick="openQuoteModal()">Tailor Solution</button></td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Interactive Sector Details Modal -->
+  <div id="sector-detail-modal" class="sector-detail-modal">
+    <div class="sector-modal-box">
+      <button class="sector-modal-close"><i class="fas fa-times"></i></button>
+      <span id="modal-sector-badge" class="section-tag" style="margin-bottom: 12px;">Segment Details</span>
+      <h2 id="modal-sector-title" class="font-heading" style="font-size: 2rem; color: #fff; margin-bottom: 4px;">Sector Title</h2>
+      <p id="modal-sector-subtitle" style="color: var(--accent-cyan); font-size: 0.95rem; font-weight: 600; margin-bottom: 20px;">Subtitle</p>
+
+      <div style="height: 200px; border-radius: 12px; overflow: hidden; margin-bottom: 20px;">
+        <img id="modal-sector-img" src="" alt="Sector Image" style="width: 100%; height: 100%; object-fit: cover;">
+      </div>
+
+      <p id="modal-sector-desc" style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px;"></p>
+
+      <h4 style="color: #fff; font-size: 1.1rem; margin-bottom: 12px;">Key Operational Capabilities</h4>
+      <ul id="modal-sector-features" class="bullet-sublist" style="margin-bottom: 24px;"></ul>
+
+      <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.1);">
+        <div>
+          <span style="font-size: 0.8rem; color: var(--text-dim);">Performance Benchmark</span>
+          <div id="modal-sector-metric" style="font-size: 1.1rem; font-weight: 700; color: var(--accent-emerald);">Metric</div>
+        </div>
+        <button class="btn btn-primary" onclick="openQuoteModal()"><i class="fas fa-paper-plane"></i> Book This Service</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Enterprise Quote Request Modal -->
+  <div id="quote-modal" class="modal-overlay">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeQuoteModal()"><i class="fas fa-times"></i></button>
+      <h3 style="font-size: 1.6rem; color: var(--text-main); margin-bottom: 8px;" class="font-heading">Enterprise Quote Request</h3>
+      <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 24px;">Complete the form below to receive a custom freight rate and transit schedule from our San Francisco logistics team.</p>
+
+      <div id="quote-form-alert" style="display: none; padding: 14px; background: rgba(16,185,129,0.2); border: 1px solid var(--accent-emerald); color: var(--accent-emerald); border-radius: 8px; margin-bottom: 20px; font-weight: 600;"></div>
+
+      <form onsubmit="handleQuoteSubmit(event)">
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label">Full Name</label>
+            <input type="text" class="form-input" placeholder="John Doe" required style="padding-left: 16px;">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Company Name</label>
+            <input type="text" class="form-input" placeholder="Enterprise Global Inc." required style="padding-left: 16px;">
+          </div>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label">Business Email</label>
+            <input type="email" class="form-input" placeholder="johndoe@company.com" required style="padding-left: 16px;">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Phone Number</label>
+            <input type="tel" class="form-input" placeholder="+1 (555) 000-0000" required style="padding-left: 16px;">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Logistics Service Required</label>
+          <select class="form-input" style="padding-left: 16px;">
+            <option>Road Freight & EV Highway Trucking</option>
+            <option>Ocean Container Freight (FCL / LCL)</option>
+            <option>Air Cargo Expedite & Charter</option>
+            <option>Rail Logistics & Intermodal</option>
+            <option>Automated Warehousing & 3PL</option>
+            <option>Cold-Chain & BioLogistics</option>
+            <option>4PL Lead Logistics & Customs Brokerage</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Cargo Description & Origin/Destination</label>
+          <textarea class="form-input" rows="3" placeholder="Provide details about shipment weight, volume, origin, destination and special handling..." style="padding-left: 16px; font-family: inherit;"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 1rem;"><i class="fas fa-paper-plane"></i> Submit Request to Logistics Director</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo">
+            <div class="logo-icon-box">
+              <i class="fas fa-anchor"></i>
+            </div>
+            <div class="logo-text">
+              <span class="logo-title">SAN FRANCISCO</span>
+              <span class="logo-subtitle">LOGISTICS</span>
+            </div>
+          </a>
+          <p>Global leader in integrated maritime ocean shipping, air expedite charter, automated smart storage, and digital telemetry supply chain solutions.</p>
+          <div class="social-links">
+            <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-x-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Operating Divisions</h4>
+          <ul class="footer-links">
+            <li><a href="sectors.html#ocean">SF Ocean Lines</a></li>
+            <li><a href="sectors.html#air">SF AeroCargo</a></li>
+            <li><a href="sectors.html#warehousing">SF Smart Hubs</a></li>
+            <li><a href="sectors.html#road">SF Overland EV Fleet</a></li>
+            <li><a href="sectors.html#3pl">SF 4PL Control Tower</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="sectors.html">Our Sectors</a></li>
+            <li><a href="index.html#network">Global Network</a></li>
+            <li><a href="index.html#technology">Technology & AI</a></li>
+            <li><a href="index.html#sustainability">ESG & Green Fleet</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Certifications</h4>
+          <ul class="footer-links">
+            <li><a href="#">ISO 9001:2024 Quality</a></li>
+            <li><a href="#">C-TPAT Security Certified</a></li>
+            <li><a href="#">IATA Cargo Agent</a></li>
+            <li><a href="#">GDP Cold-Chain Certified</a></li>
+            <li><a href="#">EPA SmartWay Partner</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Global Headquarters</h4>
+          <p style="color: var(--text-muted); line-height: 1.6; margin-bottom: 12px;">
+            <i class="fas fa-map-marker-alt" style="color: var(--accent-cyan);"></i> Pier 35, Embarcadero North<br>
+            San Francisco, CA 94133, USA
+          </p>
+          <p style="color: var(--text-muted); line-height: 1.6; margin-bottom: 12px;">
+            <i class="fas fa-phone" style="color: var(--accent-cyan);"></i> Tel: +1 (415) 555-0199
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          &copy; 2026 SAN FRANCISCO LOGISTICS GROUP PLC. All Rights Reserved.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../JAVASCRIPTS/script.js"></script>
+  <script src="../JAVASCRIPTS/sectors.js"></script>
+</body>
+</html>

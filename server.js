@@ -159,6 +159,11 @@ app.get('/api/quote', async (req, res) => {
     }
 });
 
+// Serve sectors page
+app.get('/sectors', (req, res) => {
+    res.sendFile(path.join(__dirname, 'sectors.html'));
+});
+
 // Serve main page for any other route
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
