@@ -78,7 +78,7 @@ async function sendQuoteEmail(fullName, email, companyName, service, cargoDetail
 
         const mailOptions = {
             from: `"San Francisco Logistics" <${gmailUser}>`,
-            to: [email, gmailUser].join(','),
+            to: [email, gmailUser].filter(Boolean).join(','),
             subject: `📦 Quote Request Received - San Francisco Logistics`,
             html: `
                 <div style="font-family:'Segoe UI',Arial,sans-serif;max-width:580px;margin:0 auto;border:1px solid #00f5d4;border-radius:12px;overflow:hidden;background:#070b19;color:#ffffff;padding:24px;">
@@ -136,7 +136,9 @@ app.post('/api/quote', async (req, res) => {
         console.log(`✅ Saved quote request to MongoDB for ${email}`);
 
         // Trigger email notification asynchronously
-        sendQuoteEmail(fullName || 'Valued Client', email, companyName, service, cargoDetails);
+        sendQuoteEmail(fullName || 'Valued Client', email, companyName, service, cargoDetails).catch(err => {
+            console.error('❌ Async email notification error:', err.message);
+        });
 
         return res.status(201).json({
             success: true,
@@ -157,6 +159,11 @@ app.get('/api/quote', async (req, res) => {
     } catch (err) {
         res.status(500).json({ error: 'Failed to fetch quotes from MongoDB.' });
     }
+});
+
+// 404 handler for undefined API routes
+app.use('/api', (req, res) => {
+    res.status(404).json({ error: 'API endpoint not found' });
 });
 
 // Serve sectors page

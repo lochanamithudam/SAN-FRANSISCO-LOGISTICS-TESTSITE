@@ -1,15 +1,16 @@
-version: '3.8'
-
 services:
   san-francisco-app:
     build: .
     container_name: san-francisco-logistics-app
     ports:
       - "5000:5000"
+      - "8080:5000"
+    env_file:
+      - .env
     environment:
-      - PORT=5000
-      - MONGODB_URI=mongodb+srv://lochanamithudam097_db_user:Mithu123456@cluster0.f51etmt.mongodb.net/sanFranciscoDB?retryWrites=true&w=majority&appName=Cluster0
-      - GMAIL_USER=lochanamithudam097@gmail.com
-      - GMAIL_PASS=lbjcuwbothgcmepg
-      - DNS_SERVERS=8.8.8.8,1.1.1.1
+      - PORT=${PORT}
+      - MONGODB_URI=${MONGODB_URI}
+      - GMAIL_USER=${GMAIL_USER}
+      - GMAIL_PASS=${GMAIL_PASS}
+      - DNS_SERVERS=${DNS_SERVERS}
     restart: always

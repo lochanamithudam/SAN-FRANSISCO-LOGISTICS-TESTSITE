@@ -297,24 +297,36 @@ function closeQuoteModal() {
 async function handleQuoteSubmit(e) {
   e.preventDefault();
   const form = e.target;
-  const alertBox = document.getElementById('quote-form-alert');
+  const alertBox = form.querySelector('.quote-form-alert') || document.getElementById('quote-form-alert');
 
-  // Extract form field values dynamically
-  const inputs = form.querySelectorAll('input, select, textarea');
-  const payload = {};
-  inputs.forEach(input => {
-    const type = input.type;
-    const placeholder = input.placeholder || '';
-    const val = input.value.trim();
+  // Extract form field values using FormData first, with fallback to DOM iteration
+  const formData = new FormData(form);
+  const payload = {
+    fullName: formData.get('fullName') || '',
+    companyName: formData.get('companyName') || '',
+    email: formData.get('email') || '',
+    phone: formData.get('phone') || '',
+    service: formData.get('service') || '',
+    cargoDetails: formData.get('cargoDetails') || ''
+  };
 
-    if (type === 'email') payload.email = val;
-    else if (type === 'tel') payload.phone = val;
-    else if (input.tagName === 'SELECT') payload.service = val;
-    else if (input.tagName === 'TEXTAREA') payload.cargoDetails = val;
-    else if (placeholder.includes('John') || placeholder.includes('Name')) payload.fullName = val;
-    else if (placeholder.includes('Company') || placeholder.includes('Enterprise')) payload.companyName = val;
-    else if (type === 'text' && !payload.cargoDetails) payload.cargoDetails = val;
-  });
+  // Fallback for inputs missing name attributes
+  if (!payload.email || !payload.cargoDetails) {
+    const inputs = form.querySelectorAll('input, select, textarea');
+    inputs.forEach(input => {
+      const type = input.type;
+      const placeholder = input.placeholder || '';
+      const val = input.value.trim();
+
+      if (!payload.email && type === 'email') payload.email = val;
+      else if (!payload.phone && type === 'tel') payload.phone = val;
+      else if (!payload.service && input.tagName === 'SELECT') payload.service = val;
+      else if (!payload.cargoDetails && input.tagName === 'TEXTAREA') payload.cargoDetails = val;
+      else if (!payload.fullName && (placeholder.includes('John') || placeholder.includes('Name'))) payload.fullName = val;
+      else if (!payload.companyName && (placeholder.includes('Company') || placeholder.includes('Enterprise'))) payload.companyName = val;
+      else if (!payload.cargoDetails && type === 'text') payload.cargoDetails = val;
+    });
+  }
 
   if (!payload.email || !payload.cargoDetails) {
     if (alertBox) {
@@ -350,7 +362,10 @@ async function handleQuoteSubmit(e) {
       }
       form.reset();
       setTimeout(() => {
-        closeQuoteModal();
+        const modal = document.getElementById('quote-modal');
+        if (modal && modal.classList.contains('active')) {
+          closeQuoteModal();
+        }
         if (alertBox) alertBox.style.display = 'none';
       }, 2500);
     } else {

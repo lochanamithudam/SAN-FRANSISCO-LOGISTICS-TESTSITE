@@ -13,8 +13,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <!-- CSS Stylesheets -->
-  <link rel="stylesheet" href="../STYLE CSS LOG/style.css">
-  <link rel="stylesheet" href="../STYLE CSS LOG/sectors.css">
+  <link rel="stylesheet" href="STYLE CSS LOG/style.css">
+  <link rel="stylesheet" href="STYLE CSS LOG/sectors.css">
 </head>
 <body>
 
@@ -577,28 +577,28 @@
         <div class="form-grid-2">
           <div class="form-group">
             <label class="form-label">Full Name</label>
-            <input type="text" class="form-input" placeholder="John Doe" required style="padding-left: 16px;">
+            <input type="text" name="fullName" class="form-input" placeholder="John Doe" required style="padding-left: 16px;">
           </div>
           <div class="form-group">
             <label class="form-label">Company Name</label>
-            <input type="text" class="form-input" placeholder="Enterprise Global Inc." required style="padding-left: 16px;">
+            <input type="text" name="companyName" class="form-input" placeholder="Enterprise Global Inc." required style="padding-left: 16px;">
           </div>
         </div>
 
         <div class="form-grid-2">
           <div class="form-group">
             <label class="form-label">Business Email</label>
-            <input type="email" class="form-input" placeholder="johndoe@company.com" required style="padding-left: 16px;">
+            <input type="email" name="email" class="form-input" placeholder="johndoe@company.com" required style="padding-left: 16px;">
           </div>
           <div class="form-group">
             <label class="form-label">Phone Number</label>
-            <input type="tel" class="form-input" placeholder="+1 (555) 000-0000" required style="padding-left: 16px;">
+            <input type="tel" name="phone" class="form-input" placeholder="+1 (555) 000-0000" required style="padding-left: 16px;">
           </div>
         </div>
 
         <div class="form-group">
           <label class="form-label">Logistics Service Required</label>
-          <select class="form-input" style="padding-left: 16px;">
+          <select name="service" class="form-input" style="padding-left: 16px;">
             <option>Road Freight & EV Highway Trucking</option>
             <option>Ocean Container Freight (FCL / LCL)</option>
             <option>Air Cargo Expedite & Charter</option>
@@ -611,7 +611,7 @@
 
         <div class="form-group">
           <label class="form-label">Cargo Description & Origin/Destination</label>
-          <textarea class="form-input" rows="3" placeholder="Provide details about shipment weight, volume, origin, destination and special handling..." style="padding-left: 16px; font-family: inherit;"></textarea>
+          <textarea name="cargoDetails" class="form-input" rows="3" placeholder="Provide details about shipment weight, volume, origin, destination and special handling..." style="padding-left: 16px; font-family: inherit;"></textarea>
         </div>
 
         <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 1rem;"><i class="fas fa-paper-plane"></i> Submit Request to Logistics Director</button>
@@ -696,7 +696,7 @@
   </footer>
 
   <!-- Scripts -->
-  <script src="../JAVASCRIPTS/script.js"></script>
-  <script src="../JAVASCRIPTS/sectors.js"></script>
+  <script src="JAVASCRIPTS/script.js"></script>
+  <script src="JAVASCRIPTS/sectors.js"></script>
 </body>
 </html>

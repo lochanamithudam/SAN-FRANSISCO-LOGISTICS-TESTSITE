@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
 /* Category Pill Filtering */
 function initSectorFilters() {
   const filterBtns = document.querySelectorAll('.filter-btn');
-  const cards = document.querySelectorAll('.luxury-card');
   const segmentSections = document.querySelectorAll('.segment-block');
 
   filterBtns.forEach(btn => {
@@ -19,12 +18,16 @@ function initSectorFilters() {
       btn.classList.add('active');
 
       const filterValue = btn.getAttribute('data-filter');
+      const searchInput = document.getElementById('sector-search-input');
+      if (searchInput) searchInput.value = ''; // Reset search on category tab change
 
       segmentSections.forEach(section => {
         const category = section.getAttribute('data-category');
         if (filterValue === 'all' || filterValue === category) {
           section.style.display = 'block';
           section.style.opacity = '1';
+          section.querySelectorAll('.luxury-card').forEach(card => card.style.display = 'flex');
+          section.querySelectorAll('.economic-table tbody tr').forEach(row => row.style.display = 'table-row');
         } else {
           section.style.display = 'none';
           section.style.opacity = '0';
@@ -44,6 +47,15 @@ function initSectorSearch() {
     const cards = document.querySelectorAll('.luxury-card');
     const tableRows = document.querySelectorAll('.economic-table tbody tr');
 
+    if (!term) {
+      // Re-trigger active category filter
+      const activeFilterBtn = document.querySelector('.filter-btn.active');
+      if (activeFilterBtn) {
+        activeFilterBtn.click();
+      }
+      return;
+    }
+
     cards.forEach(card => {
       const text = card.textContent.toLowerCase();
       if (text.includes(term)) {
@@ -59,6 +71,17 @@ function initSectorSearch() {
         row.style.display = 'table-row';
       } else {
         row.style.display = 'none';
+      }
+    });
+
+    document.querySelectorAll('.segment-block').forEach(section => {
+      const visibleCards = Array.from(section.querySelectorAll('.luxury-card')).filter(c => c.style.display !== 'none');
+      const visibleRows = Array.from(section.querySelectorAll('.economic-table tbody tr')).filter(r => r.style.display !== 'none');
+      if (visibleCards.length > 0 || visibleRows.length > 0) {
+        section.style.display = 'block';
+        section.style.opacity = '1';
+      } else {
+        section.style.display = 'none';
       }
     });
   });
