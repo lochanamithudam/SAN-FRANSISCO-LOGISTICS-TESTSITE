@@ -66,43 +66,50 @@ async function sendQuoteEmail(fullName, email, companyName, service, cargoDetail
 
     if (!gmailUser || !gmailPass) {
         console.warn('⚠️  Email skipped: GMAIL_USER / GMAIL_PASS not set.');
-        return { skipped: true };
+        return { success: false, skipped: true, error: 'GMAIL_USER or GMAIL_PASS missing' };
     }
 
-    try {
-        const transporter = nodemailer.createTransport({
-            host: 'smtp.gmail.com',
-            port: 465,
-            secure: true,
-            auth: { user: gmailUser, pass: gmailPass },
-            tls: { rejectUnauthorized: false }
-        });
+    const mailOptions = {
+        from: `"San Francisco Logistics" <${gmailUser}>`,
+        to: [email, gmailUser].filter(Boolean).join(','),
+        subject: `📦 Quote Request Received - San Francisco Logistics`,
+        html: `
+            <div style="font-family:'Segoe UI',Arial,sans-serif;max-width:580px;margin:0 auto;border:1px solid #00f5d4;border-radius:12px;overflow:hidden;background:#070b19;color:#ffffff;padding:24px;">
+                <h2 style="color:#00f5d4;margin-top:0;">SAN FRANCISCO LOGISTICS</h2>
+                <p style="color:#cbd5e1;">Dear <strong>${fullName}</strong>,</p>
+                <p style="color:#cbd5e1;">Thank you for requesting a logistics quote. Your request has been saved and logged in our system:</p>
+                <table style="width:100%;border-collapse:collapse;color:#e2e8f0;margin:16px 0;">
+                    <tr><td style="padding:8px 0;color:#94a3b8;">Company:</td><td><strong>${companyName || 'N/A'}</strong></td></tr>
+                    <tr><td style="padding:8px 0;color:#94a3b8;">Email:</td><td><strong>${email}</strong></td></tr>
+                    <tr><td style="padding:8px 0;color:#94a3b8;">Service:</td><td><strong>${service}</strong></td></tr>
+                    <tr><td style="padding:8px 0;color:#94a3b8;">Cargo Details:</td><td><strong>${cargoDetails}</strong></td></tr>
+                </table>
+                <p style="color:#00f5d4;margin-top:20px;">An enterprise logistics director will reach out shortly.</p>
+            </div>
+        `
+    };
 
-        const mailOptions = {
-            from: `"San Francisco Logistics" <${gmailUser}>`,
-            to: [email, gmailUser].filter(Boolean).join(','),
-            subject: `📦 Quote Request Received - San Francisco Logistics`,
-            html: `
-                <div style="font-family:'Segoe UI',Arial,sans-serif;max-width:580px;margin:0 auto;border:1px solid #00f5d4;border-radius:12px;overflow:hidden;background:#070b19;color:#ffffff;padding:24px;">
-                    <h2 style="color:#00f5d4;margin-top:0;">SAN FRANCISCO LOGISTICS</h2>
-                    <p style="color:#cbd5e1;">Dear <strong>${fullName}</strong>,</p>
-                    <p style="color:#cbd5e1;">Thank you for requesting a logistics quote. Your request has been saved and logged in our system:</p>
-                    <table style="width:100%;border-collapse:collapse;color:#e2e8f0;margin:16px 0;">
-                        <tr><td style="padding:8px 0;color:#94a3b8;">Company:</td><td><strong>${companyName || 'N/A'}</strong></td></tr>
-                        <tr><td style="padding:8px 0;color:#94a3b8;">Email:</td><td><strong>${email}</strong></td></tr>
-                        <tr><td style="padding:8px 0;color:#94a3b8;">Service:</td><td><strong>${service}</strong></td></tr>
-                        <tr><td style="padding:8px 0;color:#94a3b8;">Cargo Details:</td><td><strong>${cargoDetails}</strong></td></tr>
-                    </table>
-                    <p style="color:#00f5d4;margin-top:20px;">An enterprise logistics director will reach out shortly.</p>
-                </div>
-            `
-        };
+    // Strategies to try in sequence
+    const transportConfigs = [
+        { name: 'Gmail Service', config: { service: 'gmail', auth: { user: gmailUser, pass: gmailPass }, connectionTimeout: 8000 } },
+        { name: 'SMTP Port 587 (TLS)', config: { host: 'smtp.gmail.com', port: 587, secure: false, auth: { user: gmailUser, pass: gmailPass }, tls: { rejectUnauthorized: false }, connectionTimeout: 8000 } },
+        { name: 'SMTP Port 465 (SSL)', config: { host: 'smtp.gmail.com', port: 465, secure: true, auth: { user: gmailUser, pass: gmailPass }, tls: { rejectUnauthorized: false }, connectionTimeout: 8000 } }
+    ];
 
-        const info = await transporter.sendMail(mailOptions);
-        console.log(`✉️  Quote notification sent to ${email} (MessageId: ${info.messageId})`);
-    } catch (err) {
-        console.error('❌  Email send error:', err.message);
+    let lastError = null;
+    for (const item of transportConfigs) {
+        try {
+            const transporter = nodemailer.createTransport(item.config);
+            const info = await transporter.sendMail(mailOptions);
+            console.log(`✉️  Quote notification sent via ${item.name} to ${email} (MessageId: ${info.messageId})`);
+            return { success: true, method: item.name, messageId: info.messageId, response: info.response };
+        } catch (err) {
+            console.error(`❌ Strategy ${item.name} failed:`, err.message);
+            lastError = err.message;
+        }
     }
+
+    return { success: false, error: lastError || 'All email transport strategies failed' };
 }
 
 // ── API Routes ──────────────────────────────────────────────
@@ -113,6 +120,17 @@ app.get('/api/health', (req, res) => {
         status: 'OK',
         database: mongoose.connection.readyState === 1 ? 'Connected' : 'Disconnected',
         timestamp: new Date()
+    });
+});
+
+// Live test email route for debugging
+app.get('/api/test-email', async (req, res) => {
+    const targetEmail = req.query.to || process.env.GMAIL_USER || 'lochanamithudam097@gmail.com';
+    console.log(`🧪 Triggering test email to ${targetEmail}...`);
+    const emailResult = await sendQuoteEmail('Test User', targetEmail, 'Test Corp', 'Air Freight', 'Test logistics details');
+    res.json({
+        targetEmail: targetEmail,
+        result: emailResult
     });
 });
 
@@ -137,15 +155,14 @@ app.post('/api/quote', async (req, res) => {
         await newQuote.save();
         console.log(`✅ Saved quote request to MongoDB for ${email}`);
 
-        // Trigger email notification asynchronously
-        sendQuoteEmail(fullName || 'Valued Client', email, companyName, service, cargoDetails).catch(err => {
-            console.error('❌ Async email notification error:', err.message);
-        });
+        // Trigger email notification and wait for result
+        const emailResult = await sendQuoteEmail(fullName || 'Valued Client', email, companyName, service, cargoDetails);
 
         return res.status(201).json({
             success: true,
             message: 'Quote request submitted successfully and logged in MongoDB!',
-            quoteId: newQuote._id
+            quoteId: newQuote._id,
+            emailResult: emailResult
         });
     } catch (err) {
         console.error('❌ Error saving quote to MongoDB:', err);
