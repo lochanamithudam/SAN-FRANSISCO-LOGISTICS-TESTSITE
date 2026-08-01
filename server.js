@@ -171,6 +171,11 @@ app.get('/sectors', (req, res) => {
     res.sendFile(path.join(__dirname, 'sectors.html'));
 });
 
+// Serve network page
+app.get('/network', (req, res) => {
+    res.sendFile(path.join(__dirname, 'network.html'));
+});
+
 // Serve main page for any other route
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));

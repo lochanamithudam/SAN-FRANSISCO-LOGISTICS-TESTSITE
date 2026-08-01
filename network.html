@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>San Francisco Logistics | Strategic Global Hub Network & Deepwater Terminals</title>
+  <meta name="description"
+    content="Explore San Francisco Logistics global hub network. 64 core gateways, automated deepwater ports, 24/7 orbital satellite control tower, and transpacific air cargo corridors.">
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="STYLE CSS LOG/style.css">
+  <link rel="stylesheet" href="STYLE CSS LOG/network.css">
+</head>
+
+<body>
+
+  <!-- Top System Status Ticker Bar -->
+  <div class="top-status-bar">
+    <div class="container status-bar-content">
+      <div class="status-badge-live">
+        <div class="pulse-indicator"></div>
+        <span>GLOBAL NETWORK STATUS: 100% OPERATIONAL</span>
+      </div>
+      <div class="status-text-ticker">
+        <div class="status-ticker-item">
+          <i class="fas fa-ship" style="color: var(--accent-cyan);"></i> <span>1,420 Active Ocean Vessels</span>
+        </div>
+        <div class="status-ticker-item">
+          <i class="fas fa-plane" style="color: var(--accent-blue);"></i> <span>380 Air Freighters En Route</span>
+        </div>
+        <div class="status-ticker-item">
+          <i class="fas fa-satellite" style="color: var(--accent-gold);"></i> <span>Orbital Telemetry Synced</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navigation Header -->
+  <header class="header sticky-header">
+    <div class="container">
+      <nav class="navbar">
+        <a href="index.html" class="brand-logo">
+          <div class="logo-icon-box">
+            <i class="fas fa-anchor"></i>
+          </div>
+          <div class="logo-text">
+            <span class="logo-title">SAN FRANCISCO</span>
+            <span class="logo-subtitle">LOGISTICS</span>
+          </div>
+        </a>
+
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="sectors.html" class="nav-link">Our Sectors</a></li>
+          <li><a href="network.html" class="nav-link active">Global Network</a></li>
+          <li><a href="index.html#technology" class="nav-link">Technology &amp; AI</a></li>
+          <li><a href="index.html#sustainability" class="nav-link">ESG &amp; Green Fleet</a></li>
+          <li><a href="index.html#news" class="nav-link">News &amp; Media</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <button class="btn btn-outline" onclick="openQuoteModal()"><i class="fas fa-search-location"></i> Track</button>
+          <button class="btn btn-primary" onclick="openQuoteModal()"><i class="fas fa-paper-plane"></i> Request Quote</button>
+          <button class="mobile-toggle" aria-label="Toggle Navigation"><i class="fas fa-bars"></i></button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="network-hero">
+    <div class="network-bg-media">
+      <img src="images/global_network_banner.jpg" alt="San Francisco Logistics Air Cargo & Global Network Terminal Banner" class="network-bg-img">
+    </div>
+    <div class="network-hero-overlay"></div>
+    <div class="container network-hero-content">
+      <span class="section-tag" style="background: rgba(0, 245, 212, 0.25); border-color: var(--accent-cyan); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);">
+        <i class="fas fa-globe-americas"></i> International Nerve Center
+      </span>
+      <h1 class="network-hero-title">Global Network, Deepwater Terminals &amp; Trade Corridors</h1>
+      <p class="network-hero-lead">
+        Orchestrating real-time cargo flows across 64 strategic international gateways, 38 airport logistics complexes, and 450+ ocean &amp; air freight corridors backed by sub-second satellite telemetry.
+      </p>
+
+      <!-- Key KPI Metrics -->
+      <div class="network-metrics-grid">
+        <div class="metric-card-lux">
+          <div class="metric-val"><span class="counter-val" data-target="64">64</span>+</div>
+          <div class="metric-lbl">Core Global Gateways</div>
+        </div>
+        <div class="metric-card-lux">
+          <div class="metric-val">14.8M</div>
+          <div class="metric-lbl">Annual TEU Ocean Vol</div>
+        </div>
+        <div class="metric-card-lux">
+          <div class="metric-val">2.8M T</div>
+          <div class="metric-lbl">Air Freight Capacity</div>
+        </div>
+        <div class="metric-card-lux">
+          <div class="metric-val">99.94%</div>
+          <div class="metric-lbl">On-Time Velocity</div>
+        </div>
+        <div class="metric-card-lux">
+          <div class="metric-val">24/7/365</div>
+          <div class="metric-lbl">Satellite Telemetry</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Global Command Center -->
+  <section class="net-section">
+    <div class="container">
+      <div class="net-section-header">
+        <span class="section-tag"><i class="fas fa-satellite-dish"></i> Real-Time Telemetry</span>
+        <h2 class="section-title">Interactive Global Hub Command Center</h2>
+        <p class="section-subtitle">Click on any hub node or category filter below to inspect terminal capacities, live vessel docks, weather radar, and customs clearance status in real time.</p>
+      </div>
+
+      <div class="command-center-box">
+        <!-- Filter Bar -->
+        <div class="hub-filter-bar">
+          <button class="hub-chip active" data-filter="all"><i class="fas fa-th-large"></i> All Strategic Hubs</button>
+          <button class="hub-chip" data-filter="pacific"><i class="fas fa-water"></i> Pacific Rim &amp; USA</button>
+          <button class="hub-chip" data-filter="asia"><i class="fas fa-city"></i> Asia-Pacific Mega-Ports</button>
+          <button class="hub-chip" data-filter="europe"><i class="fas fa-landmark"></i> European Gateways</button>
+          <button class="hub-chip" data-filter="middleeast"><i class="fas fa-sun"></i> Middle East &amp; South Asia</button>
+        </div>
+
+        <div class="map-inspector-layout">
+          <!-- Interactive Visual Map Box -->
+          <div class="interactive-map-wrapper">
+            <svg class="interactive-map-svg" viewBox="0 0 1000 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Simplified World Map Polygons -->
+              <path d="M140,140 Q210,90 310,110 T410,210 Q310,310 210,270 Z" fill="rgba(255,255,255,0.06)" stroke="rgba(0,245,212,0.2)" stroke-width="1.5"/>
+              <path d="M440,110 Q540,90 610,150 T560,290 Q470,270 440,190 Z" fill="rgba(255,255,255,0.06)" stroke="rgba(0,245,212,0.2)" stroke-width="1.5"/>
+              <path d="M670,130 Q860,90 910,210 T810,390 Q710,350 670,240 Z" fill="rgba(255,255,255,0.06)" stroke="rgba(0,245,212,0.2)" stroke-width="1.5"/>
+              <!-- Glowing Trade Lanes -->
+              <path d="M 220 190 Q 500 120 780 210" stroke="var(--accent-cyan)" stroke-dasharray="6,4" stroke-width="2.5" opacity="0.8"/>
+              <path d="M 780 210 Q 620 225 480 150" stroke="var(--accent-blue)" stroke-dasharray="6,4" stroke-width="2.5" opacity="0.8"/>
+              <path d="M 480 150 Q 300 240 220 190" stroke="var(--accent-gold)" stroke-dasharray="6,4" stroke-width="2.5" opacity="0.8"/>
+            </svg>
+
+            <!-- Clickable Map Nodes -->
+            <div class="hub-pin selected" style="top: 38%; left: 22%;" data-hub="sf">
+              <div class="hub-pin-pulse"></div>
+              <div class="hub-pin-dot"></div>
+              <div class="hub-pin-tag">San Francisco (HQ)</div>
+            </div>
+
+            <div class="hub-pin" style="top: 42%; left: 78%;" data-hub="shanghai">
+              <div class="hub-pin-pulse"></div>
+              <div class="hub-pin-dot"></div>
+              <div class="hub-pin-tag">Shanghai Hub</div>
+            </div>
+
+            <div class="hub-pin" style="top: 30%; left: 49%;" data-hub="rotterdam">
+              <div class="hub-pin-pulse"></div>
+              <div class="hub-pin-dot"></div>
+              <div class="hub-pin-tag">Rotterdam Gateway</div>
+            </div>
+
+            <div class="hub-pin" style="top: 55%; left: 74%;" data-hub="singapore">
+              <div class="hub-pin-pulse"></div>
+              <div class="hub-pin-dot"></div>
+              <div class="hub-pin-tag">Singapore Port</div>
+            </div>
+
+            <div class="hub-pin" style="top: 44%; left: 61%;" data-hub="dubai">
+              <div class="hub-pin-pulse"></div>
+              <div class="hub-pin-dot"></div>
+              <div class="hub-pin-tag">Dubai Zone</div>
+            </div>
+
+            <div class="hub-pin" style="top: 76%; left: 88%;" data-hub="sydney">
+              <div class="hub-pin-pulse"></div>
+              <div class="hub-pin-dot"></div>
+              <div class="hub-pin-tag">Sydney Hub</div>
+            </div>
+          </div>
+
+          <!-- Live Hub Inspector Panel -->
+          <div class="hub-inspector-card">
+            <div>
+              <div class="inspector-img-box">
+                <img id="inspector-img" src="images/global_network_sf_hq.jpg" alt="San Francisco Logistics HQ Terminal">
+                <div id="inspector-badge" class="inspector-badge">PACIFIC COMMAND HQ</div>
+              </div>
+
+              <div class="inspector-title-row">
+                <div>
+                  <h3 id="inspector-name" class="inspector-name">San Francisco Ocean &amp; Air Command</h3>
+                  <div id="inspector-country" class="inspector-country">United States (Global Headquarters)</div>
+                </div>
+              </div>
+
+              <p id="inspector-desc" style="font-size: 0.92rem; color: var(--text-muted); margin-top: 10px; line-height: 1.6;">
+                Primary international nerve center orchestrating satellite tracking, fleet management, and deepwater Pacific trade lanes.
+              </p>
+
+              <div class="inspector-specs-grid">
+                <div class="inspector-spec-item">
+                  <div class="inspector-spec-label">Annual Throughput</div>
+                  <div id="inspector-capacity" class="inspector-spec-value">2.8 Million TEU</div>
+                </div>
+                <div class="inspector-spec-item">
+                  <div class="inspector-spec-label">Berth Depth</div>
+                  <div id="inspector-depth" class="inspector-spec-value">16.5m Deepwater</div>
+                </div>
+                <div class="inspector-spec-item">
+                  <div class="inspector-spec-label">Customs Velocity</div>
+                  <div id="inspector-customs" class="inspector-spec-value">1.2 Hours (Pre-Cleared)</div>
+                </div>
+                <div class="inspector-spec-item">
+                  <div class="inspector-spec-label">Active Movements</div>
+                  <div id="inspector-ships" class="inspector-spec-value">18 Vessels | 12 Flights</div>
+                </div>
+              </div>
+            </div>
+
+            <button class="btn btn-primary" style="width: 100%; margin-top: 15px;" onclick="openQuoteModal()">
+              <i class="fas fa-ship"></i> Route Freight Through This Hub
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Strategic Regional Hubs Showcase Grid -->
+  <section class="net-section" style="background: rgba(13, 21, 45, 0.6); border-top: 1px solid rgba(0,245,212,0.15);">
+    <div class="container">
+      <div class="net-section-header">
+        <span class="section-tag"><i class="fas fa-network-wired"></i> Core Freight Corridors</span>
+        <h2 class="section-title">Strategic Continental Logistics Gateways</h2>
+        <p class="section-subtitle">Deep dive into our high-capacity deepwater ports, automated rail heads, and dedicated air express logistics complexes worldwide.</p>
+      </div>
+
+      <div class="hubs-grid-container">
+        <!-- Hub 1: San Francisco HQ -->
+        <div class="hub-showcase-card" data-region="pacific">
+          <div class="card-media-box">
+            <img src="images/global_network_sf_hq.jpg" alt="San Francisco Ocean Command HQ">
+            <div class="card-overlay-gradient"></div>
+            <div class="card-location-tag"><i class="fas fa-anchor"></i> Pacific Rim HQ</div>
+          </div>
+          <div class="card-body-lux">
+            <div>
+              <h3 class="card-hub-title">San Francisco Ocean &amp; Air Command (USA)</h3>
+              <p class="card-hub-desc">
+                Our primary deepwater Pacific gateway featuring 30 automated gantry cranes, 100,000 sq.ft cold chain vaults, and direct transcontinental rail connectivity.
+              </p>
+              <ul class="card-features-list">
+                <li><i class="fas fa-check-circle"></i> 2.8M TEU Ocean Throughput Capacity</li>
+                <li><i class="fas fa-check-circle"></i> 24/7 Orbital Satellite Control Tower</li>
+                <li><i class="fas fa-check-circle"></i> Direct SFO Air Freight Terminal Link</li>
+              </ul>
+            </div>
+            <div class="card-foot-row">
+              <div class="status-indicator-live">
+                <div class="pulse-indicator"></div> 100% Operational
+              </div>
+              <button class="btn btn-outline" style="padding: 8px 16px; font-size: 0.85rem;" onclick="openQuoteModal()">Inspect Hub</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hub 2: Shanghai -->
+        <div class="hub-showcase-card" data-region="asia">
+          <div class="card-media-box">
+            <img src="images/shanghai_mega_hub.jpg" alt="Shanghai Yangshan Deepwater Gateway">
+            <div class="card-overlay-gradient"></div>
+            <div class="card-location-tag"><i class="fas fa-city"></i> East Asia Super-Hub</div>
+          </div>
+          <div class="card-body-lux">
+            <div>
+              <h3 class="card-hub-title">Shanghai Yangshan Automated Port (China)</h3>
+              <p class="card-hub-desc">
+                The world’s flagship automated container port utilizing zero-emission AGVs, AI berthing algorithms, and high-frequency transpacific express lines.
+              </p>
+              <ul class="card-features-list">
+                <li><i class="fas fa-check-circle"></i> 47.3M TEU Annual Handling Volume</li>
+                <li><i class="fas fa-check-circle"></i> 110 Automated Electric Quay Cranes</li>
+                <li><i class="fas fa-check-circle"></i> Integrated Silk Road Rail Corridor</li>
+              </ul>
+            </div>
+            <div class="card-foot-row">
+              <div class="status-indicator-live">
+                <div class="pulse-indicator"></div> 100% Operational
+              </div>
+              <button class="btn btn-outline" style="padding: 8px 16px; font-size: 0.85rem;" onclick="openQuoteModal()">Inspect Hub</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hub 3: Rotterdam -->
+        <div class="hub-showcase-card" data-region="europe">
+          <div class="card-media-box">
+            <img src="images/rotterdam_gateway.jpg" alt="Rotterdam European Gateway">
+            <div class="card-overlay-gradient"></div>
+            <div class="card-location-tag"><i class="fas fa-landmark"></i> Transatlantic &amp; Euro Hub</div>
+          </div>
+          <div class="card-body-lux">
+            <div>
+              <h3 class="card-hub-title">Rotterdam Euro-Central Gateway (Netherlands)</h3>
+              <p class="card-hub-desc">
+                Europe’s principal deepwater port featuring green corridor berths, hydrogen refueling infrastructure, and specialized temperature vaults for bio-pharma.
+              </p>
+              <ul class="card-features-list">
+                <li><i class="fas fa-check-circle"></i> 15.3M TEU Capacity &amp; 19.5m Depth</li>
+                <li><i class="fas fa-check-circle"></i> Zero-Emission Rhine Inland Barge Network</li>
+                <li><i class="fas fa-check-circle"></i> EU Green Corridor Certification</li>
+              </ul>
+            </div>
+            <div class="card-foot-row">
+              <div class="status-indicator-live">
+                <div class="pulse-indicator"></div> 100% Operational
+              </div>
+              <button class="btn btn-outline" style="padding: 8px 16px; font-size: 0.85rem;" onclick="openQuoteModal()">Inspect Hub</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hub 4: Singapore -->
+        <div class="hub-showcase-card" data-region="asia">
+          <div class="card-media-box">
+            <img src="images/global_network_banner.jpg" alt="Singapore Changi Air & Sea Hub SATS Cargo">
+            <div class="card-overlay-gradient"></div>
+            <div class="card-location-tag"><i class="fas fa-plane"></i> Straits &amp; Air Express</div>
+          </div>
+          <div class="card-body-lux">
+            <div>
+              <h3 class="card-hub-title">Singapore Tuas Megaport &amp; Changi (Singapore)</h3>
+              <p class="card-hub-desc">
+                Premier Southeast Asian sea-air transshipment center offering 4-hour express customs clearance and direct connectivity across Australasia.
+              </p>
+              <ul class="card-features-list">
+                <li><i class="fas fa-check-circle"></i> 37.5M TEU Ocean &amp; 2.1M Air Tonnage</li>
+                <li><i class="fas fa-check-circle"></i> 0.9-Hour Automated Customs Clearance</li>
+                <li><i class="fas fa-check-circle"></i> 24/7 Temperature Controlled Storage</li>
+              </ul>
+            </div>
+            <div class="card-foot-row">
+              <div class="status-indicator-live">
+                <div class="pulse-indicator"></div> 100% Operational
+              </div>
+              <button class="btn btn-outline" style="padding: 8px 16px; font-size: 0.85rem;" onclick="openQuoteModal()">Inspect Hub</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hub 5: Dubai -->
+        <div class="hub-showcase-card" data-region="middleeast">
+          <div class="card-media-box">
+            <img src="images/dubai_logistics_zone.jpg" alt="Dubai World Central Logistics Hub">
+            <div class="card-overlay-gradient"></div>
+            <div class="card-location-tag"><i class="fas fa-sun"></i> Middle East &amp; Africa Hub</div>
+          </div>
+          <div class="card-body-lux">
+            <div>
+              <h3 class="card-hub-title">Dubai Jebel Ali &amp; DWC Free Zone (UAE)</h3>
+              <p class="card-hub-desc">
+                Integrated sea-air logistics corridor linking East-West trade with 0% tax duty-free customs clearance and solar-powered cold storage.
+              </p>
+              <ul class="card-features-list">
+                <li><i class="fas fa-check-circle"></i> 19.5M TEU Ocean &amp; 1.2M Air Tonnage</li>
+                <li><i class="fas fa-check-circle"></i> Multi-Modal Sea-Air Customs Transit</li>
+                <li><i class="fas fa-check-circle"></i> Automated Robotic Luxury Storage</li>
+              </ul>
+            </div>
+            <div class="card-foot-row">
+              <div class="status-indicator-live">
+                <div class="pulse-indicator"></div> 100% Operational
+              </div>
+              <button class="btn btn-outline" style="padding: 8px 16px; font-size: 0.85rem;" onclick="openQuoteModal()">Inspect Hub</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hub 6: Control Tower Telemetry Hub -->
+        <div class="hub-showcase-card" data-region="pacific">
+          <div class="card-media-box">
+            <img src="images/control_tower_screen.jpg" alt="Global Telemetry Control Tower">
+            <div class="card-overlay-gradient"></div>
+            <div class="card-location-tag"><i class="fas fa-satellite"></i> 24/7 Orbital Control</div>
+          </div>
+          <div class="card-body-lux">
+            <div>
+              <h3 class="card-hub-title">24/7 Global Satellite Control Tower</h3>
+              <p class="card-hub-desc">
+                Continuous satellite telemetry monitor tracking vessel speeds, container internal temperatures, port queue delays, and weather turbulence.
+              </p>
+              <ul class="card-features-list">
+                <li><i class="fas fa-check-circle"></i> Live GPS &amp; AIS Vessel Telemetry</li>
+                <li><i class="fas fa-check-circle"></i> Automated Route Optimization AI</li>
+                <li><i class="fas fa-check-circle"></i> Instant Anomaly &amp; Delay Alerts</li>
+              </ul>
+            </div>
+            <div class="card-foot-row">
+              <div class="status-indicator-live">
+                <div class="pulse-indicator"></div> 100% Active Feed
+              </div>
+              <button class="btn btn-outline" style="padding: 8px 16px; font-size: 0.85rem;" onclick="openQuoteModal()">Access Telemetry</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Corridor Transit Simulator -->
+  <section class="net-section">
+    <div class="container">
+      <div class="net-section-header">
+        <span class="section-tag"><i class="fas fa-calculator"></i> Route Matrix Calculator</span>
+        <h2 class="section-title">Intermodal Transit &amp; Frequency Simulator</h2>
+        <p class="section-subtitle">Select origin and destination hubs to calculate estimated transit velocity, sailing frequency, and CO2 emission savings.</p>
+      </div>
+
+      <div class="simulator-card-lux">
+        <form id="sim-form" onsubmit="return false;">
+          <div class="simulator-form-grid">
+            <div class="form-group-lux">
+              <label for="sim-origin"><i class="fas fa-map-marker-alt" style="color: var(--accent-cyan);"></i> Origin Hub</label>
+              <select id="sim-origin" class="select-lux">
+                <option value="sf" selected>San Francisco HQ (US)</option>
+                <option value="shanghai">Shanghai Yangshan (CN)</option>
+                <option value="rotterdam">Rotterdam Maasvlakte (NL)</option>
+                <option value="singapore">Singapore Tuas Hub (SG)</option>
+                <option value="dubai">Dubai Jebel Ali (AE)</option>
+                <option value="sydney">Sydney Port Botany (AU)</option>
+              </select>
+            </div>
+
+            <div class="form-group-lux">
+              <label for="sim-dest"><i class="fas fa-flag-checkered" style="color: var(--accent-blue);"></i> Destination Hub</label>
+              <select id="sim-dest" class="select-lux">
+                <option value="shanghai" selected>Shanghai Yangshan (CN)</option>
+                <option value="sf">San Francisco HQ (US)</option>
+                <option value="rotterdam">Rotterdam Maasvlakte (NL)</option>
+                <option value="singapore">Singapore Tuas Hub (SG)</option>
+                <option value="dubai">Dubai Jebel Ali (AE)</option>
+                <option value="sydney">Sydney Port Botany (AU)</option>
+              </select>
+            </div>
+
+            <div class="form-group-lux">
+              <label for="sim-mode"><i class="fas fa-shipping-fast" style="color: var(--accent-gold);"></i> Freight Mode</label>
+              <select id="sim-mode" class="select-lux">
+                <option value="ocean" selected>Deepwater Ocean Freight (Standard)</option>
+                <option value="air">Priority Air Cargo (Express)</option>
+                <option value="multimodal">Multimodal Rail / EV Corridor (Green)</option>
+              </select>
+            </div>
+
+            <div class="form-group-lux">
+              <button id="sim-calc-btn" class="btn btn-primary" style="height: 52px; font-size: 1rem; width: 100%;">
+                <i class="fas fa-bolt"></i> Calculate Route
+              </button>
+            </div>
+          </div>
+        </form>
+
+        <!-- Simulated Results Display -->
+        <div class="sim-result-box">
+          <div class="sim-metric">
+            <div id="sim-transit-val" class="sim-metric-val">12 Days</div>
+            <div class="sim-metric-lbl">Est. Transit Time</div>
+          </div>
+          <div class="sim-metric">
+            <div id="sim-freq-val" class="sim-metric-val">3x Weekly</div>
+            <div class="sim-metric-lbl">Sailing / Flight Frequency</div>
+          </div>
+          <div class="sim-metric">
+            <div id="sim-co2-val" class="sim-metric-val">45% Saved</div>
+            <div class="sim-metric-lbl">CO2 Reduction Index</div>
+          </div>
+          <div class="sim-metric">
+            <div id="sim-track-id" class="sim-metric-val" style="font-size: 1.2rem; color: var(--accent-gold);">SFL-98420-OCE</div>
+            <div class="sim-metric-lbl">Sample Manifest ID</div>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 25px;">
+          <button class="btn btn-primary btn-lg" onclick="openQuoteModal()">
+            <i class="fas fa-paper-plane"></i> Book Corridor Capacity Now
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 24/7 Global Control Tower Telemetry Feed Banner -->
+  <section class="net-section">
+    <div class="container">
+      <div class="telemetry-banner">
+        <div style="margin-bottom: 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+          <div>
+            <span class="section-tag" style="background: rgba(0, 245, 212, 0.2); border-color: var(--accent-cyan);">
+              <i class="fas fa-broadcast-tower"></i> Live Feed
+            </span>
+            <h2 class="section-title" style="margin-top: 10px; font-size: 2.2rem;">Live Satellite Telemetry Log Stream</h2>
+          </div>
+          <div class="status-badge-live" style="background: rgba(7,11,25,0.8); padding: 8px 16px; border-radius: 30px; border: 1px solid var(--accent-cyan);">
+            <div class="pulse-indicator"></div> LIVE DATA STREAMING
+          </div>
+        </div>
+
+        <!-- Telemetry Feed Terminal Box -->
+        <div id="telemetry-feed" class="telemetry-feed-box">
+          <div class="telemetry-line">
+            <span class="telemetry-time">[01:42:10]</span>
+            <span class="telemetry-tag">OCEAN VESSEL</span>
+            <span>SF Pacific Commander (Vessel #704) crossed Pacific Waypoint 4 at 24.5 knots.</span>
+          </div>
+          <div class="telemetry-line">
+            <span class="telemetry-time">[01:40:02]</span>
+            <span class="telemetry-tag">AIR FREIGHT</span>
+            <span>SF Aero Cargo 777-F Flight 402 landed at Frankfurt Airport Terminal 3.</span>
+          </div>
+          <div class="telemetry-line">
+            <span class="telemetry-time">[01:38:45]</span>
+            <span class="telemetry-tag">CUSTOMS RELEASE</span>
+            <span>Container #SFL-88392 pre-cleared via Rotterdam Automated Gateway.</span>
+          </div>
+          <div class="telemetry-line">
+            <span class="telemetry-time">[01:35:12]</span>
+            <span class="telemetry-tag">PORT BERTH</span>
+            <span>Shanghai Yangshan Berth #9 opened for SF Express Container Vessel.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quote Request Modal -->
+  <div id="quote-modal" class="modal-overlay">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeQuoteModal()"><i class="fas fa-times"></i></button>
+      <h3 style="font-size: 1.6rem; color: var(--text-main); margin-bottom: 8px;" class="font-heading">Enterprise Quote Request</h3>
+      <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 24px;">Complete the form below to receive a custom freight rate and corridor booking from our San Francisco logistics team.</p>
+
+      <div id="quote-form-alert" style="display: none; padding: 14px; background: rgba(16,185,129,0.2); border: 1px solid var(--accent-emerald); color: var(--accent-emerald); border-radius: 8px; margin-bottom: 20px; font-weight: 600;"></div>
+
+      <form onsubmit="handleQuoteSubmit(event)">
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label">Full Name</label>
+            <input type="text" name="fullName" class="form-input" placeholder="Sarah Jenkins" required style="padding-left: 16px;">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Company Name</label>
+            <input type="text" name="companyName" class="form-input" placeholder="Apex Global Trading" required style="padding-left: 16px;">
+          </div>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label">Business Email</label>
+            <input type="email" name="email" class="form-input" placeholder="sarah@apexglobal.com" required style="padding-left: 16px;">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Phone Number</label>
+            <input type="tel" name="phone" class="form-input" placeholder="+1 (555) 000-0000" required style="padding-left: 16px;">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Logistics Service Required</label>
+          <select name="service" class="form-input" style="padding-left: 16px;">
+            <option>Global Ocean Freight (FCL / LCL)</option>
+            <option>Priority Air Cargo Express &amp; Charter</option>
+            <option>Intermodal EV Highway &amp; Rail</option>
+            <option>Cold-Chain &amp; BioLogistics</option>
+            <option>Lead Logistics 3PL / 4PL</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Cargo Specifications &amp; Origin/Destination</label>
+          <textarea name="cargoDetails" class="form-input" rows="3" placeholder="Specify origin, destination, container type, weight, or special handling..." style="padding-left: 16px; font-family: inherit;" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 1rem;">
+          <i class="fas fa-paper-plane"></i> Submit Request to Logistics Director
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer" style="background: #070b19; border-top: 1px solid var(--border-glow); padding: 70px 0 30px 0;">
+    <div class="container">
+      <div class="footer-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; margin-bottom: 50px;">
+        <div>
+          <a href="index.html" class="brand-logo" style="margin-bottom: 18px; display: inline-flex;">
+            <div class="logo-icon-box"><i class="fas fa-anchor"></i></div>
+            <div class="logo-text">
+              <span class="logo-title">SAN FRANCISCO</span>
+              <span class="logo-subtitle">LOGISTICS</span>
+            </div>
+          </a>
+          <p style="color: var(--text-dim); font-size: 0.9rem; line-height: 1.6;">
+            Architecting high-performance global supply chains across deepwater sea lanes, priority air corridors, and zero-emission highway fleets.
+          </p>
+        </div>
+
+        <div>
+          <h4 style="color: #fff; margin-bottom: 20px; font-family: var(--font-heading);">Global Gateways</h4>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 0.9rem; color: var(--text-dim);">
+            <li><a href="network.html"><i class="fas fa-chevron-right" style="color: var(--accent-cyan); font-size: 0.75rem;"></i> San Francisco Ocean Command</a></li>
+            <li><a href="network.html"><i class="fas fa-chevron-right" style="color: var(--accent-cyan); font-size: 0.75rem;"></i> Shanghai Yangshan Port</a></li>
+            <li><a href="network.html"><i class="fas fa-chevron-right" style="color: var(--accent-cyan); font-size: 0.75rem;"></i> Rotterdam Euro Terminal</a></li>
+            <li><a href="network.html"><i class="fas fa-chevron-right" style="color: var(--accent-cyan); font-size: 0.75rem;"></i> Singapore Changi &amp; Tuas</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 style="color: #fff; margin-bottom: 20px; font-family: var(--font-heading);">Navigation</h4>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 0.9rem; color: var(--text-dim);">
+            <li><a href="index.html">Home Overview</a></li>
+            <li><a href="sectors.html">Our Sectors</a></li>
+            <li><a href="network.html">Global Network</a></li>
+            <li><a href="index.html#technology">Technology &amp; AI</a></li>
+            <li><a href="index.html#sustainability">ESG &amp; Green Fleet</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 style="color: #fff; margin-bottom: 20px; font-family: var(--font-heading);">Corporate Contact</h4>
+          <p style="font-size: 0.9rem; color: var(--text-dim); margin-bottom: 10px;">
+            <i class="fas fa-map-marker-alt" style="color: var(--accent-cyan);"></i> Embarcadero Plaza, San Francisco, CA 94111
+          </p>
+          <p style="font-size: 0.9rem; color: var(--text-dim); margin-bottom: 10px;">
+            <i class="fas fa-phone-alt" style="color: var(--accent-cyan);"></i> +1 (800) 555-SFLOGISTICS
+          </p>
+          <p style="font-size: 0.9rem; color: var(--text-dim);">
+            <i class="fas fa-envelope" style="color: var(--accent-cyan);"></i> dispatch@sf-logistics.com
+          </p>
+        </div>
+      </div>
+
+      <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 25px; text-align: center; font-size: 0.85rem; color: var(--text-dim);">
+        &copy; 2026 San Francisco Logistics Enterprise. All rights reserved. Real-time satellite telemetry active.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="JAVASCRIPTS/script.js"></script>
+  <script src="JAVASCRIPTS/network.js"></script>
+</body>
+
+</html>
