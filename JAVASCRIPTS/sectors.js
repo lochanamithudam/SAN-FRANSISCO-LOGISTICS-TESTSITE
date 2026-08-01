@@ -70,7 +70,7 @@ const sectorDataMap = {
     title: 'Road Freight Logistics',
     subtitle: 'Long-haul, Regional, LTL & FTL Highway Solutions',
     badge: 'Freight Transportation',
-    img: '../images/fleet_truck.jpg',
+    img: 'images/fleet_truck.jpg',
     description: 'Our overland fleet comprises 1,200+ electric heavy-duty rigs and temperature-controlled trailers operating across interstates with real-time GPS telemetry.',
     features: [
       'Full Truckload (FTL) direct terminal delivery',
@@ -84,7 +84,7 @@ const sectorDataMap = {
     title: 'Ocean & Maritime Freight',
     subtitle: 'Containerized Cargo, Bulk Shipping & Port Operations',
     badge: 'Maritime Transport',
-    img: '../images/ocean_freight_ship.jpg',
+    img: 'images/ocean_freight_ship.jpg',
     description: 'San Francisco Logistics operates 48 ultra-large container ships connecting Asia-Pacific, North American, and European deepwater ports with automated crane handling.',
     features: [
       'Containerized FCL (Full Container Load) & LCL consolidation',
@@ -98,7 +98,7 @@ const sectorDataMap = {
     title: 'Air Cargo Expedite',
     subtitle: 'Express Cargo & Belly-Freight via Commercial Carriers',
     badge: 'Air Expedite',
-    img: '../images/air_cargo_plane.jpg',
+    img: 'images/air_cargo_plane.jpg',
     description: 'Priority scheduled air freighter charters and commercial belly-cargo access delivering time-critical tech equipment, pharmaceuticals, and high-value cargo globally.',
     features: [
       '18-hour transpacific express flights',
@@ -112,7 +112,7 @@ const sectorDataMap = {
     title: 'Rail Logistics & Intermodal',
     subtitle: 'Heavy Freight & Double-Stack Rail Transport',
     badge: 'Rail Logistics',
-    img: '../images/rail_logistics_train.jpg',
+    img: 'images/rail_logistics_train.jpg',
     description: 'Cost-effective, sustainable heavy freight transport connecting deepwater ocean terminals with inland rail ramps for long-distance container haulage.',
     features: [
       'Intermodal double-stack container trains',
@@ -126,7 +126,7 @@ const sectorDataMap = {
     title: 'Smart Fulfilment Centers',
     subtitle: 'Automated Order Processing, Picking & Packing',
     badge: 'Warehousing & 3PL',
-    img: '../images/smart_warehouse.jpg',
+    img: 'images/smart_warehouse.jpg',
     description: 'Next-generation robotics hubs featuring AGV autonomous sorting, WMS inventory APIs, and same-day e-commerce dispatch capabilities.',
     features: [
       'AGV autonomous robotic picking systems',
@@ -140,7 +140,7 @@ const sectorDataMap = {
     title: 'Cold Storage & BioLogistics',
     subtitle: 'Temperature-Controlled Pharma & Food Storage',
     badge: 'Cold Storage',
-    img: '../images/cold_storage_facility.jpg',
+    img: 'images/cold_storage_facility.jpg',
     description: 'Ultra-low temperature facilities engineered for biological vaccines, life sciences, fresh agriculture, and perishable foods with strict GDP certification.',
     features: [
       'Ultra-low -80°C cryo storage capability',
@@ -154,7 +154,7 @@ const sectorDataMap = {
     title: 'Cross-Docking & Transit Hubs',
     subtitle: 'Direct Transport Transfer with Minimal Storage Time',
     badge: 'Transit Hubs',
-    img: '../images/news_terminal_cranes.jpg',
+    img: 'images/news_terminal_cranes.jpg',
     description: 'Rapid inbound-to-outbound truck unloading and sorting hubs designed to bypass long warehouse storage times and accelerate distribution speed.',
     features: [
       'Immediate inbound to outbound trailer transfer',
@@ -168,7 +168,7 @@ const sectorDataMap = {
     title: 'Express & Last-Mile Delivery',
     subtitle: 'Urban Parcel Networks & E-Commerce Fulfillment',
     badge: 'Last-Mile Express',
-    img: '../images/news_ev_truck.jpg',
+    img: 'images/news_ev_truck.jpg',
     description: 'Localized electric van delivery networks providing guaranteed same-day and next-day final mile handoffs to consumer doorsteps and retail stores.',
     features: [
       '100% Zero-emission urban electric vans',
@@ -182,7 +182,7 @@ const sectorDataMap = {
     title: '3PL & 4PL Lead Logistics',
     subtitle: 'Customs Brokerage, Supply Chain Orchestration & Reverse Logistics',
     badge: '3PL / 4PL Services',
-    img: '../images/news_air_cargo.jpg',
+    img: 'images/news_air_cargo.jpg',
     description: 'End-to-end supply chain management including automated customs clearing, 4PL digital orchestration platforms, and sustainable reverse returns handling.',
     features: [
       'International trade compliance & customs brokerage',
