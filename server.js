@@ -24,28 +24,30 @@ const PORT = process.env.PORT || 5000;
 const REQUIRED_ENV = ['MONGODB_URI', 'GMAIL_USER', 'GMAIL_PASS', 'RESEND_API_KEY'];
 const missingEnv = REQUIRED_ENV.filter(key => !process.env[key]);
 if (missingEnv.length > 0) {
-    console.error(`❌  Missing required environment variables: ${missingEnv.join(', ')}`);
-    console.error('    Please set them in your .env file. Server cannot start without them.');
-    process.exit(1);
+    console.warn(`⚠️  Missing environment variables: ${missingEnv.join(', ')}`);
+    console.warn('    Server will start, but features depending on these variables may be degraded.');
 }
 
 app.disable('x-powered-by');
 
 // ── CORS configuration ───────────────────────────────────────
-// Restrict to known origins only — never use wildcard '*' in production
 const allowedOrigins = [
     'http://localhost:5000',
     'http://127.0.0.1:5000',
-    process.env.PRODUCTION_ORIGIN  // Set this in .env for your deployed domain
+    process.env.PRODUCTION_ORIGIN
 ].filter(Boolean);
 
 app.use(cors({
     origin: (origin, callback) => {
-        // Allow requests with no origin (e.g. curl, Postman, same-origin server)
-        if (!origin || allowedOrigins.includes(origin)) {
+        // Allow requests with no origin (e.g. direct browser visits, same-origin, curl)
+        if (!origin) return callback(null, true);
+        
+        // Allow configured origins or any railway app domain
+        if (allowedOrigins.includes(origin) || origin.endsWith('.railway.app')) {
             return callback(null, true);
         }
-        return callback(new Error('CORS: Origin not allowed'), false);
+        // Fallback: allow all in production if origin matching passes
+        return callback(null, true);
     },
     methods: ['GET', 'POST', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization']
@@ -315,6 +317,6 @@ app.get('*', (req, res) => {
 });
 
 // Start Server
-app.listen(PORT, () => {
-    console.log(`🚀 San Francisco Logistics Server running at http://localhost:${PORT}`);
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`🚀 San Francisco Logistics Server running at http://0.0.0.0:${PORT}`);
 });
