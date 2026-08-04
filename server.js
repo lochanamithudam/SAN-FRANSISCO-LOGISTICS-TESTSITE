@@ -317,6 +317,10 @@ app.get('*', (req, res) => {
 });
 
 // Start Server
-app.listen(PORT, '0.0.0.0', () => {
-    console.log(`🚀 San Francisco Logistics Server running at http://0.0.0.0:${PORT}`);
-});
+if (require.main === module) {
+    app.listen(PORT, '0.0.0.0', () => {
+        console.log(`🚀 San Francisco Logistics Server running at http://0.0.0.0:${PORT}`);
+    });
+}
+
+module.exports = app;
