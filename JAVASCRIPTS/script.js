@@ -341,12 +341,25 @@ async function handleQuoteSubmit(e) {
     return;
   }
 
+  // Email format regex validation
+  const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!EMAIL_REGEX.test(payload.email.trim())) {
+    if (alertBox) {
+      alertBox.style.display = 'block';
+      alertBox.style.background = 'rgba(239, 68, 68, 0.15)';
+      alertBox.style.borderColor = 'rgba(239, 68, 68, 0.3)';
+      alertBox.style.color = '#f87171';
+      alertBox.innerHTML = '<i class="fas fa-exclamation-circle"></i> Please enter a valid email address (e.g., name@company.com).';
+    }
+    return;
+  }
+
   if (alertBox) {
     alertBox.style.display = 'block';
     alertBox.style.background = 'rgba(0, 245, 212, 0.15)';
     alertBox.style.borderColor = 'rgba(0, 245, 212, 0.3)';
     alertBox.style.color = 'var(--accent-cyan)';
-    alertBox.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving to MongoDB database...';
+    alertBox.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving request...';
   }
 
   try {
@@ -364,6 +377,9 @@ async function handleQuoteSubmit(e) {
 
     if (response.ok && result.success) {
       if (alertBox) {
+        alertBox.style.background = 'rgba(0, 245, 212, 0.15)';
+        alertBox.style.borderColor = 'rgba(0, 245, 212, 0.3)';
+        alertBox.style.color = 'var(--accent-cyan)';
         alertBox.innerHTML = '<i class="fas fa-check-circle"></i> Request Received! Logged in MongoDB. A logistics director will contact you shortly.';
       }
       form.reset();
@@ -375,14 +391,21 @@ async function handleQuoteSubmit(e) {
         if (alertBox) alertBox.style.display = 'none';
       }, 2500);
     } else {
-      throw new Error(result.error || 'Failed to submit quote');
+      const serverErr = result.error || 'Failed to submit quote request.';
+      if (alertBox) {
+        alertBox.style.background = 'rgba(239, 68, 68, 0.15)';
+        alertBox.style.borderColor = 'rgba(239, 68, 68, 0.3)';
+        alertBox.style.color = '#f87171';
+        alertBox.innerHTML = `<i class="fas fa-exclamation-triangle"></i> ${serverErr}`;
+      }
     }
   } catch (err) {
     console.error('Quote submission error:', err);
     if (alertBox) {
       alertBox.style.background = 'rgba(239, 68, 68, 0.15)';
+      alertBox.style.borderColor = 'rgba(239, 68, 68, 0.3)';
       alertBox.style.color = '#f87171';
-      alertBox.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Saved locally. Ensure backend server is running on port 5000.';
+      alertBox.innerHTML = `<i class="fas fa-exclamation-triangle"></i> ${err.message && err.message !== 'Failed to fetch' ? err.message : 'Unable to connect to server. Please check your connection or backend server.'}`;
     }
   }
 }
