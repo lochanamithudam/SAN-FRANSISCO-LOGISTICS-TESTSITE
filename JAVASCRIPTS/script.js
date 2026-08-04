@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initHubNetwork();
   initCounters();
   initModals();
+  initVideos();
 });
 
 /* Navbar & Scroll Effect */
@@ -385,4 +386,20 @@ async function handleQuoteSubmit(e) {
     }
   }
 }
+
+/* Background Video Autoplay Resilience */
+function initVideos() {
+  const videos = document.querySelectorAll('video');
+  videos.forEach(video => {
+    video.muted = true;
+    video.playsInline = true;
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(error => {
+        console.warn('Autoplay prevented or failed:', error);
+      });
+    }
+  });
+}
+
 

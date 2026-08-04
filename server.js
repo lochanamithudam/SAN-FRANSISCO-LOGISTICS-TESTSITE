@@ -85,9 +85,13 @@ app.use('/VIDEOS', express.static(path.join(__dirname, 'VIDEOS')));
 // ── MongoDB Connection ───────────────────────────────────────
 const dbURI = process.env.MONGODB_URI;
 
-mongoose.connect(dbURI, { serverSelectionTimeoutMS: 5000 })
-    .then(() => console.log('✅  Successfully connected to San Francisco MongoDB (sanFranciscoDB)!'))
-    .catch((err) => console.error('❌  MongoDB connection warning:', err.message));
+if (dbURI) {
+    mongoose.connect(dbURI, { serverSelectionTimeoutMS: 5000 })
+        .then(() => console.log('✅  Successfully connected to San Francisco MongoDB (sanFranciscoDB)!'))
+        .catch((err) => console.error('❌  MongoDB connection warning:', err.message));
+} else {
+    console.warn('⚠️  No MONGODB_URI provided. Database operations will be skipped.');
+}
 
 // ── Schemas & Models ─────────────────────────────────────────
 const QuoteSchema = new mongoose.Schema({

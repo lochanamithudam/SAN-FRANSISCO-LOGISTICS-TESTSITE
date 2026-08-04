@@ -15,9 +15,6 @@ node_modules
 .vscode
 *.md
 
-# Large media files — served separately or via CDN
-VIDEOS
-
 # OS files
 .DS_Store
 Thumbs.db
