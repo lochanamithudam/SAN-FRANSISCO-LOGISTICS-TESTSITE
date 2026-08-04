@@ -61,7 +61,7 @@ const networkHubs = {
     depth: '18.0m Deepwater Berth',
     customs: '0.9 Hours (Fast-Track)',
     ships: '36 Ocean Vessels | 31 Air Freighters',
-    image: 'images/global_network_banner.jpg',
+    image: 'images/singapore_changi_hub.jpg',
     badge: 'STRAITS TRANSSHIPMENT',
     desc: 'Strategic crossroads of Southeast Asia featuring 24/7 air express cargo and ultra-fast customs clearance.'
   },
@@ -179,7 +179,16 @@ function initRouteSimulator() {
     const mode = modeSelect?.value || 'ocean';
 
     if (origin === dest) {
-      alert('Please select different Origin and Destination hubs!');
+      // Show inline validation message instead of blocking alert()
+      const simResult = document.getElementById('sim-result-panel');
+      if (simResult) {
+        simResult.innerHTML = '<p style="color:#f87171;text-align:center;padding:12px;"><i class="fas fa-exclamation-circle"></i> Please select different Origin and Destination hubs!</p>';
+        simResult.style.display = 'block';
+      } else {
+        // Fallback if panel element doesn't exist
+        calcBtn.style.outline = '2px solid #f87171';
+        setTimeout(() => { calcBtn.style.outline = ''; }, 2000);
+      }
       return;
     }
 
@@ -226,7 +235,8 @@ function initTelemetryFeed() {
   ];
 
   let index = 0;
-  setInterval(() => {
+  // Store interval reference so it can be cleared if needed (prevents memory leaks)
+  const telemetryInterval = setInterval(() => {
     const item = sampleTelemetry[index % sampleTelemetry.length];
     const now = new Date();
     const timeStr = now.toTimeString().split(' ')[0];
@@ -245,12 +255,17 @@ function initTelemetryFeed() {
     }
     index++;
   }, 4000);
+
+  // Expose clear function on window for clean teardown if page is ever reused in SPA context
+  window._telemetryIntervalId = telemetryInterval;
 }
 
-/* Counter Animation */
+/* Counter Animation — triggers only when scrolled into view */
 function initCounters() {
   const counters = document.querySelectorAll('.counter-val');
-  counters.forEach(counter => {
+  if (!counters.length) return;
+
+  const animateCounter = (counter) => {
     const target = +counter.getAttribute('data-target');
     if (!target) return;
 
@@ -267,5 +282,17 @@ function initCounters() {
       }
     };
     updateCount();
-  });
+  };
+
+  // Use IntersectionObserver so animation fires when counters scroll into view
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounter(entry.target);
+        observer.unobserve(entry.target); // animate only once
+      }
+    });
+  }, { threshold: 0.4 });
+
+  counters.forEach(counter => observer.observe(counter));
 }

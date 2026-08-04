@@ -1,0 +1,441 @@
+/* SAN FRANCISCO LOGISTICS - TECHNOLOGY & AI INTERFACE STYLES */
+
+:root {
+  --tech-glow-cyan: rgba(0, 245, 212, 0.4);
+  --tech-glow-blue: rgba(58, 134, 255, 0.4);
+  --tech-card-bg: rgba(18, 30, 60, 0.85);
+  --tech-card-hover: rgba(25, 42, 85, 0.95);
+  --tech-border-glow: rgba(0, 245, 212, 0.35);
+  --tech-terminal-bg: #09101d;
+}
+
+/* Technology Hero Section - Pure Clear Banner */
+.tech-hero {
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background: url('../images/ai_predictive_eta.jpg') center center/cover no-repeat;
+  overflow: hidden;
+  padding: 140px 0 60px;
+  border-bottom: 1px solid rgba(0, 245, 212, 0.35);
+}
+
+.tech-hero-bg {
+  display: none;
+}
+
+.tech-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(7, 11, 24, 0.1) 0%, rgba(7, 11, 24, 0.4) 60%, rgba(7, 11, 24, 0.9) 100%);
+  z-index: 2;
+}
+
+.tech-grid-overlay {
+  display: none;
+}
+
+.tech-hero-content {
+  position: relative;
+  z-index: 4;
+  text-align: center;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.tech-hero-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.15;
+  margin: 20px 0;
+  background: linear-gradient(135deg, #ffffff 30%, var(--accent-cyan) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.02em;
+}
+
+.tech-hero-lead {
+  font-size: 1.25rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  max-width: 820px;
+  margin: 0 auto 36px;
+  font-weight: 400;
+}
+
+.tech-actions-row {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Metrics Live Ticker Bar */
+.tech-metrics-bar {
+  background: rgba(13, 22, 45, 0.92);
+  backdrop-filter: blur(16px);
+  border-top: 1px solid rgba(0, 245, 212, 0.25);
+  border-bottom: 1px solid rgba(0, 245, 212, 0.25);
+  padding: 30px 0;
+  margin-bottom: 80px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.metric-card {
+  background: rgba(26, 41, 77, 0.6);
+  border: 1px solid rgba(0, 245, 212, 0.15);
+  border-radius: var(--radius-md);
+  padding: 24px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition-normal);
+}
+
+.metric-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-cyan);
+  box-shadow: 0 8px 25px rgba(0, 245, 212, 0.25);
+  background: rgba(26, 41, 77, 0.9);
+}
+
+.metric-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--accent-gradient);
+}
+
+.metric-icon {
+  font-size: 1.6rem;
+  color: var(--accent-cyan);
+  margin-bottom: 12px;
+  display: inline-block;
+}
+
+.metric-number {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+
+.metric-label {
+  font-size: 0.88rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+/* Feature Showcase Grid */
+.pillars-section {
+  padding: 40px 0 100px;
+}
+
+.pillar-block {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+  margin-bottom: 90px;
+  background: rgba(22, 36, 70, 0.7);
+  border: 1px solid rgba(0, 245, 212, 0.25);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.pillar-block:hover {
+  border-color: rgba(0, 245, 212, 0.5);
+  box-shadow: 0 20px 50px rgba(0, 245, 212, 0.2);
+}
+
+.pillar-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(58, 134, 255, 0.15);
+  border: 1px solid rgba(58, 134, 255, 0.35);
+  color: #60a5fa;
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 20px;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.pillar-title {
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 16px;
+  line-height: 1.25;
+}
+
+.pillar-desc {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+
+.pillar-img-wrap {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid rgba(0, 245, 212, 0.3);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+  margin-bottom: 24px;
+}
+
+.pillar-img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.pillar-block:hover .pillar-img {
+  transform: scale(1.04);
+}
+
+/* Interactive Simulators & Widgets */
+.sim-box {
+  background: var(--tech-terminal-bg);
+  border: 1px solid rgba(0, 245, 212, 0.25);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.6);
+}
+
+.sim-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 12px;
+  margin-bottom: 18px;
+}
+
+.sim-title {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sim-status-badge {
+  background: rgba(16, 185, 129, 0.2);
+  color: var(--accent-emerald);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+/* Form inputs in sim */
+.sim-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.sim-group label {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.sim-select, .sim-input {
+  width: 100%;
+  background: rgba(26, 42, 78, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  transition: var(--transition-fast);
+}
+
+.sim-select:focus, .sim-input:focus {
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 10px rgba(0, 245, 212, 0.3);
+}
+
+.sim-btn {
+  width: 100%;
+  background: var(--accent-gradient);
+  color: #0b132b;
+  font-weight: 700;
+  padding: 12px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: var(--transition-fast);
+  font-size: 0.92rem;
+}
+
+.sim-btn:hover {
+  filter: brightness(1.15);
+  box-shadow: 0 4px 20px rgba(0, 245, 212, 0.4);
+}
+
+.sim-output {
+  margin-top: 18px;
+  background: rgba(13, 20, 36, 0.9);
+  border: 1px dashed rgba(0, 245, 212, 0.3);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  font-family: monospace;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.sim-output-value {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  margin-top: 4px;
+}
+
+/* Gauge Displays */
+.telemetry-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.telemetry-card {
+  background: rgba(20, 32, 60, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+  text-align: center;
+}
+
+.telemetry-val {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--accent-cyan);
+  margin: 4px 0;
+  font-family: var(--font-heading);
+}
+
+.telemetry-lbl {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+}
+
+/* Interactive AI Terminal Modal */
+.tech-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(7, 11, 24, 0.92);
+  backdrop-filter: blur(20px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.tech-modal-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.tech-modal-card {
+  width: 90%;
+  max-width: 900px;
+  background: #0c162c;
+  border: 1px solid rgba(0, 245, 212, 0.4);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 0 50px rgba(0, 245, 212, 0.25);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  max-height: 85vh;
+}
+
+.tech-modal-header {
+  background: #080e1c;
+  padding: 18px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 245, 212, 0.2);
+}
+
+.tech-modal-close {
+  background: transparent;
+  color: var(--text-dim);
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.tech-modal-close:hover {
+  color: var(--accent-cyan);
+}
+
+.tech-modal-body {
+  padding: 24px;
+  overflow-y: auto;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .tech-hero-title { font-size: 2.5rem; }
+  .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+  .pillar-block { grid-template-columns: 1fr; gap: 30px; direction: ltr !important; }
+}
+
+@media (max-width: 600px) {
+  .tech-hero-title { font-size: 2.1rem; }
+  .metrics-grid { grid-template-columns: 1fr; }
+  .sim-controls { grid-template-columns: 1fr; }
+}

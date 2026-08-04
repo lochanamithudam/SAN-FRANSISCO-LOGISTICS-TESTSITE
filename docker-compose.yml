@@ -12,5 +12,7 @@ services:
       - MONGODB_URI=${MONGODB_URI}
       - GMAIL_USER=${GMAIL_USER}
       - GMAIL_PASS=${GMAIL_PASS}
+      - RESEND_API_KEY=${RESEND_API_KEY}
       - DNS_SERVERS=${DNS_SERVERS}
+      - PRODUCTION_ORIGIN=${PRODUCTION_ORIGIN}
     restart: always

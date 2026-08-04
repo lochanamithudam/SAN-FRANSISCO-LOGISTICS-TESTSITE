@@ -15,32 +15,73 @@ const cors       = require('cors');
 const mongoose   = require('mongoose');
 const path       = require('node:path');
 const nodemailer = require('nodemailer');
+const rateLimit  = require('express-rate-limit');
 
 const app  = express();
 const PORT = process.env.PORT || 5000;
 
+// ── Validate Required Environment Variables ──────────────────
+const REQUIRED_ENV = ['MONGODB_URI', 'GMAIL_USER', 'GMAIL_PASS', 'RESEND_API_KEY'];
+const missingEnv = REQUIRED_ENV.filter(key => !process.env[key]);
+if (missingEnv.length > 0) {
+    console.error(`❌  Missing required environment variables: ${missingEnv.join(', ')}`);
+    console.error('    Please set them in your .env file. Server cannot start without them.');
+    process.exit(1);
+}
+
 app.disable('x-powered-by');
 
-// CORS configuration
+// ── CORS configuration ───────────────────────────────────────
+// Restrict to known origins only — never use wildcard '*' in production
+const allowedOrigins = [
+    'http://localhost:5000',
+    'http://127.0.0.1:5000',
+    process.env.PRODUCTION_ORIGIN  // Set this in .env for your deployed domain
+].filter(Boolean);
+
 app.use(cors({
-    origin: '*',
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    origin: (origin, callback) => {
+        // Allow requests with no origin (e.g. curl, Postman, same-origin server)
+        if (!origin || allowedOrigins.includes(origin)) {
+            return callback(null, true);
+        }
+        return callback(new Error('CORS: Origin not allowed'), false);
+    },
+    methods: ['GET', 'POST', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Serve static frontend files
+// ── Rate Limiting ────────────────────────────────────────────
+const quoteLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 10,                   // max 10 quote submissions per IP per window
+    standardHeaders: true,
+    legacyHeaders: false,
+    message: { error: 'Too many requests. Please try again in 15 minutes.' }
+});
+
+const apiLimiter = rateLimit({
+    windowMs: 60 * 1000, // 1 minute
+    max: 60,
+    standardHeaders: true,
+    legacyHeaders: false,
+    message: { error: 'Too many requests. Please slow down.' }
+});
+
+app.use('/api/', apiLimiter);
+
+// ── Serve static frontend files ──────────────────────────────
 app.use(express.static(__dirname));
 app.use('/JAVASCRIPTS', express.static(path.join(__dirname, 'JAVASCRIPTS')));
 app.use('/STYLE CSS LOG', express.static(path.join(__dirname, 'STYLE CSS LOG')));
 app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use('/VIDEOS', express.static(path.join(__dirname, 'VIDEOS')));
 
-// ── MongoDB Connection ──────────────────────────────────────
-const dbURI = process.env.MONGODB_URI ||
-    'mongodb+srv://lochanamithudam097_db_user:Mithu123456@cluster0.f51etmt.mongodb.net/sanFranciscoDB?retryWrites=true&w=majority&appName=Cluster0';
+// ── MongoDB Connection ───────────────────────────────────────
+const dbURI = process.env.MONGODB_URI;
 
 mongoose.connect(dbURI, { serverSelectionTimeoutMS: 5000 })
     .then(() => console.log('✅  Successfully connected to San Francisco MongoDB (sanFranciscoDB)!'))
@@ -59,23 +100,47 @@ const QuoteSchema = new mongoose.Schema({
 
 const Quote = mongoose.model('Quote', QuoteSchema);
 
+// ── Security Helper: Escape HTML entities ────────────────────
+// Prevents XSS when embedding user input inside HTML email bodies
+function escapeHtml(str) {
+    if (str == null) return '';
+    return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+}
+
+// ── Validation Helper: Email Format ─────────────────────────
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+function isValidEmail(email) {
+    return EMAIL_REGEX.test(String(email).toLowerCase());
+}
+
 // ── Helper: Send Email Confirmation ─────────────────────────
 async function sendQuoteEmail(fullName, email, companyName, service, cargoDetails) {
-    const defaultResendKey = Buffer.from('cmVfM0tnWWo4ZHRfMzZiVkxmWEx5NERkY1VyMWZRR1NQUlZF', 'base64').toString('ascii');
-    const resendApiKey = process.env.RESEND_API_KEY || defaultResendKey;
-    const gmailUser = process.env.GMAIL_USER || 'lochanamithudam097@gmail.com';
-    const gmailPass = process.env.GMAIL_PASS || 'lbjcuwbothgcmepg';
+    const resendApiKey = process.env.RESEND_API_KEY;
+    const gmailUser    = process.env.GMAIL_USER;
+    const gmailPass    = process.env.GMAIL_PASS;
+
+    // Sanitize all user-supplied content before embedding in HTML
+    const safeName    = escapeHtml(fullName);
+    const safeCompany = escapeHtml(companyName) || 'N/A';
+    const safeEmail   = escapeHtml(email);
+    const safeService = escapeHtml(service);
+    const safeCargo   = escapeHtml(cargoDetails);
 
     const htmlBody = `
         <div style="font-family:'Segoe UI',Arial,sans-serif;max-width:580px;margin:0 auto;border:1px solid #00f5d4;border-radius:12px;overflow:hidden;background:#070b19;color:#ffffff;padding:24px;">
             <h2 style="color:#00f5d4;margin-top:0;">SAN FRANCISCO LOGISTICS</h2>
-            <p style="color:#cbd5e1;">Dear <strong>${fullName}</strong>,</p>
+            <p style="color:#cbd5e1;">Dear <strong>${safeName}</strong>,</p>
             <p style="color:#cbd5e1;">Thank you for requesting a logistics quote. Your request has been saved and logged in our system:</p>
             <table style="width:100%;border-collapse:collapse;color:#e2e8f0;margin:16px 0;">
-                <tr><td style="padding:8px 0;color:#94a3b8;">Company:</td><td><strong>${companyName || 'N/A'}</strong></td></tr>
-                <tr><td style="padding:8px 0;color:#94a3b8;">Email:</td><td><strong>${email}</strong></td></tr>
-                <tr><td style="padding:8px 0;color:#94a3b8;">Service:</td><td><strong>${service}</strong></td></tr>
-                <tr><td style="padding:8px 0;color:#94a3b8;">Cargo Details:</td><td><strong>${cargoDetails}</strong></td></tr>
+                <tr><td style="padding:8px 0;color:#94a3b8;">Company:</td><td><strong>${safeCompany}</strong></td></tr>
+                <tr><td style="padding:8px 0;color:#94a3b8;">Email:</td><td><strong>${safeEmail}</strong></td></tr>
+                <tr><td style="padding:8px 0;color:#94a3b8;">Service:</td><td><strong>${safeService}</strong></td></tr>
+                <tr><td style="padding:8px 0;color:#94a3b8;">Cargo Details:</td><td><strong>${safeCargo}</strong></td></tr>
             </table>
             <p style="color:#00f5d4;margin-top:20px;">An enterprise logistics director will reach out shortly.</p>
         </div>
@@ -93,7 +158,7 @@ async function sendQuoteEmail(fullName, email, companyName, service, cargoDetail
                 body: JSON.stringify({
                     from: 'San Francisco Logistics <onboarding@resend.dev>',
                     to: [gmailUser],
-                    subject: `📦 Quote Request Received - ${fullName}`,
+                    subject: `📦 Quote Request Received - ${safeName}`,
                     html: htmlBody
                 })
             });
@@ -152,39 +217,53 @@ app.get('/api/health', (req, res) => {
 
 // Live test email route for debugging
 app.get('/api/test-email', async (req, res) => {
-    const targetEmail = req.query.to || process.env.GMAIL_USER || 'lochanamithudam097@gmail.com';
+    const targetEmail = req.query.to || process.env.GMAIL_USER;
+    if (!isValidEmail(targetEmail)) {
+        return res.status(400).json({ error: 'Invalid target email address.' });
+    }
     console.log(`🧪 Triggering test email to ${targetEmail}...`);
     const emailResult = await sendQuoteEmail('Test User', targetEmail, 'Test Corp', 'Air Freight', 'Test logistics details');
-    res.json({
-        targetEmail: targetEmail,
-        result: emailResult
-    });
+    res.json({ targetEmail, result: emailResult });
 });
 
-// Create Quote Request (Saves directly to MongoDB)
-app.post('/api/quote', async (req, res) => {
+// Create Quote Request (saves to MongoDB)
+app.post('/api/quote', quoteLimiter, async (req, res) => {
     try {
         const { fullName, companyName, email, phone, service, cargoDetails } = req.body;
 
+        // Validate required fields
         if (!email || !cargoDetails) {
             return res.status(400).json({ error: 'Email and Cargo Details are required.' });
         }
 
+        // Validate email format
+        if (!isValidEmail(email)) {
+            return res.status(400).json({ error: 'Please provide a valid email address.' });
+        }
+
+        // Validate fullName is present (schema requires it)
+        if (!fullName || String(fullName).trim() === '') {
+            return res.status(400).json({ error: 'Full name is required.' });
+        }
+
         const newQuote = new Quote({
-            fullName: fullName || 'Valued Client',
-            companyName: companyName || '',
-            email: email,
-            phone: phone || '',
-            service: service || 'General Logistics',
-            cargoDetails: cargoDetails
+            fullName:     String(fullName).trim(),
+            companyName:  companyName ? String(companyName).trim() : '',
+            email:        String(email).trim().toLowerCase(),
+            phone:        phone ? String(phone).trim() : '',
+            service:      service || 'General Logistics',
+            cargoDetails: String(cargoDetails).trim()
         });
 
         await newQuote.save();
         console.log(`✅ Saved quote request to MongoDB for ${email}`);
 
-        // Trigger email notification asynchronously so modal closes immediately
-        sendQuoteEmail(fullName || 'Valued Client', email, companyName, service, cargoDetails).then(res => {
-            console.log('📧 Quote email dispatch result:', res);
+        // Trigger email notification asynchronously so response closes immediately
+        sendQuoteEmail(
+            newQuote.fullName, newQuote.email,
+            newQuote.companyName, newQuote.service, newQuote.cargoDetails
+        ).then(emailResult => {
+            console.log('📧 Quote email dispatch result:', emailResult);
         }).catch(err => {
             console.error('❌ Quote email dispatch error:', err.message);
         });
@@ -225,7 +304,12 @@ app.get('/network', (req, res) => {
     res.sendFile(path.join(__dirname, 'network.html'));
 });
 
-// Serve main page for any other route
+// Serve technology page
+app.get('/technology', (req, res) => {
+    res.sendFile(path.join(__dirname, 'technology.html'));
+});
+
+// Serve main page for any other route (SPA fallback)
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });

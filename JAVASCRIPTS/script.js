@@ -93,7 +93,8 @@ function initTracker() {
 
   trackBtn?.addEventListener('click', (e) => {
     e.preventDefault();
-    const query = trackInput.value.trim().toUpperCase() || 'SFL-98420-US';
+    // Use optional chaining — trackInput may be null if the element is missing from the DOM
+    const query = trackInput?.value.trim().toUpperCase() || 'SFL-98420-US';
     
     // Simulate lookup delay
     trackBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Locating Cargo...';

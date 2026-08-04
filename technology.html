@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI & Autonomous Supply Chain Systems | San Francisco Logistics</title>
+  <meta name="description" content="San Francisco Logistics AI & Autonomous Systems: Predictive ETA modeling, Autonomous AGV Robotics, IoT telemetry, and automated customs API integration.">
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="STYLE CSS LOG/style.css">
+  <link rel="stylesheet" href="STYLE CSS LOG/technology.css">
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="container top-bar-inner">
+      <div class="ticker-wrap">
+        <span class="ticker-badge">
+          <span class="pulse-dot"></span> AI SYSTEM ACTIVE
+        </span>
+        <span>Neural Supply Chain Network: 99.9% Predictive Accuracy | 10,000 Sorts/Hr AGV Fleet Operational</span>
+      </div>
+      <div class="top-contacts">
+        <a href="tel:+14155550199"><i class="fas fa-phone-alt"></i> +1 (415) 555-0199</a>
+        <a href="mailto:contact@sflogistics.com"><i class="fas fa-envelope"></i> contact@sflogistics.com</a>
+        <a href="index.html#quote-modal" onclick="openQuoteModal()"><i class="fas fa-lock"></i> Client Portal</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header / Navigation Bar -->
+  <header class="header">
+    <div class="container">
+      <nav class="navbar">
+        <a href="index.html" class="brand-logo">
+          <div class="logo-icon-box">
+            <i class="fas fa-anchor"></i>
+          </div>
+          <div class="logo-text">
+            <span class="logo-title">SAN FRANCISCO</span>
+            <span class="logo-subtitle">LOGISTICS</span>
+          </div>
+        </a>
+
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="sectors.html" class="nav-link">Our Sectors</a></li>
+          <li><a href="network.html" class="nav-link">Global Network</a></li>
+          <li><a href="technology.html" class="nav-link active">Technology &amp; AI</a></li>
+          <li><a href="index.html#sustainability" class="nav-link">ESG &amp; Green Fleet</a></li>
+          <li><a href="index.html#news" class="nav-link">News &amp; Media</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <button class="btn btn-outline" onclick="openQuoteModal()"><i class="fas fa-search-location"></i> Track</button>
+          <button class="btn btn-primary" onclick="openQuoteModal()"><i class="fas fa-paper-plane"></i> Request Quote</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- High-End Futuristic Technology Full Image Banner Section -->
+  <section class="tech-hero">
+    <div class="tech-hero-overlay"></div>
+    <div class="tech-grid-overlay"></div>
+
+    <div class="container tech-hero-content" style="position: relative; z-index: 4; text-align: center; max-width: 980px; margin: 180px auto 0;">
+      <span class="section-tag" style="background: rgba(0, 245, 212, 0.25); border-color: rgba(0, 245, 212, 0.6); box-shadow: 0 0 25px rgba(0, 245, 212, 0.4);">
+        <i class="fas fa-brain"></i> Supply Chain Intelligence
+      </span>
+      <h1 class="tech-hero-title" style="font-size: 3.8rem; margin: 20px 0 16px; text-shadow: 0 4px 20px rgba(0,0,0,0.95), 0 0 40px rgba(0,0,0,0.9);">Powered by AI &amp; Autonomous Systems</h1>
+      <p class="tech-hero-lead" style="font-size: 1.25rem; max-width: 860px; margin: 0 auto 34px; line-height: 1.7; color: #ffffff; text-shadow: 0 3px 15px rgba(0,0,0,0.95); font-weight: 500;">
+        We combine physical logistics assets with state-of-the-art predictive algorithms to eliminate bottlenecks and optimize transit speeds.
+      </p>
+
+      <div class="tech-actions-row" style="justify-content: center; gap: 20px;">
+        <a href="#pillars" class="btn btn-primary" style="box-shadow: 0 0 30px rgba(0,245,212,0.6); padding: 14px 28px; font-size: 1.05rem;">
+          <i class="fas fa-microchip"></i> Explore AI Engine
+        </a>
+        <button class="btn btn-outline" onclick="openTechModal()" style="padding: 14px 28px; font-size: 1.05rem; background: rgba(7,11,24,0.65); backdrop-filter: blur(8px); border-color: rgba(0,245,212,0.4);">
+          <i class="fas fa-terminal"></i> Launch Live Simulator
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Live AI Stats & Metrics Bar -->
+  <div class="tech-metrics-bar">
+    <div class="container">
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <i class="fas fa-chart-line metric-icon"></i>
+          <div class="metric-number tech-counter" data-target="99.9" data-suffix="%">0%</div>
+          <div class="metric-label">ETA Model Accuracy</div>
+        </div>
+
+        <div class="metric-card">
+          <i class="fas fa-robot metric-icon"></i>
+          <div class="metric-number tech-counter" data-target="10000" data-suffix="/hr">0</div>
+          <div class="metric-label">Autonomous AGV Sorts</div>
+        </div>
+
+        <div class="metric-card">
+          <i class="fas fa-satellite-dish metric-icon"></i>
+          <div class="metric-number">24/7/365</div>
+          <div class="metric-label">IoT Cold Chain Monitoring</div>
+        </div>
+
+        <div class="metric-card">
+          <i class="fas fa-shield-halved metric-icon"></i>
+          <div class="metric-number">&lt; 2 mins</div>
+          <div class="metric-label">Customs API Clearance</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Detailed Pillars Section -->
+  <section id="pillars" class="pillars-section">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 60px;">
+        <span class="section-tag"><i class="fas fa-layer-group"></i> Next-Gen Logistics Stack</span>
+        <h2 class="section-title" style="font-size: 2.4rem; margin-top: 10px;">Integrated Autonomous Infrastructure</h2>
+      </div>
+
+      <!-- Pillar 1: Predictive ETA Modeling -->
+      <div class="pillar-block">
+        <div class="pillar-widget">
+          <div class="sim-box">
+            <div class="sim-header">
+              <span class="sim-title"><i class="fas fa-calculator"></i> Live Port ETA Calculator</span>
+              <span class="sim-status-badge"><i class="fas fa-signal"></i> Neural Model v4.2</span>
+            </div>
+
+            <div class="sim-controls">
+              <div class="sim-group">
+                <label for="eta-origin">Origin Port</label>
+                <select id="eta-origin" class="sim-select">
+                  <option value="shanghai">Shanghai Port Terminal (CN)</option>
+                  <option value="rotterdam">Port of Rotterdam (NL)</option>
+                  <option value="singapore">Singapore Hub (SG)</option>
+                  <option value="yokohama">Port of Yokohama (JP)</option>
+                </select>
+              </div>
+
+              <div class="sim-group">
+                <label for="eta-weather">Ocean Forecast</label>
+                <select id="eta-weather" class="sim-select">
+                  <option value="calm">Calm Waters (0.5m Waves)</option>
+                  <option value="moderate" selected>Moderate Swell (2.1m Waves)</option>
+                  <option value="storm">Pacific Storm Warning</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="sim-group" style="margin-bottom: 16px;">
+              <label for="eta-queue">Customs Queue Status</label>
+              <select id="eta-queue" class="sim-select">
+                <option value="express">Priority Fast-Track Queue</option>
+                <option value="standard" selected>Standard Peak Queue</option>
+                <option value="heavy">High Congestion Delay</option>
+              </select>
+            </div>
+
+            <button id="eta-sim-btn" class="sim-btn">
+              <i class="fas fa-play"></i> Run ML ETA Prediction Model
+            </button>
+
+            <div id="eta-output-box" class="sim-output" style="display: none;"></div>
+          </div>
+        </div>
+
+        <div class="pillar-info">
+          <span class="pillar-tag"><i class="fas fa-network-wired"></i> Predictive ML Engine</span>
+          <h2 class="pillar-title">Predictive ETA Modeling</h2>
+          <p class="pillar-desc">
+            Machine learning models analyze port congestion, wave forecasts, and customs clearance queues to provide 99.9% accurate arrival times.
+          </p>
+
+          <div class="pillar-img-wrap">
+            <img src="images/ai_predictive_eta.jpg" alt="Predictive ETA Modeling AI Dashboard" class="pillar-img">
+          </div>
+        </div>
+      </div>
+
+      <!-- Pillar 2: Autonomous AGV Robotics -->
+      <div class="pillar-block">
+        <div class="pillar-widget">
+          <div class="sim-box">
+            <div class="sim-header">
+              <span class="sim-title"><i class="fas fa-gamepad"></i> AGV Fleet Sorting Controller</span>
+              <span class="sim-status-badge"><i class="fas fa-wifi"></i> 5G Mesh Connected</span>
+            </div>
+
+            <div style="margin-bottom: 20px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                <span style="font-size: 0.82rem; color: var(--text-dim); text-transform: uppercase;">Sort Throughput Speed</span>
+                <span id="agv-sort-rate" style="font-weight: 700; color: var(--accent-cyan);">10,000 sorts / hr</span>
+              </div>
+              <input type="range" id="agv-speed-slider" min="1000" max="12500" step="500" value="10000" style="width: 100%; accent-color: var(--accent-cyan); cursor: pointer;">
+            </div>
+
+            <div style="background: rgba(10, 16, 32, 0.8); padding: 16px; border-radius: var(--radius-sm); margin-bottom: 16px;">
+              <div style="display: flex; justify-content: space-between; font-size: 0.82rem; color: var(--text-dim); margin-bottom: 6px;">
+                <span>SAN FRANCISCO HUB SORT COUNTER</span>
+                <span style="color: var(--accent-emerald); font-weight: 700;"><i class="fas fa-circle" style="font-size: 0.5rem; vertical-align: middle;"></i> LIVE</span>
+              </div>
+              <div id="agv-live-count" style="font-family: var(--font-heading); font-size: 2rem; font-weight: 800; color: #ffffff;">
+                84,200
+              </div>
+            </div>
+
+            <div class="telemetry-grid">
+              <div class="telemetry-card">
+                <div class="telemetry-lbl">ACTIVE AGVs</div>
+                <div class="telemetry-val">128 Fleet</div>
+              </div>
+              <div class="telemetry-card">
+                <div class="telemetry-lbl">ACCURACY RATE</div>
+                <div class="telemetry-val" style="color: var(--accent-emerald);">99.99%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pillar-info">
+          <span class="pillar-tag" style="background: rgba(0,245,212,0.15); color: var(--accent-cyan); border-color: rgba(0,245,212,0.3);">
+            <i class="fas fa-warehouse"></i> Smart Warehousing
+          </span>
+          <h2 class="pillar-title">Autonomous AGV Robotics</h2>
+          <p class="pillar-desc">
+            Self-driving automated guided vehicles inside our San Francisco smart warehouses handle 10,000 package sorts per hour seamlessly.
+          </p>
+
+          <div class="pillar-img-wrap">
+            <img src="images/agv_robotics.jpg" alt="Autonomous AGV Robotics Warehouse" class="pillar-img">
+          </div>
+        </div>
+      </div>
+
+      <!-- Pillar 3: IoT Telemetry & Sensors -->
+      <div class="pillar-block">
+        <div class="pillar-widget">
+          <div class="sim-box">
+            <div class="sim-header">
+              <span class="sim-title"><i class="fas fa-microchip"></i> Live Container Telemetry Feed</span>
+              <span class="sim-status-badge" style="background: rgba(255,183,3,0.2); color: var(--accent-gold); border-color: rgba(255,183,3,0.4);">
+                <i class="fas fa-broadcast-tower"></i> Satellite Sync
+              </span>
+            </div>
+
+            <div style="margin-bottom: 14px;">
+              <label style="display: block; font-size: 0.78rem; color: var(--text-dim); margin-bottom: 6px; text-transform: uppercase;">
+                Select Cargo Profile
+              </label>
+              <select id="iot-profile-select" class="sim-select">
+                <option value="pharma">Biomedical Vaccine Container (-20°C target)</option>
+                <option value="semicon">High-Tech Microchip Carrier (Cleanroom 21°C)</option>
+                <option value="fresh">Fresh Exotic Produce (3.2°C Cold Chain)</option>
+              </select>
+            </div>
+
+            <div class="telemetry-grid" style="grid-template-columns: 1fr 1fr 1fr;">
+              <div class="telemetry-card">
+                <div class="telemetry-lbl">TEMP</div>
+                <div id="iot-temp-val" class="telemetry-val">-20.4 °C</div>
+              </div>
+              <div class="telemetry-card">
+                <div class="telemetry-lbl">SHOCK</div>
+                <div id="iot-shock-val" class="telemetry-val" style="color: var(--accent-emerald);">0.02 G</div>
+              </div>
+              <div class="telemetry-card">
+                <div class="telemetry-lbl">HUMIDITY</div>
+                <div id="iot-humidity-val" class="telemetry-val">42%</div>
+              </div>
+            </div>
+
+            <div style="margin-top: 14px; background: rgba(15, 23, 42, 0.9); padding: 12px; border-radius: var(--radius-sm); font-size: 0.8rem; color: var(--text-muted); display: flex; align-items: center; justify-content: space-between;">
+              <span><i class="fas fa-location-dot" style="color: var(--accent-cyan);"></i> Location: SFO Terminal Bay 4</span>
+              <span style="color: var(--accent-emerald); font-weight: 700;">Status: NOMINAL</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pillar-info">
+          <span class="pillar-tag" style="background: rgba(255,183,3,0.15); color: var(--accent-gold); border-color: rgba(255,183,3,0.3);">
+            <i class="fas fa-satellite-dish"></i> Cold Chain Telemetry
+          </span>
+          <h2 class="pillar-title">IoT Telemetry &amp; Sensors</h2>
+          <p class="pillar-desc">
+            Continuous monitoring of temperature, shock, humidity, and location for sensitive pharmaceuticals and high-value cargo.
+          </p>
+
+          <div class="pillar-img-wrap">
+            <img src="images/iot_telemetry.jpg" alt="IoT Telemetry & Sensors Monitor" class="pillar-img">
+          </div>
+        </div>
+      </div>
+
+      <!-- Pillar 4: Automated Customs API -->
+      <div class="pillar-block">
+        <div class="pillar-widget">
+          <div class="sim-box">
+            <div class="sim-header">
+              <span class="sim-title"><i class="fas fa-terminal"></i> Digital Customs API Sandbox</span>
+              <span class="sim-status-badge"><i class="fas fa-shield"></i> SSL Encrypted</span>
+            </div>
+
+            <div style="font-family: monospace; font-size: 0.8rem; color: #94a3b8; background: #070d18; padding: 12px; border-radius: var(--radius-sm); margin-bottom: 14px;">
+              <span style="color: #ec4899;">POST</span> /v2/customs/clearance HTTP/2<br>
+              Host: api.customs.sflogistics.com
+            </div>
+
+            <button id="customs-api-btn" class="sim-btn" style="background: linear-gradient(135deg, #10b981 0%, #3a86ff 100%);">
+              <i class="fas fa-paper-plane"></i> Execute Instant Customs Filing
+            </button>
+
+            <div id="customs-api-output" class="sim-output" style="display: none; max-height: 200px; overflow-y: auto;"></div>
+          </div>
+        </div>
+
+        <div class="pillar-info">
+          <span class="pillar-tag" style="background: rgba(16,185,129,0.15); color: var(--accent-emerald); border-color: rgba(16,185,129,0.3);">
+            <i class="fas fa-code"></i> Instant Digital Clearance
+          </span>
+          <h2 class="pillar-title">Automated Customs API</h2>
+          <p class="pillar-desc">
+            Instant digital filing with international customs authorities reduces port clearance delays from days to minutes.
+          </p>
+
+          <div class="pillar-img-wrap">
+            <img src="images/customs_api.jpg" alt="Automated Customs API Terminal" class="pillar-img">
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Interactive Terminal Overlay Modal -->
+  <div id="tech-modal-overlay" class="tech-modal-overlay">
+    <div class="tech-modal-card">
+      <div class="tech-modal-header">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <i class="fas fa-brain" style="color: var(--accent-cyan); font-size: 1.2rem;"></i>
+          <h3 style="color: #ffffff; font-size: 1.1rem;">San Francisco Logistics — Autonomous Command Interface</h3>
+        </div>
+        <button class="tech-modal-close" onclick="closeTechModal()">&times;</button>
+      </div>
+
+      <div class="tech-modal-body">
+        <div style="text-align: center; margin-bottom: 24px;">
+          <span class="section-tag"><i class="fas fa-bolt"></i> Live Intelligence Dashboard</span>
+          <h3 style="font-size: 1.8rem; color: #ffffff; margin-top: 8px;">Powered by AI &amp; Autonomous Systems</h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem; max-width: 650px; margin: 8px auto 0;">
+            We combine physical logistics assets with state-of-the-art predictive algorithms to eliminate bottlenecks and optimize transit speeds.
+          </p>
+        </div>
+
+        <div class="metrics-grid" style="margin-bottom: 24px;">
+          <div class="metric-card" style="padding: 16px;">
+            <div class="metric-number" style="font-size: 1.5rem; color: var(--accent-cyan);">99.9%</div>
+            <div class="metric-label" style="font-size: 0.75rem;">Predictive ETA</div>
+          </div>
+          <div class="metric-card" style="padding: 16px;">
+            <div class="metric-number" style="font-size: 1.5rem; color: var(--accent-cyan);">10,000/hr</div>
+            <div class="metric-label" style="font-size: 0.75rem;">AGV Sorts</div>
+          </div>
+          <div class="metric-card" style="padding: 16px;">
+            <div class="metric-number" style="font-size: 1.5rem; color: var(--accent-gold);">IoT Active</div>
+            <div class="metric-label" style="font-size: 0.75rem;">Telemetry</div>
+          </div>
+          <div class="metric-card" style="padding: 16px;">
+            <div class="metric-number" style="font-size: 1.5rem; color: var(--accent-emerald);">&lt; 2 Mins</div>
+            <div class="metric-label" style="font-size: 0.75rem;">Customs API</div>
+          </div>
+        </div>
+
+        <div style="background: #060a14; border: 1px solid rgba(0, 245, 212, 0.3); border-radius: var(--radius-md); padding: 20px;">
+          <h4 style="color: var(--accent-cyan); font-size: 0.95rem; margin-bottom: 12px;"><i class="fas fa-terminal"></i> AI System Diagnostics</h4>
+          <div style="font-family: monospace; font-size: 0.85rem; color: #a7f3d0; line-height: 1.6;">
+            [01:10:42] &gt; Initializing SF Neural Logistics Core v5.1... OK<br>
+            [01:10:43] &gt; Syncing wave height forecasts across North Pacific routes... OK<br>
+            [01:10:44] &gt; AGV Robotics Mesh: 128 units operational at SF Smart Warehouse.<br>
+            [01:10:45] &gt; Cold Chain Sensors: 4,820 active telemetry node streams reporting zero drift.<br>
+            [01:10:46] &gt; Customs API Pipeline: Authorized with 42 global port authorities.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="brand-logo" style="margin-bottom: 16px;">
+            <div class="logo-icon-box"><i class="fas fa-anchor"></i></div>
+            <div class="logo-text">
+              <span class="logo-title">SAN FRANCISCO</span>
+              <span class="logo-subtitle">LOGISTICS</span>
+            </div>
+          </div>
+          <p style="color: var(--text-dim); font-size: 0.9rem;">
+            Global Supply Chain Management, Autonomous Fleet Operations, Deepwater Ocean Shipping, Express Air Freight &amp; Smart Warehousing Solutions.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Core Solutions</h4>
+          <ul class="footer-links">
+            <li><a href="sectors.html">Freight Transportation</a></li>
+            <li><a href="sectors.html">Warehousing &amp; Cold Chain</a></li>
+            <li><a href="sectors.html">Express Last-Mile</a></li>
+            <li><a href="sectors.html">3PL &amp; 4PL Lead Logistics</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Technology &amp; Network</h4>
+          <ul class="footer-links">
+            <li><a href="technology.html">Predictive ETA Models</a></li>
+            <li><a href="technology.html">Autonomous AGV Robotics</a></li>
+            <li><a href="technology.html">IoT Sensors &amp; Telemetry</a></li>
+            <li><a href="technology.html">Automated Customs API</a></li>
+            <li><a href="network.html">Global Hub Locations</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>San Francisco HQ</h4>
+          <p style="color: var(--text-dim); font-size: 0.9rem; line-height: 1.7;">
+            <i class="fas fa-map-marker-alt" style="color: var(--accent-cyan);"></i> Pier 35, Embarcadero Towers<br>
+            San Francisco, CA 94133, USA<br>
+            <i class="fas fa-envelope" style="color: var(--accent-cyan);"></i> contact@sflogistics.com
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 San Francisco Logistics Group. All Rights Reserved. Built with AI &amp; Autonomous Technology.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="JAVASCRIPTS/script.js"></script>
+  <script src="JAVASCRIPTS/technology.js"></script>
+</body>
+</html>
