@@ -10,14 +10,14 @@ if (process.env.DNS_SERVERS) {
     dns.setServers(process.env.DNS_SERVERS.split(','));
 }
 
-const express    = require('express');
-const cors       = require('cors');
-const mongoose   = require('mongoose');
-const path       = require('node:path');
+const express = require('express');
+const cors = require('cors');
+const mongoose = require('mongoose');
+const path = require('node:path');
 const nodemailer = require('nodemailer');
-const rateLimit  = require('express-rate-limit');
+const rateLimit = require('express-rate-limit');
 
-const app  = express();
+const app = express();
 const PORT = process.env.PORT || 5000;
 
 // ── Validate Required Environment Variables ──────────────────
@@ -41,7 +41,7 @@ app.use(cors({
     origin: (origin, callback) => {
         // Allow requests with no origin (e.g. direct browser visits, same-origin, curl)
         if (!origin) return callback(null, true);
-        
+
         // Allow configured origins or any railway app domain
         if (allowedOrigins.includes(origin) || origin.endsWith('.railway.app')) {
             return callback(null, true);
@@ -95,13 +95,13 @@ if (dbURI) {
 
 // ── Schemas & Models ─────────────────────────────────────────
 const QuoteSchema = new mongoose.Schema({
-    fullName:     { type: String, required: true },
-    companyName:  { type: String },
-    email:        { type: String, required: true },
-    phone:        { type: String },
-    service:      { type: String, default: 'General Logistics' },
+    fullName: { type: String, required: true },
+    companyName: { type: String },
+    email: { type: String, required: true },
+    phone: { type: String },
+    service: { type: String, default: 'General Logistics' },
     cargoDetails: { type: String, required: true },
-    submittedAt:  { type: Date, default: Date.now }
+    submittedAt: { type: Date, default: Date.now }
 });
 
 const Quote = mongoose.model('Quote', QuoteSchema);
@@ -127,15 +127,15 @@ function isValidEmail(email) {
 // ── Helper: Send Email Confirmation ─────────────────────────
 async function sendQuoteEmail(fullName, email, companyName, service, cargoDetails) {
     const resendApiKey = process.env.RESEND_API_KEY;
-    const gmailUser    = process.env.GMAIL_USER;
-    const gmailPass    = process.env.GMAIL_PASS;
+    const gmailUser = process.env.GMAIL_USER;
+    const gmailPass = process.env.GMAIL_PASS;
 
     // Sanitize all user-supplied content before embedding in HTML
-    const safeName    = escapeHtml(fullName);
+    const safeName = escapeHtml(fullName);
     const safeCompany = escapeHtml(companyName) || 'N/A';
-    const safeEmail   = escapeHtml(email);
+    const safeEmail = escapeHtml(email);
     const safeService = escapeHtml(service);
-    const safeCargo   = escapeHtml(cargoDetails);
+    const safeCargo = escapeHtml(cargoDetails);
 
     const htmlBody = `
         <div style="font-family:'Segoe UI',Arial,sans-serif;max-width:580px;margin:0 auto;border:1px solid #00f5d4;border-radius:12px;overflow:hidden;background:#070b19;color:#ffffff;padding:24px;">
@@ -253,11 +253,11 @@ app.post('/api/quote', quoteLimiter, async (req, res) => {
         }
 
         const newQuote = new Quote({
-            fullName:     String(fullName).trim(),
-            companyName:  companyName ? String(companyName).trim() : '',
-            email:        String(email).trim().toLowerCase(),
-            phone:        phone ? String(phone).trim() : '',
-            service:      service || 'General Logistics',
+            fullName: String(fullName).trim(),
+            companyName: companyName ? String(companyName).trim() : '',
+            email: String(email).trim().toLowerCase(),
+            phone: phone ? String(phone).trim() : '',
+            service: service || 'General Logistics',
             cargoDetails: String(cargoDetails).trim()
         });
 
