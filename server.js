@@ -315,6 +315,11 @@ app.get('/technology', (req, res) => {
     res.sendFile(path.join(__dirname, 'technology.html'));
 });
 
+// Serve sustainability & ESG page
+app.get(['/sustainability', '/esg'], (req, res) => {
+    res.sendFile(path.join(__dirname, 'sustainability.html'));
+});
+
 // Serve main page for any other route (SPA fallback)
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
