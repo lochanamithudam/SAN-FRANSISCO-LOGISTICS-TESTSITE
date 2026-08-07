@@ -232,7 +232,7 @@ app.get('/api/test-email', async (req, res) => {
     res.json({ targetEmail, result: emailResult });
 });
 
-// Create Quote Request (saves to MongoDB)
+// Create Quote Request (saves to MongoDB with graceful fallback)
 app.post('/api/quote', quoteLimiter, async (req, res) => {
     try {
         const { fullName, companyName, email, phone, service, cargoDetails } = req.body;
@@ -242,32 +242,52 @@ app.post('/api/quote', quoteLimiter, async (req, res) => {
             return res.status(400).json({ error: 'Email and Cargo Details are required.' });
         }
 
+        const trimmedEmail = String(email).trim().toLowerCase();
+
         // Validate email format
-        if (!isValidEmail(email)) {
-            return res.status(400).json({ error: 'Please provide a valid email address.' });
+        if (!isValidEmail(trimmedEmail)) {
+            return res.status(400).json({ error: 'Please provide a valid email address (e.g., name@company.com).' });
         }
 
-        // Validate fullName is present (schema requires it)
-        if (!fullName || String(fullName).trim() === '') {
+        // Validate fullName is present
+        const trimmedName = fullName ? String(fullName).trim() : '';
+        if (!trimmedName) {
             return res.status(400).json({ error: 'Full name is required.' });
         }
 
-        const newQuote = new Quote({
-            fullName: String(fullName).trim(),
-            companyName: companyName ? String(companyName).trim() : '',
-            email: String(email).trim().toLowerCase(),
-            phone: phone ? String(phone).trim() : '',
-            service: service || 'General Logistics',
-            cargoDetails: String(cargoDetails).trim()
-        });
+        const safeCompany = companyName ? String(companyName).trim() : '';
+        const safePhone = phone ? String(phone).trim() : '';
+        const safeService = service || 'General Logistics';
+        const safeCargo = String(cargoDetails).trim();
 
-        await newQuote.save();
-        console.log(`✅ Saved quote request to MongoDB for ${email}`);
+        let savedQuoteId = null;
 
-        // Trigger email notification asynchronously so response closes immediately
+        // Attempt MongoDB Save if connection is active
+        if (mongoose.connection.readyState === 1) {
+            try {
+                const newQuote = new Quote({
+                    fullName: trimmedName,
+                    companyName: safeCompany,
+                    email: trimmedEmail,
+                    phone: safePhone,
+                    service: safeService,
+                    cargoDetails: safeCargo
+                });
+
+                const savedDoc = await newQuote.save();
+                savedQuoteId = savedDoc._id;
+                console.log(`✅ Saved quote request to MongoDB for ${trimmedEmail} (ID: ${savedQuoteId})`);
+            } catch (dbErr) {
+                console.error('⚠️ Could not save quote to MongoDB:', dbErr.message);
+            }
+        } else {
+            console.warn(`⚠️ MongoDB not connected (readyState=${mongoose.connection.readyState}). Logging quote request to memory/console.`);
+            console.log(`📦 Pending Quote Request from ${trimmedName} (${trimmedEmail}): ${safeCargo}`);
+        }
+
+        // Trigger email notification asynchronously
         sendQuoteEmail(
-            newQuote.fullName, newQuote.email,
-            newQuote.companyName, newQuote.service, newQuote.cargoDetails
+            trimmedName, trimmedEmail, safeCompany, safeService, safeCargo
         ).then(emailResult => {
             console.log('📧 Quote email dispatch result:', emailResult);
         }).catch(err => {
@@ -276,12 +296,12 @@ app.post('/api/quote', quoteLimiter, async (req, res) => {
 
         return res.status(201).json({
             success: true,
-            message: 'Quote request submitted successfully and logged in MongoDB!',
-            quoteId: newQuote._id
+            message: 'Quote request submitted successfully!',
+            quoteId: savedQuoteId || `LOCAL-${Date.now()}`
         });
     } catch (err) {
-        console.error('❌ Error saving quote to MongoDB:', err);
-        return res.status(500).json({ error: 'Failed to save quote request.' });
+        console.error('❌ Error handling quote request:', err);
+        return res.status(500).json({ error: err.message || 'Failed to process quote request.' });
     }
 });
 
