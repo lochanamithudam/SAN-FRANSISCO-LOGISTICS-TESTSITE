@@ -363,15 +363,38 @@ async function handleQuoteSubmit(e) {
   }
 
   try {
-    const apiUrl = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') && window.location.port !== '5000'
-      ? 'http://localhost:5000/api/quote'
+    const host = window.location.hostname || 'localhost';
+    const port = window.location.port;
+
+    // Dynamically build primary API URL matching current hostname (127.0.0.1, localhost, etc.)
+    const primaryApiUrl = (host === 'localhost' || host === '127.0.0.1') && port !== '5000'
+      ? `http://${host}:5000/api/quote`
       : '/api/quote';
 
-    const response = await fetch(apiUrl, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    });
+    // Candidate URLs for fallback connection attempt if primary fails
+    const candidateUrls = [primaryApiUrl];
+    if (host === '127.0.0.1' && port !== '5000') candidateUrls.push('http://localhost:5000/api/quote');
+    if (host === 'localhost' && port !== '5000') candidateUrls.push('http://127.0.0.1:5000/api/quote');
+
+    let response = null;
+    let fetchError = null;
+
+    for (const targetUrl of candidateUrls) {
+      try {
+        response = await fetch(targetUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        if (response) break;
+      } catch (err) {
+        fetchError = err;
+      }
+    }
+
+    if (!response) {
+      throw fetchError || new Error('Failed to connect to backend server');
+    }
 
     const result = await response.json();
 

@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Automated Gantry Cranes Infrastructure & Engineering | San Francisco Logistics</title>
+  <meta name="description"
+    content="Engineering and operational roadmap for 4 new automated gantry cranes at the Port of San Francisco: Super Post-Panamax STS, ARMG/ASC stacking cranes, ROS telemetry, zero-emission high-voltage power, and TOS integration.">
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="STYLE CSS LOG/style.css">
+  <link rel="stylesheet" href="STYLE CSS LOG/cranes.css">
+</head>
+
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-bar">
+    <div class="container top-bar-inner">
+      <div class="ticker-wrap">
+        <span class="ticker-badge">
+          <span class="pulse-dot"></span> LIVE INFRASTRUCTURE
+        </span>
+        <span>SF Pacific Terminal (Berths 80 & 96): 4x Automated Super Post-Panamax Cranes Online | CARB Zero-Emission Certified</span>
+      </div>
+      <div class="top-contacts">
+        <a href="tel:+14155550199"><i class="fas fa-phone-alt"></i> +1 (415) 555-0199</a>
+        <a href="mailto:lochanamithudam097@gmail.com"><i class="fas fa-envelope"></i> lochanamithudam097@gmail.com</a>
+        <a href="index.html#quote-modal" onclick="openQuoteModal()"><i class="fas fa-lock"></i> Client Portal</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header / Navigation Bar -->
+  <header class="header">
+    <div class="container">
+      <nav class="navbar">
+        <a href="index.html" class="brand-logo">
+          <div class="logo-icon-box">
+            <i class="fas fa-anchor"></i>
+          </div>
+          <div class="logo-text">
+            <span class="logo-title">SAN FRANCISCO</span>
+            <span class="logo-subtitle">LOGISTICS</span>
+          </div>
+        </a>
+
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="sectors.html" class="nav-link">Our Sectors</a></li>
+          <li><a href="network.html" class="nav-link">Global Network</a></li>
+          <li><a href="technology.html" class="nav-link">Technology &amp; AI</a></li>
+          <li><a href="sustainability.html" class="nav-link">ESG &amp; Green Fleet</a></li>
+          <li><a href="cranes.html" class="nav-link active" style="color: var(--crane-cyan); font-weight: 700;"><i class="fas fa-cogs"></i> Automated Cranes</a></li>
+          <li><a href="index.html#news" class="nav-link">News &amp; Media</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <button class="btn btn-outline" onclick="openQuoteModal()"><i class="fas fa-search-location"></i> Track</button>
+          <button class="btn btn-primary" onclick="openQuoteModal()"><i class="fas fa-file-contract"></i> Request Specs</button>
+          <button class="mobile-toggle" aria-label="Toggle Navigation"><i class="fas fa-bars"></i></button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Quick Anchor Navigation Ribbon -->
+  <nav class="crane-quick-nav">
+    <div class="container">
+      <ul class="quick-nav-list">
+        <li><a href="#banner-showcase" class="active"><i class="fas fa-image"></i> 4K Panoramic View</a></li>
+        <li><a href="#specs"><i class="fas fa-sliders-h"></i> 1. Technical Specs</a></li>
+        <li><a href="#automation"><i class="fas fa-microchip"></i> 2. Core Automation</a></li>
+        <li><a href="#infrastructure"><i class="fas fa-city"></i> 3. SF Site Infrastructure</a></li>
+        <li><a href="#suppliers"><i class="fas fa-handshake"></i> 4. Equipment Vendors</a></li>
+        <li><a href="#interactive-tools"><i class="fas fa-calculator"></i> 5. Live Calculators &amp; ROS</a></li>
+        <li><a href="#gallery"><i class="fas fa-images"></i> 6. 4K Visuals</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section: 4K Cinematic Overview -->
+  <section class="crane-hero" id="overview">
+    <div class="crane-hero-bg"></div>
+    <div class="crane-hero-overlay"></div>
+
+    <div class="container crane-hero-content">
+      <div class="crane-hero-text">
+        <div class="crane-badge-highlight">
+          <span class="pulse-dot"></span> $120M Terminal Infrastructure Upgrade
+        </div>
+        <h1 class="crane-hero-title">
+          4 New Automated <br>
+          <span class="text-gradient">Gantry Cranes</span> System
+        </h1>
+        <p class="crane-hero-lead">
+          Engineering and operational roadmap for deploying 4 state-of-the-art automated Ship-to-Shore (STS) Super Post-Panamax and Automated Stacking Cranes (ARMG/ASC) across the San Francisco maritime waterfront.
+        </p>
+
+        <div style="display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 24px;">
+          <a href="#specs" class="btn btn-primary" style="padding: 14px 28px; font-size: 1rem;">
+            <i class="fas fa-table"></i> Compare STS vs ARMG Specs
+          </a>
+          <button class="btn btn-outline" onclick="openQuoteModal()" style="padding: 14px 28px; font-size: 1rem;">
+            <i class="fas fa-download"></i> Download Engineering Whitepaper
+          </button>
+        </div>
+
+        <div style="display: flex; gap: 20px; color: #94a3b8; font-size: 0.88rem; align-items: center;">
+          <span><i class="fas fa-check-circle" style="color: var(--crane-cyan);"></i> CARB &amp; BAAQMD Zero-Emission</span>
+          <span><i class="fas fa-check-circle" style="color: var(--crane-cyan);"></i> Pier 80 / Pier 94/96 Ready</span>
+          <span><i class="fas fa-check-circle" style="color: var(--crane-cyan);"></i> Sub-20ms 5G Telemetry</span>
+        </div>
+      </div>
+
+      <!-- Real-Time Telemetry HUD Card -->
+      <div class="crane-hud-card">
+        <div class="hud-header">
+          <div class="hud-title">
+            <i class="fas fa-satellite-dish"></i> QUAY TELEMETRY FEED (BAY CRANES 01–04)
+          </div>
+          <span class="hud-status-chip">ALL 4 UNITS SYNCED</span>
+        </div>
+
+        <div class="hud-grid">
+          <div class="hud-stat-box">
+            <div class="hud-stat-label">Lifting Capacity (Twin-Lift)</div>
+            <div class="hud-stat-val">80+ <span>TONS</span></div>
+            <div style="font-size: 0.72rem; color: #10b981; margin-top: 4px;"><i class="fas fa-bolt"></i> Super Post-Panamax</div>
+          </div>
+
+          <div class="hud-stat-box">
+            <div class="hud-stat-label">Maximum Outreach / Span</div>
+            <div class="hud-stat-val">24 <span>ROWS</span></div>
+            <div style="font-size: 0.72rem; color: #00f5d4; margin-top: 4px;"><i class="fas fa-arrows-alt-h"></i> 70m Boom Reach</div>
+          </div>
+
+          <div class="hud-stat-box">
+            <div class="hud-stat-label">Lift Height Above Dock</div>
+            <div class="hud-stat-val">150 <span>FT</span></div>
+            <div style="font-size: 0.72rem; color: #ffb703; margin-top: 4px;"><i class="fas fa-arrows-alt-v"></i> 45m Clear Clearance</div>
+          </div>
+
+          <div class="hud-stat-box">
+            <div class="hud-stat-label">Power Drive &amp; Grid Feed</div>
+            <div class="hud-stat-val">100% <span>ELECTRIC</span></div>
+            <div style="font-size: 0.72rem; color: #10b981; margin-top: 4px;"><i class="fas fa-leaf"></i> 12kV-25kV Regen Substation</div>
+          </div>
+        </div>
+
+        <div style="margin-top: 20px; background: rgba(7,13,30,0.8); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 12px 16px; display: flex; justify-content: space-between; align-items: center;">
+          <div style="font-size: 0.8rem; color: #cbd5e1;">
+            <i class="fas fa-network-wired" style="color: var(--crane-cyan); margin-right: 6px;"></i> <strong>TOS Direct Sync:</strong> Navis N4 API Active
+          </div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--crane-cyan);">
+            LATENCY: 12ms
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEDICATED 4K PANORAMIC BANNER SHOWCASE SECTION -->
+  <section class="crane-banner-showcase-section crane-section-target" id="banner-showcase">
+    <div class="container">
+      <div class="crane-section-head" style="margin-bottom: 28px;">
+        <span class="section-tag"><i class="fas fa-camera"></i> 4K Ultra-HD Photographic Showcase</span>
+        <h2>San Francisco Pacific Container Terminal</h2>
+        <p>
+          High-resolution 4K panoramic photographic view of the 4 new automated gantry cranes operating at the Port of San Francisco maritime deepwater berths.
+        </p>
+      </div>
+
+      <!-- Main Interactive 4K Banner Frame -->
+      <div class="crane-banner-frame">
+        <div class="crane-banner-media">
+          <img src="images/sf_gantry_cranes_banner_panoramic.jpg" alt="4K Panoramic View of 4 Automated Gantry Cranes at Port of San Francisco" class="crane-banner-img" id="crane-main-banner-img">
+
+          <!-- Top Overlay Controls -->
+          <div class="crane-banner-top-bar">
+            <div class="crane-banner-badge">
+              <span class="pulse-dot"></span> <span id="banner-live-title">PORT OF SAN FRANCISCO • BERTHS 80 &amp; 96 (4K HDR)</span>
+            </div>
+
+            <div class="crane-banner-controls">
+              <button class="crane-banner-zoom-btn" id="banner-fullscreen-btn" onclick="openBannerLightbox()">
+                <i class="fas fa-expand"></i> 4K Fullscreen View
+              </button>
+            </div>
+          </div>
+
+          <!-- Interactive Hotspot Pins -->
+          <div class="crane-hotspot" style="top: 28%; left: 32%;" title="70m Outreach Boom">
+            <div class="hotspot-pin"><i class="fas fa-arrows-alt-h"></i></div>
+            <div class="hotspot-tooltip">70m Super Post-Panamax Outreach Jib (24 Container Rows)</div>
+          </div>
+
+          <div class="crane-hotspot" style="top: 60%; left: 48%;" title="Twin-Lift Spreader">
+            <div class="hotspot-pin"><i class="fas fa-crosshairs"></i></div>
+            <div class="hotspot-tooltip">3D LiDAR Anti-Sway Twin-Lift Spreader (80T Capacity)</div>
+          </div>
+
+          <div class="crane-hotspot" style="top: 78%; left: 24%;" title="Electric Cable Reel">
+            <div class="hotspot-pin"><i class="fas fa-bolt"></i></div>
+            <div class="hotspot-tooltip">12kV-25kV High-Voltage Shore Power &amp; Regen Cable Reel</div>
+          </div>
+
+          <div class="crane-hotspot" style="top: 86%; left: 72%;" title="A120 Rail Runway">
+            <div class="hotspot-pin"><i class="fas fa-train"></i></div>
+            <div class="hotspot-tooltip">Precision A120 Crane Rail Section (±2mm Alignment)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Banner Photo Switcher Tabs -->
+      <div class="crane-banner-selector-tabs">
+        <div class="banner-tab-item active" data-banner-src="images/sf_gantry_cranes_banner_panoramic.jpg" data-banner-title="PORT OF SAN FRANCISCO • BERTHS 80 &amp; 96 (4K HDR)">
+          <img src="images/sf_gantry_cranes_banner_panoramic.jpg" alt="Seaport Panoramic" class="banner-tab-thumb">
+          <div>
+            <div class="banner-tab-title">1. Seaport Panoramic 4K</div>
+            <div class="banner-tab-subtitle">Full Quayside 4-Crane View</div>
+          </div>
+        </div>
+
+        <div class="banner-tab-item" data-banner-src="images/sf_gantry_cranes_hero.jpg" data-banner-title="BERTH 80 • SUPER POST-PANAMAX STS HOISTING">
+          <img src="images/sf_gantry_cranes_hero.jpg" alt="Super Post-Panamax STS" class="banner-tab-thumb">
+          <div>
+            <div class="banner-tab-title">2. Super Post-Panamax STS</div>
+            <div class="banner-tab-subtitle">Deepwater Vessel Loading</div>
+          </div>
+        </div>
+
+        <div class="banner-tab-item" data-banner-src="images/armg_asc_cranes.jpg" data-banner-title="INTERMODAL YARD • ARMG / ASC AUTOMATED STACKING">
+          <img src="images/armg_asc_cranes.jpg" alt="ARMG Stacking Yard" class="banner-tab-thumb">
+          <div>
+            <div class="banner-tab-title">3. ARMG Yard Stacking</div>
+            <div class="banner-tab-subtitle">Rail &amp; Block Automation</div>
+          </div>
+        </div>
+
+        <div class="banner-tab-item" data-banner-src="images/remote_operator_ros.jpg" data-banner-title="ROS CONTROL CENTER • ERGONOMIC 4K COMMAND CONSOLE">
+          <img src="images/remote_operator_ros.jpg" alt="Remote Operator ROS" class="banner-tab-thumb">
+          <div>
+            <div class="banner-tab-title">4. ROS Command Center</div>
+            <div class="banner-tab-subtitle">Multi-Screen Telemetry</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 1: KEY TECHNICAL SPECIFICATIONS -->
+  <section class="section-padding crane-section-target" id="specs" style="background: var(--crane-surface);">
+    <div class="container">
+      <div class="crane-section-head">
+        <span class="section-tag"><i class="fas fa-microchip"></i> Engineering Specs</span>
+        <h2>1. Key Technical Specifications</h2>
+        <p>
+          Depending on whether these 4 cranes are configured for quay-side berthing (Ship-to-Shore Super Post-Panamax) or automated yard management (ARMG/ASC), below is the comprehensive engineering comparison.
+        </p>
+      </div>
+
+      <!-- Specification Matrix Table -->
+      <div class="spec-comparison-wrapper">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 16px;">
+          <div>
+            <h3 style="font-size: 1.35rem; font-weight: 800; color: #ffffff;">STS vs. ARMG/ASC Technical Matrix</h3>
+            <span style="font-size: 0.85rem; color: #94a3b8;">Standardized engineering parameters for Port of San Francisco maritime berths</span>
+          </div>
+          <div style="display: flex; gap: 10px;">
+            <button class="btn btn-outline spec-toggle-btn active" data-mode="all" style="padding: 6px 14px; font-size: 0.8rem;">All Specs</button>
+            <button class="btn btn-outline spec-toggle-btn" data-mode="sts" style="padding: 6px 14px; font-size: 0.8rem;">Quayside (STS)</button>
+            <button class="btn btn-outline spec-toggle-btn" data-mode="armg" style="padding: 6px 14px; font-size: 0.8rem;">Yard Stacking (ARMG/ASC)</button>
+          </div>
+        </div>
+
+        <table class="spec-table-custom">
+          <thead>
+            <tr>
+              <th>Parameter</th>
+              <th><i class="fas fa-ship"></i> Ship-to-Shore (STS) Automated Cranes</th>
+              <th><i class="fas fa-cubes"></i> Automated Stacking Cranes (ARMG / ASC)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="row-sts row-armg">
+              <td><span class="spec-param-title"><i class="fas fa-bullseye"></i> Primary Role</span></td>
+              <td><span class="spec-badge-sts">QUAYSIDE</span> Unloading / loading container ships at berth</td>
+              <td><span class="spec-badge-asc">YARD SIDE</span> Yard stacking &amp; direct truck / rail transfer</td>
+            </tr>
+            <tr class="row-sts row-armg">
+              <td><span class="spec-param-title"><i class="fas fa-weight-hanging"></i> Lifting Capacity</span></td>
+              <td><strong>65 to 80+ tons</strong> (Twin-lift / Tandem container hoist)</td>
+              <td><strong>40 to 65 tons</strong> (Single &amp; Twin-twenty container lifts)</td>
+            </tr>
+            <tr class="row-sts row-armg">
+              <td><span class="spec-param-title"><i class="fas fa-arrows-alt-h"></i> Reach / Span</span></td>
+              <td><strong>Up to 22–24 container rows wide</strong> (~70m outreach jib)</td>
+              <td><strong>Span over 6–10 container rows</strong> + dedicated truck lane</td>
+            </tr>
+            <tr class="row-sts row-armg">
+              <td><span class="spec-param-title"><i class="fas fa-arrows-alt-v"></i> Lift Height</span></td>
+              <td><strong>Up to 140–150 ft (42–45m)</strong> clear height above dock</td>
+              <td><strong>1 over 5 to 1 over 6</strong> standard high-cube containers</td>
+            </tr>
+            <tr class="row-sts row-armg">
+              <td><span class="spec-param-title"><i class="fas fa-bolt"></i> Power Drive</span></td>
+              <td><strong>100% All-Electric</strong> (High Voltage Shore Power 12kV–25kV)</td>
+              <td><strong>All-Electric</strong> (Heavy-duty E-Busbar or Cable Reel system)</td>
+            </tr>
+            <tr class="row-sts row-armg">
+              <td><span class="spec-param-title"><i class="fas fa-gamepad"></i> Control Mode</span></td>
+              <td><strong>Remote Operator Station (ROS)</strong> + semi-automation</td>
+              <td><strong>Fully automated</strong> autonomous cycles with remote intervention</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Side-by-Side 4K Visual Cards -->
+      <div class="spec-cards-duo">
+        <div class="spec-model-card">
+          <div class="spec-card-media">
+            <img src="images/sf_gantry_cranes_hero.jpg" alt="Super Post-Panamax STS Automated Quay Crane">
+            <span class="spec-card-tag"><i class="fas fa-water"></i> QUAYSIDE DEEPWATER BERTH</span>
+          </div>
+          <div class="spec-card-body">
+            <h3>Ship-to-Shore (STS) Super Post-Panamax</h3>
+            <p>
+              Engineered for ultra-large container vessels (ULCVs) up to 24,000 TEU. Features 70m outreach, dual-hoist twin-lift spreaders, and laser anti-collision berthing telemetry.
+            </p>
+            <div class="spec-pills-list">
+              <span class="spec-pill"><i class="fas fa-weight-hanging"></i> 80T Twin-Lift</span>
+              <span class="spec-pill"><i class="fas fa-eye"></i> 3D LiDAR Vision</span>
+              <span class="spec-pill"><i class="fas fa-charging-station"></i> 100% Electric</span>
+              <span class="spec-pill"><i class="fas fa-desktop"></i> ROS Workstation</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="spec-model-card">
+          <div class="spec-card-media">
+            <img src="images/armg_asc_cranes.jpg" alt="Automated Rail Mounted Gantry ARMG ASC Cranes">
+            <span class="spec-card-tag" style="border-color: var(--crane-gold);"><i class="fas fa-layer-group"></i> YARD INTERMODAL BLOCK</span>
+          </div>
+          <div class="spec-card-body">
+            <h3>Automated Stacking Cranes (ARMG / ASC)</h3>
+            <p>
+              High-density yard stacking running on dedicated rail runways. Automated spreader positioning executes block stacking and train intermodal loadouts 24/7 without cab drivers.
+            </p>
+            <div class="spec-pills-list">
+              <span class="spec-pill"><i class="fas fa-cube"></i> 1-over-6 High-Cube</span>
+              <span class="spec-pill"><i class="fas fa-train"></i> Rail Intermodal</span>
+              <span class="spec-pill"><i class="fas fa-shield-alt"></i> Auto-Safety Fencing</span>
+              <span class="spec-pill"><i class="fas fa-sync"></i> Navis N4 Sync</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: CORE AUTOMATION FEATURES -->
+  <section class="section-padding crane-section-target" id="automation" style="background: var(--crane-dark);">
+    <div class="container">
+      <div class="crane-section-head">
+        <span class="section-tag"><i class="fas fa-robot"></i> Software &amp; Sensor Ecosystem</span>
+        <h2>2. Core Automation Features</h2>
+        <p>
+          Modern automated gantry cranes eliminate high-altitude manual cabs, replacing them with integrated artificial intelligence, sub-millimeter LiDAR sensors, and automated Terminal Operating System scheduling.
+        </p>
+      </div>
+
+      <div class="automation-pillars-grid">
+        <!-- Pillar 1: ROS -->
+        <div class="pillar-feature-card">
+          <div class="pillar-icon-box">
+            <i class="fas fa-desktop"></i>
+          </div>
+          <h4>Remote Operation Stations (ROS)</h4>
+          <p>
+            Crane drivers work from a temperature-controlled, ergonomic office control room using curved 4K multi-screen monitors, HD camera feeds, and precision joysticks instead of sitting 150 ft in the air.
+          </p>
+          <ul class="pillar-tech-specs">
+            <li><i class="fas fa-check-circle"></i> Eliminates physical vibration, neck strain, and cab climbing hazards.</li>
+            <li><i class="fas fa-check-circle"></i> Seamless operator handoffs between quay STS and yard ARMG cranes.</li>
+            <li><i class="fas fa-check-circle"></i> Low-latency video compression ($<20\text{ ms}$) over dual fiber.</li>
+          </ul>
+        </div>
+
+        <!-- Pillar 2: OCR & Smart Sensors -->
+        <div class="pillar-feature-card">
+          <div class="pillar-icon-box">
+            <i class="fas fa-qrcode"></i>
+          </div>
+          <h4>OCR &amp; Smart Sensors</h4>
+          <p>
+            Integrated high-speed cameras on the spreader scan container numbers, ISO codes, hazardous placards, seal integrity, and structural damage in real time upon container pickup.
+          </p>
+          <ul class="pillar-tech-specs">
+            <li><i class="fas fa-check-circle"></i> 99.8% Optical Character Recognition accuracy during high-speed hoist.</li>
+            <li><i class="fas fa-check-circle"></i> Instant seal integrity verification and damage photographic record.</li>
+            <li><i class="fas fa-check-circle"></i> Automated customs API validation and weight tare verification.</li>
+          </ul>
+        </div>
+
+        <!-- Pillar 3: Positioning & Anti-Sway -->
+        <div class="pillar-feature-card">
+          <div class="pillar-icon-box">
+            <i class="fas fa-crosshairs"></i>
+          </div>
+          <h4>Positioning &amp; 3D LiDAR Anti-Sway</h4>
+          <p>
+            Laser scanners (LiDAR), 3D spatial vision, and predictive electronic anti-sway algorithms calculate hoist inertia and wind load to achieve millimetric container landing without manual swaying.
+          </p>
+          <ul class="pillar-tech-specs">
+            <li><i class="fas fa-check-circle"></i> Millimeter-accurate spreader twistlock alignment in 25 knot crosswinds.</li>
+            <li><i class="fas fa-check-circle"></i> Continuous 3D point cloud profiling of vessel cell guides and yard stacks.</li>
+            <li><i class="fas fa-check-circle"></i> Dynamic collision avoidance matrix preventing spreader-vessel contact.</li>
+          </ul>
+        </div>
+
+        <!-- Pillar 4: TOS Integration -->
+        <div class="pillar-feature-card">
+          <div class="pillar-icon-box">
+            <i class="fas fa-network-wired"></i>
+          </div>
+          <h4>Terminal Operating System (TOS) Integration</h4>
+          <p>
+            Direct real-time API sync with industry-standard TOS engines like Navis N4, CyberLogitec, or Tops to automatically route moves, manage vessel stowage, and optimize yard stacking order.
+          </p>
+          <ul class="pillar-tech-specs">
+            <li><i class="fas fa-check-circle"></i> Autonomous work instruction dispatch directly to crane PLC controllers.</li>
+            <li><i class="fas fa-check-circle"></i> Predictive vessel discharge sequencing minimizing idle crane cycle time.</li>
+            <li><i class="fas fa-check-circle"></i> Real-time inventory sync across gate, rail, and marine berths.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Interactive Remote Operator Station (ROS) Simulator Panel -->
+      <div class="ros-interactive-section">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 16px;">
+          <div>
+            <span class="section-tag" style="background: rgba(58, 134, 255, 0.2); border-color: rgba(58, 134, 255, 0.4); color: var(--crane-blue);">
+              <i class="fas fa-tv"></i> Live Telemetry Console
+            </span>
+            <h3 style="font-size: 1.6rem; font-weight: 800; color: #ffffff; margin-top: 6px;">Remote Operator Station (ROS) Multi-Camera Viewport</h3>
+          </div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--crane-cyan); background: rgba(7,13,30,0.8); padding: 8px 16px; border-radius: 8px; border: 1px solid var(--crane-border);">
+            <i class="fas fa-shield-alt"></i> ENCRYPTED 5G LINK: ACTIVE
+          </div>
+        </div>
+
+        <div class="ros-viewport-container">
+          <!-- Main Screen Monitor -->
+          <div class="ros-screen-frame">
+            <div class="ros-screen-header">
+              <span id="ros-feed-tag">CAM 01: SPREADER 3D LIDAR &amp; TWIN-LIFT FEED (QUAY BERTH 80)</span>
+              <div class="ros-live-indicator">
+                <span class="rec-dot"></span> <span id="ros-feed-fps">60 FPS | 4K HDR</span>
+              </div>
+            </div>
+
+            <div class="ros-media-viewport">
+              <img src="images/sf_gantry_cranes_hero.jpg" alt="ROS Main Camera Feed" class="ros-feed-img" id="ros-main-feed-img">
+
+              <div class="ros-hud-overlay">
+                <div class="ros-tag-overlay">
+                  LIDAR ANTI-SWAY: LOCKED [TOLERANCE ±1.2mm]
+                </div>
+                <div class="ros-reticle-center"></div>
+                <div style="display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #ffffff; background: rgba(7,13,30,0.85); padding: 6px 12px; border-radius: 6px; border: 1px solid rgba(0,245,212,0.3);">
+                  <span>HOIST ELEVATION: +38.4m</span>
+                  <span>LOAD: 64.2t [TWIN-20 ISO]</span>
+                  <span>WIND: 14.2 KTS (WNW)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Camera Stream Controls -->
+          <div class="ros-sidebar-controls">
+            <div class="ros-cam-btn active" data-cam="cam-1">
+              <h5><span>Cam 01: Quayside STS Spreader</span> <i class="fas fa-video" style="color: var(--crane-cyan);"></i></h5>
+              <span>3D LiDAR &amp; Twistlock Landing Feed</span>
+            </div>
+
+            <div class="ros-cam-btn" data-cam="cam-2">
+              <h5><span>Cam 02: ROS Command Room</span> <i class="fas fa-desktop" style="color: var(--crane-blue);"></i></h5>
+              <span>Ergonomic Multi-Screen Operator Console</span>
+            </div>
+
+            <div class="ros-cam-btn" data-cam="cam-3">
+              <h5><span>Cam 03: Yard ARMG Stacking Block</span> <i class="fas fa-cubes" style="color: var(--crane-gold);"></i></h5>
+              <span>Rail Intermodal &amp; E-Busbar Track</span>
+            </div>
+
+            <div class="ros-cam-btn" data-cam="cam-4">
+              <h5><span>Cam 04: 12kV Power Substation</span> <i class="fas fa-bolt" style="color: var(--crane-emerald);"></i></h5>
+              <span>Regenerative Grid &amp; Transformer Feed</span>
+            </div>
+
+            <div style="background: rgba(0,245,212,0.08); border: 1px solid var(--crane-border); border-radius: 12px; padding: 14px; margin-top: auto;">
+              <div style="font-size: 0.78rem; font-weight: 700; color: var(--crane-cyan); margin-bottom: 4px; text-transform: uppercase;">
+                <i class="fas fa-info-circle"></i> Operator Safety Protocol
+              </div>
+              <p style="font-size: 0.78rem; color: #cbd5e1; line-height: 1.4; margin: 0;">
+                ROS workstations are equipped with dual-redundant emergency stop palm-buttons and automated optical fence interlocks.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: INFRASTRUCTURE REQUIREMENTS FOR SAN FRANCISCO SITE -->
+  <section class="section-padding crane-section-target" id="infrastructure" style="background: var(--crane-surface);">
+    <div class="container">
+      <div class="crane-section-head">
+        <span class="section-tag"><i class="fas fa-hard-hat"></i> Site Engineering</span>
+        <h2>3. Infrastructure Requirements for a San Francisco Site</h2>
+        <p>
+          Integrating 4 automated gantry cranes at San Francisco maritime berths (Pier 80, Pier 94/96, or inland intermodal yards) requires strict civil foundation upgrades, zero-emission CARB/BAAQMD electrical grid connections, and Bay Bridge air draft navigation clearance.
+        </p>
+      </div>
+
+      <div class="sf-infra-grid">
+        <!-- Box 1: Civil & Structural Foundation -->
+        <div class="sf-infra-box">
+          <div class="sf-box-number">01</div>
+          <h4><i class="fas fa-monument"></i> Civil &amp; Structural Foundation</h4>
+          <p>
+            Pier 80 and Pier 94/96 maritime berths feature wharf design loads ranging from 800 to 1,000 lbs/sq.ft. New automated cranes place massive dynamic loads during high-speed acceleration and container landings.
+          </p>
+
+          <div class="infra-bullet-card">
+            <div class="infra-bullet-title">Wharf Bearing Load</div>
+            <div class="infra-bullet-desc">Super Post-Panamax cranes weigh 1,350 to 1,650 metric tons each. Wheel point loads exceed 60–80 tonnes/meter; piling dynamic analysis required.</div>
+          </div>
+
+          <div class="infra-bullet-card">
+            <div class="infra-bullet-title">Rail Gauge &amp; Alignment</div>
+            <div class="infra-bullet-desc">Precision gauge tolerances ($\pm 2\text{ mm}$ over 300+ m) utilizing heavy-duty A100 or A120 crane rail sections with high-durability epoxy grout retrofits.</div>
+          </div>
+
+          <div class="infra-bullet-card">
+            <div class="infra-bullet-title">SF-Oakland Bay Bridge Air Draft</div>
+            <div class="infra-bullet-desc">180–220 ft air draft clearance under Bay Bridge. Large cranes must be shipped on heavy-lift vessels with booms lowered and erected on-site.</div>
+          </div>
+        </div>
+
+        <!-- Box 2: Electrical & Zero-Emission Power -->
+        <div class="sf-infra-box">
+          <div class="sf-box-number">02</div>
+          <h4><i class="fas fa-plug"></i> Electrical &amp; Zero-Emission Grid</h4>
+          <p>
+            California Air Resources Board (CARB) and the Bay Area Air Quality Management District (BAAQMD) mandate zero-emission port operations. All 4 cranes operate 100% on electric grid power.
+          </p>
+
+          <div class="infra-bullet-card">
+            <div class="infra-bullet-title">100% Electric Shore Power</div>
+            <div class="infra-bullet-desc">Strict zero-emission compliance eliminates all diesel emissions, particulate matter, and NOx across the waterfront facility.</div>
+          </div>
+
+          <div class="infra-bullet-card">
+            <div class="infra-bullet-title">High-Voltage Substation</div>
+            <div class="infra-bullet-desc">Dedicated on-site step-down substation ($12\text{kV}-25\text{kV} \rightarrow 4,160\text{V} \text{ and } 480\text{V}$) to supply continuous peak hoisting and gantry acceleration.</div>
+          </div>
+
+          <div class="infra-bullet-card">
+            <div class="infra-bullet-title">Cable Reels &amp; Regenerative Braking</div>
+            <div class="infra-bullet-desc">Heavy-duty motorized cable reels and regen units that feed kinetic energy back into the local grid during container lowering, cutting power costs by ~35%.</div>
+          </div>
+        </div>
+
+        <!-- Box 3: Communication & Safety Setup -->
+        <div class="sf-infra-box">
+          <div class="sf-box-number">03</div>
+          <h4><i class="fas fa-shield-alt"></i> Communication &amp; Safety Setup</h4>
+          <p>
+            Autonomous gantry movements require deterministic, low-latency data communication and physical zone interlocks to protect personnel and equipment.
+          </p>
+
+          <div class="infra-bullet-card">
+            <div class="infra-bullet-title">Private 5G &amp; Dedicated Fiber</div>
+            <div class="infra-bullet-desc">Ultra-low latency ($< 20\text{ ms}$) wireless and fiber network delivering 4K live video feeds and bi-directional telemetry to the ROS and TOS.</div>
+          </div>
+
+          <div class="infra-bullet-card">
+            <div class="infra-bullet-title">Optical Safety Fencing &amp; Interlocks</div>
+            <div class="infra-bullet-desc">Automated crane zones isolated with optical light curtains, perimeter radar/laser scanners, and automated gate e-stops that freeze crane travel upon entry.</div>
+          </div>
+
+          <div class="infra-bullet-card">
+            <div class="infra-bullet-title">Cybersecurity &amp; Fail-Safe PLC</div>
+            <div class="infra-bullet-desc">IEC 62443 industrial security compliant with dual-redundant safety PLCs executing automatic emergency stop routines upon link loss.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: LEADING EQUIPMENT & AUTOMATION SUPPLIERS -->
+  <section class="section-padding crane-section-target" id="suppliers" style="background: var(--crane-dark);">
+    <div class="container">
+      <div class="crane-section-head">
+        <span class="section-tag"><i class="fas fa-handshake"></i> Procurement &amp; Sourcing Matrix</span>
+        <h2>4. Leading Equipment &amp; Automation Suppliers</h2>
+        <p>
+          Procuring and deploying 4 automated gantry cranes involves global turnkey manufacturers, world-class electrical drive engineering, and standardized TOS scheduling software.
+        </p>
+      </div>
+
+      <div class="suppliers-grid">
+        <!-- Supplier Tier 1: Crane Manufacturers -->
+        <div class="supplier-tier-card">
+          <div class="supplier-category-tag"><i class="fas fa-industry"></i> Crane Manufacturers</div>
+          <h3>Turnkey STS &amp; ARMG Builds</h3>
+          <ul class="supplier-names-list">
+            <li><i class="fas fa-check"></i> <strong>ZPMC</strong> (Shanghai Zhenhua Heavy Industries)</li>
+            <li><i class="fas fa-check"></i> <strong>Konecranes</strong> (Automated ARMG/ASC Leader)</li>
+            <li><i class="fas fa-check"></i> <strong>Liebherr Container Cranes</strong> (High Reliability STS)</li>
+          </ul>
+          <div class="supplier-advantage-box">
+            <strong>Key Advantage</strong>
+            <span>World-class structural steel manufacturing, custom outreach design for West Coast deepwater berths, and heavy-lift vessel delivery options.</span>
+          </div>
+        </div>
+
+        <!-- Supplier Tier 2: Electrical & Drives -->
+        <div class="supplier-tier-card">
+          <div class="supplier-category-tag" style="color: var(--crane-blue);"><i class="fas fa-bolt"></i> Electrical &amp; Drives</div>
+          <h3>High-Reliability Automation &amp; Power</h3>
+          <ul class="supplier-names-list">
+            <li><i class="fas fa-check" style="color: var(--crane-blue);"></i> <strong>ABB Marine &amp; Ports</strong></li>
+            <li><i class="fas fa-check" style="color: var(--crane-blue);"></i> <strong>Siemens</strong> (Drive &amp; PLC Systems)</li>
+            <li><i class="fas fa-check" style="color: var(--crane-blue);"></i> <strong>TMEIC</strong> (Industrial Drive Systems)</li>
+          </ul>
+          <div class="supplier-advantage-box" style="border-left-color: var(--crane-blue); background: rgba(58,134,255,0.08);">
+            <strong style="color: var(--crane-blue);">Key Advantage</strong>
+            <span>ACS880 / Sinamics multi-drive inverters, high-efficiency regenerative braking units, fail-safe safety PLCs, and ergonomic ROS control desks.</span>
+          </div>
+        </div>
+
+        <!-- Supplier Tier 3: TOS & Intelligent Software -->
+        <div class="supplier-tier-card">
+          <div class="supplier-category-tag" style="color: var(--crane-gold);"><i class="fas fa-laptop-code"></i> TOS &amp; Software</div>
+          <h3>Yard &amp; Vessel Automation Systems</h3>
+          <ul class="supplier-names-list">
+            <li><i class="fas fa-check" style="color: var(--crane-gold);"></i> <strong>Kaleris</strong> (Navis N4 Operating System)</li>
+            <li><i class="fas fa-check" style="color: var(--crane-gold);"></i> <strong>CyberLogitec</strong> (OPUS Terminal)</li>
+            <li><i class="fas fa-check" style="color: var(--crane-gold);"></i> <strong>Tops (TOS)</strong> / Camco OCR</li>
+          </ul>
+          <div class="supplier-advantage-box" style="border-left-color: var(--crane-gold); background: rgba(255,183,3,0.08);">
+            <strong style="color: var(--crane-gold);">Key Advantage</strong>
+            <span>Pre-integrated automated stacking algorithms, dynamic dispatching, vessel stowage optimization, and real-time OCR customs clearing interfaces.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: INTERACTIVE ENGINEERING TOOLS & CALCULATORS -->
+  <section class="section-padding crane-section-target" id="interactive-tools" style="background: var(--crane-surface);">
+    <div class="container">
+      <div class="crane-section-head">
+        <span class="section-tag"><i class="fas fa-calculator"></i> Interactive Engineering Tools</span>
+        <h2>5. Live Power &amp; Air Draft Calculators</h2>
+        <p>
+          Simulate electrical regeneration savings from container lowering cycles and visualize tidal air draft clearances under the SF-Oakland Bay Bridge.
+        </p>
+      </div>
+
+      <div class="crane-calculators-grid">
+        <!-- Tool 1: Regenerative Energy Calculator -->
+        <div class="calc-glass-panel">
+          <div class="calc-title">
+            <i class="fas fa-leaf" style="color: var(--crane-emerald);"></i> Live Regenerative Energy &amp; Cost Calculator
+          </div>
+          <div class="calc-subtitle">
+            Calculate energy recovered and electricity cost reduction using electric regen drives during container lowering.
+          </div>
+
+          <div class="calc-form-row">
+            <div class="calc-label">
+              <span>Annual Container Moves (Across 4 Cranes):</span>
+              <span class="calc-val-badge" id="calc-moves-val">350,000 Container Moves/Year</span>
+            </div>
+            <input type="range" min="50000" max="1000000" step="25000" value="350000" class="calc-slider" id="calc-moves-slider">
+          </div>
+
+          <div class="calc-output-matrix">
+            <div class="calc-output-stat">
+              <div class="val" id="calc-output-kwh">1,347.5 MWh</div>
+              <div class="lbl">Clean Energy Regenerated</div>
+            </div>
+            <div class="calc-output-stat">
+              <div class="val" id="calc-output-savings">$323,400</div>
+              <div class="lbl">Annual Power Cost Savings</div>
+            </div>
+            <div class="calc-output-stat">
+              <div class="val" id="calc-output-co2">518.8 Tons</div>
+              <div class="lbl">CO2 Emissions Avoided</div>
+            </div>
+          </div>
+
+          <div style="font-size: 0.75rem; color: #94a3b8; margin-top: 16px; line-height: 1.4;">
+            *Based on ~3.85 kWh recovered per twin-lift cycle, PG&amp;E E-20 commercial tariff ($0.24/kWh), and 0.385 kg CO2/kWh grid factor.
+          </div>
+        </div>
+
+        <!-- Tool 2: SF Bay Bridge Air Draft & Tidal Visualizer -->
+        <div class="calc-glass-panel">
+          <div class="calc-title">
+            <i class="fas fa-water" style="color: var(--crane-cyan);"></i> Bay Bridge Air Draft &amp; Tidal Clearance
+          </div>
+          <div class="calc-subtitle">
+            Verify heavy-lift vessel transit clearances under the SF-Oakland Bay Bridge (180–220 ft baseline).
+          </div>
+
+          <div class="calc-form-row">
+            <div class="calc-label">
+              <span>Tidal Height (Mean Lower Low Water):</span>
+              <span class="calc-val-badge" id="tide-level-val">3.5 ft MLLW</span>
+            </div>
+            <input type="range" min="0" max="8.5" step="0.5" value="3.5" class="calc-slider" id="tide-level-slider">
+          </div>
+
+          <div class="air-draft-visualizer-box">
+            <div class="tide-level-meter">
+              <div class="bridge-span-line">SF-OAKLAND BAY BRIDGE DECK (220 ft MLLW Baseline)</div>
+              <div class="crane-clearance-bar" id="crane-clearance-bar-fill">165 ft Draft</div>
+            </div>
+
+            <div style="font-size: 0.85rem; color: #ffffff;" id="bridge-clearance-text">
+              Bridge Air Draft: <strong>216.5 ft</strong> | Safety Margin (Lowered Boom): <strong style="color: var(--crane-cyan);">51.5 ft</strong>
+            </div>
+
+            <div style="margin-top: 8px; font-size: 0.8rem; font-weight: 700;" id="boom-transit-status">
+              <i class="fas fa-check-circle" style="color: #10b981;"></i> SAFE NAVIGATION CLEARANCE CONFIRMED
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6: 4K VISUAL GALLERY -->
+  <section class="section-padding crane-section-target" id="gallery" style="background: var(--crane-dark);">
+    <div class="container">
+      <div class="crane-section-head">
+        <span class="section-tag"><i class="fas fa-camera"></i> 4K Visual Showcase</span>
+        <h2>6. High-Resolution Infrastructure Gallery</h2>
+        <p>
+          Click any 4K photo or architectural asset below to open in full-screen ultra-high definition.
+        </p>
+      </div>
+
+      <div class="crane-gallery-grid">
+        <div class="gallery-item-card" data-caption="4x Automated Super Post-Panamax STS Cranes at Port of San Francisco Berth 80">
+          <img src="images/sf_gantry_cranes_hero.jpg" alt="4x Automated Super Post-Panamax STS Cranes">
+          <div class="gallery-caption-overlay">
+            <span>Berth 80 Super Post-Panamax</span>
+            <i class="fas fa-expand"></i>
+          </div>
+        </div>
+
+        <div class="gallery-item-card" data-caption="Automated Stacking Cranes (ARMG / ASC) with E-Busbar Power in Intermodal Yard">
+          <img src="images/armg_asc_cranes.jpg" alt="Automated Stacking Cranes ARMG ASC">
+          <div class="gallery-caption-overlay">
+            <span>ARMG/ASC Yard Stacking</span>
+            <i class="fas fa-expand"></i>
+          </div>
+        </div>
+
+        <div class="gallery-item-card" data-caption="Ergonomic Remote Operator Station (ROS) Control Center with 4K Curved Displays">
+          <img src="images/remote_operator_ros.jpg" alt="Remote Operator Station ROS Control Room">
+          <div class="gallery-caption-overlay">
+            <span>ROS Multi-Screen Telemetry</span>
+            <i class="fas fa-expand"></i>
+          </div>
+        </div>
+
+        <div class="gallery-item-card" data-caption="12kV Maritime Step-Down Electrical Substation & High-Voltage Cable Reel Unit">
+          <img src="images/sf_crane_power_substation.jpg" alt="High Voltage Substation and Crane Rail">
+          <div class="gallery-caption-overlay">
+            <span>12kV High-Voltage Substation</span>
+            <i class="fas fa-expand"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- High-Tech RFQ / Engineering Consultation CTA Box -->
+      <div class="crane-cta-section">
+        <span class="section-tag" style="background: rgba(0, 245, 212, 0.2); border-color: rgba(0, 245, 212, 0.5);">
+          <i class="fas fa-clipboard-check"></i> Terminal Engineering Inquiry
+        </span>
+        <h2>Consult Our Maritime Engineering Team</h2>
+        <p>
+          Request detailed structural piling studies, electrical single-line diagrams, or schedule an on-site technical inspection at Pier 80 / Pier 94/96 for your container vessel line.
+        </p>
+
+        <div class="cta-buttons-row">
+          <button class="btn btn-primary" onclick="openQuoteModal()" style="padding: 16px 36px; font-size: 1.05rem;">
+            <i class="fas fa-paper-plane"></i> Submit Engineering Specs RFQ
+          </button>
+          <a href="tel:+14155550199" class="btn btn-outline" style="padding: 16px 36px; font-size: 1.05rem;">
+            <i class="fas fa-phone-alt"></i> Speak to Chief Engineer
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4K Lightbox Modal -->
+  <div class="crane-lightbox-modal" id="crane-lightbox-modal">
+    <div class="lightbox-content-box">
+      <button class="lightbox-close-btn" id="lightbox-close-btn" aria-label="Close 4K Lightbox"><i class="fas fa-times"></i></button>
+      <img src="images/sf_gantry_cranes_hero.jpg" alt="4K Full Resolution View" id="lightbox-target-img">
+      <div class="lightbox-caption" id="lightbox-target-caption">San Francisco Logistics Automated Crane System</div>
+    </div>
+  </div>
+
+  <!-- Global Quote Request / RFQ Modal -->
+  <div id="quote-modal" class="modal-overlay">
+    <div class="modal-container">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <i class="fas fa-file-invoice modal-icon"></i>
+          <div>
+            <h3 class="modal-title">Request Infrastructure &amp; Freight Consultation</h3>
+            <p class="modal-subtitle">Direct dispatch to our San Francisco Maritime &amp; Supply Chain Engineering team.</p>
+          </div>
+        </div>
+        <button class="modal-close" onclick="closeQuoteModal()" aria-label="Close Modal">&times;</button>
+      </div>
+
+      <form id="quote-form" class="modal-form" onsubmit="handleQuoteSubmit(event)">
+        <div class="quote-form-alert" style="display: none;"></div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="quote-name">Full Name *</label>
+            <input type="text" id="quote-name" name="fullName" class="form-input" placeholder="e.g. Marcus Vance" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="quote-company">Enterprise / Organization</label>
+            <input type="text" id="quote-company" name="companyName" class="form-input" placeholder="e.g. Pacific Rim Shipping Line">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="quote-email">Corporate Email *</label>
+            <input type="email" id="quote-email" name="email" class="form-input" placeholder="e.g. mvance@pacificshipping.com" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="quote-phone">Phone Number</label>
+            <input type="tel" id="quote-phone" name="phone" class="form-input" placeholder="e.g. +1 (415) 555-0199">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="quote-service">Area of Interest / Service Category *</label>
+          <select id="quote-service" name="service" class="form-input" required>
+            <option value="Automated Gantry Cranes &amp; Berthing">Automated Gantry Cranes &amp; Berthing (Pier 80 / 96)</option>
+            <option value="Ocean Freight &amp; Vessel Chartering">Ocean Freight &amp; Vessel Chartering</option>
+            <option value="Intermodal ARMG / Rail Logistics">Intermodal ARMG / Rail Logistics</option>
+            <option value="Air Cargo Expedite">Air Cargo Expedite</option>
+            <option value="Cold-Chain &amp; Vault Fulfillment">Cold-Chain &amp; Vault Fulfillment</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="quote-cargo">Engineering Inquiries / Cargo Specifications *</label>
+          <textarea id="quote-cargo" name="cargoDetails" class="form-input form-textarea" placeholder="Detail your vessel draft, annual TEU throughput, rail requirements, or crane spec requests..." required></textarea>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" onclick="closeQuoteModal()">Cancel</button>
+          <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Submit Request to MongoDB</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-brand">
+            <div class="logo-icon-box">
+              <i class="fas fa-anchor"></i>
+            </div>
+            <span class="brand-title">SAN FRANCISCO LOGISTICS</span>
+          </div>
+          <p class="footer-desc">
+            Global maritime logistics group operating deepwater terminals, automated gantry crane berths, electric highway fleets, and AI predictive telemetry.
+          </p>
+          <div class="footer-socials">
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-heading">Infrastructure &amp; Berths</h4>
+          <ul class="footer-links">
+            <li><a href="cranes.html"><i class="fas fa-chevron-right"></i> 4x Automated Gantry Cranes</a></li>
+            <li><a href="cranes.html#specs"><i class="fas fa-chevron-right"></i> STS vs ARMG Comparison</a></li>
+            <li><a href="cranes.html#automation"><i class="fas fa-chevron-right"></i> Remote Operator Stations (ROS)</a></li>
+            <li><a href="cranes.html#infrastructure"><i class="fas fa-chevron-right"></i> Pier 80 / Pier 94/96 Upgrades</a></li>
+            <li><a href="cranes.html#suppliers"><i class="fas fa-chevron-right"></i> Equipment Suppliers Matrix</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-heading">Core Sectors</h4>
+          <ul class="footer-links">
+            <li><a href="sectors.html"><i class="fas fa-chevron-right"></i> Ocean &amp; Deepwater Freight</a></li>
+            <li><a href="sectors.html"><i class="fas fa-chevron-right"></i> Transpacific Air Cargo</a></li>
+            <li><a href="sectors.html"><i class="fas fa-chevron-right"></i> Autonomous Warehousing</a></li>
+            <li><a href="sectors.html"><i class="fas fa-chevron-right"></i> Cold-Chain Logistics</a></li>
+            <li><a href="technology.html"><i class="fas fa-chevron-right"></i> AI Predictive Telemetry</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-heading">Maritime Headquarters</h4>
+          <p class="footer-contact-item"><i class="fas fa-map-marker-alt"></i> Pier 80 Terminal Blvd, San Francisco, CA 94124</p>
+          <p class="footer-contact-item"><i class="fas fa-phone"></i> +1 (415) 555-0199</p>
+          <p class="footer-contact-item"><i class="fas fa-envelope"></i> lochanamithudam097@gmail.com</p>
+          <p class="footer-contact-item"><i class="fas fa-clock"></i> 24/7/365 Terminal Operations</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 San Francisco Logistics Group. All rights reserved. ISO 9001, CARB &amp; BAAQMD Zero-Emission Compliant.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="JAVASCRIPTS/script.js"></script>
+  <script src="JAVASCRIPTS/cranes.js"></script>
+</body>
+
+</html>

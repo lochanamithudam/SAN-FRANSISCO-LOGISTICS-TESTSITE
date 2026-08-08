@@ -42,11 +42,14 @@ app.use(cors({
         // Allow requests with no origin (e.g. direct browser visits, same-origin, curl)
         if (!origin) return callback(null, true);
 
-        // Allow configured origins or any railway app domain
-        if (allowedOrigins.includes(origin) || origin.endsWith('.railway.app')) {
+        // Allow configured origins, any local dev origin (localhost or 127.0.0.1 on any port), or railway app domain
+        if (
+            allowedOrigins.includes(origin) ||
+            origin.endsWith('.railway.app') ||
+            /^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin)
+        ) {
             return callback(null, true);
         }
-        // Fallback: allow all in production if origin matching passes
         return callback(null, true);
     },
     methods: ['GET', 'POST', 'OPTIONS'],
@@ -152,7 +155,41 @@ async function sendQuoteEmail(fullName, email, companyName, service, cargoDetail
         </div>
     `;
 
-    // Strategy 1: Resend HTTPS API (Port 443 — 100% reliable on Railway cloud host!)
+    // Unique list of recipient emails (both customer and admin)
+    const recipients = Array.from(new Set([email, gmailUser].filter(Boolean)));
+    const mailOptions = {
+        from: `"San Francisco Logistics" <${gmailUser}>`,
+        to: recipients.join(','),
+        subject: `📦 Quote Request Received - ${safeName}`,
+        html: htmlBody
+    };
+
+    let smtpSuccess = false;
+    let smtpResult = null;
+
+    // Strategy 1: Gmail SMTP (Sends to both customer & admin directly)
+    if (gmailUser && gmailPass) {
+        const transportConfigs = [
+            { name: 'Gmail Service', config: { service: 'gmail', auth: { user: gmailUser, pass: gmailPass }, connectionTimeout: 5000 } },
+            { name: 'SMTP Port 587 (TLS)', config: { host: 'smtp.gmail.com', port: 587, secure: false, auth: { user: gmailUser, pass: gmailPass }, tls: { rejectUnauthorized: false }, connectionTimeout: 5000 } },
+            { name: 'SMTP Port 465 (SSL)', config: { host: 'smtp.gmail.com', port: 465, secure: true, auth: { user: gmailUser, pass: gmailPass }, tls: { rejectUnauthorized: false }, connectionTimeout: 5000 } }
+        ];
+
+        for (const item of transportConfigs) {
+            try {
+                const transporter = nodemailer.createTransport(item.config);
+                const info = await transporter.sendMail(mailOptions);
+                console.log(`✉️  Quote notification sent via ${item.name} to [${recipients.join(', ')}] (MessageId: ${info.messageId})`);
+                smtpSuccess = true;
+                smtpResult = { success: true, method: item.name, messageId: info.messageId, response: info.response };
+                break;
+            } catch (err) {
+                console.error(`❌ ${item.name} failed:`, err.message);
+            }
+        }
+    }
+
+    // Strategy 2: Resend HTTPS API (Admin alert backup)
     if (resendApiKey) {
         try {
             const resendRes = await fetch('https://api.resend.com/emails', {
@@ -171,43 +208,23 @@ async function sendQuoteEmail(fullName, email, companyName, service, cargoDetail
 
             const resendData = await resendRes.json();
             if (resendRes.ok && resendData.id) {
-                console.log(`✉️  Quote notification sent via Resend HTTPS API! (ID: ${resendData.id})`);
-                return { success: true, method: 'Resend HTTPS API', messageId: resendData.id };
+                console.log(`✉️  Admin quote alert sent via Resend HTTPS API! (ID: ${resendData.id})`);
+                if (!smtpSuccess) {
+                    return { success: true, method: 'Resend HTTPS API', messageId: resendData.id };
+                }
+            } else {
+                console.warn('⚠️  Resend HTTPS API alert result:', resendData.message || resendData);
             }
-            console.warn('⚠️  Resend HTTPS API returned non-200:', resendData);
         } catch (err) {
             console.error('❌ Resend HTTPS API error:', err.message);
         }
     }
 
-    // Strategy 2: Fallback to SMTP
-    const mailOptions = {
-        from: `"San Francisco Logistics" <${gmailUser}>`,
-        to: [email, gmailUser].filter(Boolean).join(','),
-        subject: `📦 Quote Request Received - San Francisco Logistics`,
-        html: htmlBody
-    };
-
-    const transportConfigs = [
-        { name: 'Gmail Service', config: { service: 'gmail', auth: { user: gmailUser, pass: gmailPass }, connectionTimeout: 3000 } },
-        { name: 'SMTP Port 587 (TLS)', config: { host: 'smtp.gmail.com', port: 587, secure: false, auth: { user: gmailUser, pass: gmailPass }, tls: { rejectUnauthorized: false }, connectionTimeout: 3000 } },
-        { name: 'SMTP Port 465 (SSL)', config: { host: 'smtp.gmail.com', port: 465, secure: true, auth: { user: gmailUser, pass: gmailPass }, tls: { rejectUnauthorized: false }, connectionTimeout: 3000 } }
-    ];
-
-    let lastError = null;
-    for (const item of transportConfigs) {
-        try {
-            const transporter = nodemailer.createTransport(item.config);
-            const info = await transporter.sendMail(mailOptions);
-            console.log(`✉️  Quote notification sent via ${item.name} to ${email} (MessageId: ${info.messageId})`);
-            return { success: true, method: item.name, messageId: info.messageId, response: info.response };
-        } catch (err) {
-            console.error(`❌ Strategy ${item.name} failed:`, err.message);
-            lastError = err.message;
-        }
+    if (smtpSuccess) {
+        return smtpResult;
     }
 
-    return { success: false, error: lastError || 'All email transport strategies failed' };
+    return { success: false, error: 'All email transport strategies failed. Check server logs.' };
 }
 
 // ── API Routes ──────────────────────────────────────────────
@@ -333,6 +350,11 @@ app.get('/network', (req, res) => {
 // Serve technology page
 app.get('/technology', (req, res) => {
     res.sendFile(path.join(__dirname, 'technology.html'));
+});
+
+// Serve automated gantry cranes page
+app.get(['/cranes', '/gantry-cranes', '/automated-cranes'], (req, res) => {
+    res.sendFile(path.join(__dirname, 'cranes.html'));
 });
 
 // Serve sustainability & ESG page
