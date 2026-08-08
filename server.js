@@ -337,6 +337,17 @@ app.use('/api', (req, res) => {
     res.status(404).json({ error: 'API endpoint not found' });
 });
 
+// Serve SEO Crawl Files
+app.get('/robots.txt', (req, res) => {
+    res.type('text/plain');
+    res.sendFile(path.join(__dirname, 'robots.txt'));
+});
+
+app.get('/sitemap.xml', (req, res) => {
+    res.type('application/xml');
+    res.sendFile(path.join(__dirname, 'sitemap.xml'));
+});
+
 // Serve sectors page
 app.get('/sectors', (req, res) => {
     res.sendFile(path.join(__dirname, 'sectors.html'));

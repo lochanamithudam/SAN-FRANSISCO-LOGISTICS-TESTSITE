@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://san-fransisco-logistics-testsite-production.up.railway.app/sitemap.xml
