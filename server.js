@@ -368,6 +368,19 @@ app.get(['/cranes', '/gantry-cranes', '/automated-cranes'], (req, res) => {
     res.sendFile(path.join(__dirname, 'cranes.html'));
 });
 
+const fs = require('node:fs');
+
+// Serve Google site verification HTML files explicitly
+app.get('/google*.html', (req, res) => {
+    const filename = path.basename(req.path);
+    const filePath = path.join(__dirname, filename);
+    if (fs.existsSync(filePath)) {
+        res.sendFile(filePath);
+    } else {
+        res.status(404).send('Google site verification file not found.');
+    }
+});
+
 // Serve sustainability & ESG page
 app.get(['/sustainability', '/esg'], (req, res) => {
     res.sendFile(path.join(__dirname, 'sustainability.html'));
@@ -375,6 +388,14 @@ app.get(['/sustainability', '/esg'], (req, res) => {
 
 // Serve main page for any other route (SPA fallback)
 app.get('*', (req, res) => {
+    const ext = path.extname(req.path);
+    if (ext && ext !== '.html') {
+        return res.status(404).send('Not found');
+    }
+    const requestedFile = path.join(__dirname, req.path);
+    if (ext === '.html' && fs.existsSync(requestedFile)) {
+        return res.sendFile(requestedFile);
+    }
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
