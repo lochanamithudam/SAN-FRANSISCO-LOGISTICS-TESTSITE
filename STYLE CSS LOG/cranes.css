@@ -316,12 +316,13 @@
 
 /* Crane Telemetry HUD Panel */
 .crane-hud-card {
-  background: rgba(13, 23, 48, 0.85);
-  backdrop-filter: blur(20px);
-  border: 1px solid var(--crane-border);
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 245, 212, 0.35);
   border-radius: 20px;
   padding: 28px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 245, 212, 0.15);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 30px rgba(0, 245, 212, 0.15);
   position: relative;
   overflow: hidden;
 }
@@ -374,14 +375,17 @@
 }
 
 .hud-stat-box {
-  background: rgba(7, 13, 30, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 12px;
   padding: 16px;
   transition: all 0.3s ease;
 }
 
 .hud-stat-box:hover {
+  background: rgba(0, 245, 212, 0.1);
   border-color: var(--crane-cyan);
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(0, 245, 212, 0.15);
